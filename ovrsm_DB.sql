@@ -44,36 +44,36 @@ LOCK TABLES `bankaccount` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `carownerpay`
+-- Table structure for table `cusstomer`
 --
 
-DROP TABLE IF EXISTS `carownerpay`;
+DROP TABLE IF EXISTS `cusstomer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `carownerpay` (
-  `vehiOwnerID` int NOT NULL,
-  `managerID` int NOT NULL,
-  `paymentID` int NOT NULL,
-  `paidAcc` int NOT NULL,
-  PRIMARY KEY (`vehiOwnerID`,`managerID`,`paymentID`),
-  KEY `managerID_idx` (`managerID`),
-  KEY `paymentID_idx` (`paymentID`),
-  CONSTRAINT `managerIDcarOPay` FOREIGN KEY (`managerID`) REFERENCES `emp_manager` (`empID`) ON DELETE CASCADE,
-  CONSTRAINT `paymentIDcarO` FOREIGN KEY (`paymentID`) REFERENCES `payment` (`paymentID`) ON DELETE CASCADE,
-  CONSTRAINT `vehiOwnerIDcarOwpay` FOREIGN KEY (`vehiOwnerID`) REFERENCES `vehicleowner` (`veOID`) ON DELETE CASCADE
+CREATE TABLE `cusstomer` (
+  `id` int NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `phone` varchar(10) NOT NULL,
+  `username` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`),
+  UNIQUE KEY `phone_UNIQUE` (`phone`),
+  UNIQUE KEY `username_UNIQUE` (`username`),
+  UNIQUE KEY `password_UNIQUE` (`password`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `carownerpay`
+-- Dumping data for table `cusstomer`
 --
 
-LOCK TABLES `carownerpay` WRITE;
-/*!40000 ALTER TABLE `carownerpay` DISABLE KEYS */;
-/*!40000 ALTER TABLE `carownerpay` ENABLE KEYS */;
+LOCK TABLES `cusstomer` WRITE;
+/*!40000 ALTER TABLE `cusstomer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cusstomer` ENABLE KEYS */;
 UNLOCK TABLES;
-
-
 
 --
 -- Table structure for table `customer`
@@ -96,6 +96,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (12),(13),(15),(16),(17);
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,11 +109,14 @@ DROP TABLE IF EXISTS `driver`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `driver` (
   `driverID` int NOT NULL,
-  `carexpertLevel` char(15) NOT NULL,
-  `bikeexpertLevel` char(15) NOT NULL,
-  `vanexpertLevel` char(15) NOT NULL,
+  `carexpertLevel` char(15) DEFAULT NULL,
+  `bikeexpertLevel` char(15) DEFAULT NULL,
+  `vanexpertLevel` char(15) DEFAULT NULL,
+  `driverlicense` varchar(45) NOT NULL,
+  `jeepexpertLevel` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`driverID`),
   UNIQUE KEY `driverID_UNIQUE` (`driverID`),
+  UNIQUE KEY `driverlicense_UNIQUE` (`driverlicense`),
   CONSTRAINT `driverID` FOREIGN KEY (`driverID`) REFERENCES `vendor` (`vendorID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -123,6 +127,7 @@ CREATE TABLE `driver` (
 
 LOCK TABLES `driver` WRITE;
 /*!40000 ALTER TABLE `driver` DISABLE KEYS */;
+INSERT INTO `driver` VALUES (18,'expert','newbie','expert','23wer','medium'),(19,'medium','expert','newbie','23wersdf','medium'),(20,'medium','expert','newbie','23wersfdf','expert'),(21,'expert','newbie','expert','23wer324234','newbie'),(22,'medium','newbie','expert','6756ghg','expert');
 /*!40000 ALTER TABLE `driver` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,7 +142,7 @@ CREATE TABLE `driverpayment` (
   `paymentID` int NOT NULL,
   `managerID` int NOT NULL,
   `driverID` int NOT NULL,
-  `accoutNo` int NOT NULL,
+  `payPaccNo` int NOT NULL,
   PRIMARY KEY (`paymentID`,`managerID`,`driverID`),
   KEY `managerID_idx` (`managerID`),
   KEY `driverID_idx` (`driverID`),
@@ -153,6 +158,7 @@ CREATE TABLE `driverpayment` (
 
 LOCK TABLES `driverpayment` WRITE;
 /*!40000 ALTER TABLE `driverpayment` DISABLE KEYS */;
+INSERT INTO `driverpayment` VALUES (2,11,18,123456),(3,14,18,123456),(5,14,18,123456),(6,14,18,123456);
 /*!40000 ALTER TABLE `driverpayment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,6 +183,7 @@ CREATE TABLE `emp_manager` (
 
 LOCK TABLES `emp_manager` WRITE;
 /*!40000 ALTER TABLE `emp_manager` DISABLE KEYS */;
+INSERT INTO `emp_manager` VALUES (11),(14),(23),(25),(26);
 /*!40000 ALTER TABLE `emp_manager` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +214,34 @@ CREATE TABLE `externaluser` (
 
 LOCK TABLES `externaluser` WRITE;
 /*!40000 ALTER TABLE `externaluser` DISABLE KEYS */;
+INSERT INTO `externaluser` VALUES (12,'992962062V',710957213,'177/9','Gonahean Road','Kadawatha'),(13,'992962062V',770957213,'178/9','Mahakade Road','Kadawatha'),(15,'952962062V',760957213,'179/9','kribathgoda Road','Kadawatha'),(16,'962962062V',740957213,'170/9','panasala Road','Kadawatha'),(17,'972962062V',720957213,'171/9','road Road','Kadawatha'),(18,'976862062V',770954213,'178/9','Mahakade Road','Colombo'),(19,'992962768V',723457213,'145/9','Mahakade Road','Kandy'),(20,'992976832V',776857213,'234/9','Mahakade Road','Galle'),(21,'762962062V',709857213,'876/9','Mahakade Road','Kurununagla'),(22,'976962062V',712357213,'178/9C','Mahakade Road','Kaduwela'),(24,'992907462V',745757213,'156/9','Mahakade Road','Katunayake'),(27,'992965722V',798757213,'456/9','Mahakade Road','Moratuwa'),(28,'992962007V',712557213,'9776/9','Mahakade Road','Badulla'),(29,'992962168V',716857213,'345/9','Mahakade Road','Peradeniya'),(30,'990702062V',705657213,'234/9','Mahakade Road','Kegalla');
 /*!40000 ALTER TABLE `externaluser` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `feed_back`
+--
+
+DROP TABLE IF EXISTS `feed_back`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `feed_back` (
+  `feedback` int NOT NULL AUTO_INCREMENT,
+  `full_name` varchar(45) NOT NULL,
+  `email` varchar(45) NOT NULL,
+  `message` varchar(300) NOT NULL,
+  PRIMARY KEY (`feedback`),
+  UNIQUE KEY `feedback_UNIQUE` (`feedback`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `feed_back`
+--
+
+LOCK TABLES `feed_back` WRITE;
+/*!40000 ALTER TABLE `feed_back` DISABLE KEYS */;
+/*!40000 ALTER TABLE `feed_back` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -225,7 +259,7 @@ CREATE TABLE `payment` (
   `paymethod` varchar(45) NOT NULL,
   PRIMARY KEY (`paymentID`),
   UNIQUE KEY `paymentID_UNIQUE` (`paymentID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,6 +268,7 @@ CREATE TABLE `payment` (
 
 LOCK TABLES `payment` WRITE;
 /*!40000 ALTER TABLE `payment` DISABLE KEYS */;
+INSERT INTO `payment` VALUES (2,400,'debited','2021-10-18 18:30:00','receipt'),(3,560,'debited','2021-03-11 18:30:00','card'),(4,600,'creadited','2021-03-13 18:30:00','visa'),(5,560,'debited','2021-03-11 18:30:00','card'),(6,3455,'debited','2021-10-18 18:30:00','receipt'),(7,876,'debited','2021-03-11 18:30:00','card'),(8,908,'creadited','2021-03-13 18:30:00','visa'),(9,1244,'debited','2021-03-11 18:30:00','card'),(10,8978,'debited','2021-10-18 18:30:00','receipt'),(11,67865,'debited','2021-03-11 18:30:00','card'),(12,345,'creadited','2021-03-13 18:30:00','visa'),(13,987,'debited','2021-03-11 18:30:00','card'),(14,909,'debited','2021-10-18 18:30:00','receipt'),(15,1234,'debited','2021-03-11 18:30:00','card'),(16,2345,'creadited','2021-03-13 18:30:00','visa'),(17,765,'debited','2021-03-11 18:30:00','card');
 /*!40000 ALTER TABLE `payment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,6 +300,7 @@ CREATE TABLE `recommendjobs` (
 
 LOCK TABLES `recommendjobs` WRITE;
 /*!40000 ALTER TABLE `recommendjobs` DISABLE KEYS */;
+INSERT INTO `recommendjobs` VALUES (1,12,18,23,'2020-12-13 18:30:00',0),(2,13,19,11,'2019-10-21 18:30:00',1),(3,15,20,11,'2021-04-04 18:30:00',1),(4,16,21,14,'2021-12-09 18:30:00',0);
 /*!40000 ALTER TABLE `recommendjobs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -289,10 +325,11 @@ CREATE TABLE `reservation` (
   `how_far` double NOT NULL,
   `pickup_location` varchar(45) NOT NULL,
   `fullPaid` int NOT NULL DEFAULT '0',
+  `journey_status` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`reservationID`,`cusID`),
   KEY `cusID_idx` (`cusID`),
   CONSTRAINT `cusIDres` FOREIGN KEY (`cusID`) REFERENCES `customer` (`cusID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -301,6 +338,7 @@ CREATE TABLE `reservation` (
 
 LOCK TABLES `reservation` WRITE;
 /*!40000 ALTER TABLE `reservation` DISABLE KEYS */;
+INSERT INTO `reservation` VALUES (1,12,'car','2021-10-05','10:30:00',5,0,30,'expert',1,10,'kadawatha',0,0),(2,13,'bike','2021-10-05','10:30:00',5,0,30,'expert',1,10,'kadawatha',0,0),(3,15,'bike','2021-10-05','10:30:00',5,0,30,'expert',1,10,'kadawatha',0,0),(4,16,'bike','2021-10-05','10:30:00',5,0,30,'expert',1,10,'kadawatha',0,0);
 /*!40000 ALTER TABLE `reservation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -331,6 +369,7 @@ CREATE TABLE `respayment` (
 
 LOCK TABLES `respayment` WRITE;
 /*!40000 ALTER TABLE `respayment` DISABLE KEYS */;
+INSERT INTO `respayment` VALUES (4,1,12,'Ere4324'),(8,2,13,'ESddfe4324'),(12,3,15,'567fg324'),(16,4,16,'fghg#424');
 /*!40000 ALTER TABLE `respayment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -352,9 +391,8 @@ CREATE TABLE `user` (
   PRIMARY KEY (`userID`),
   UNIQUE KEY `userID_UNIQUE` (`userID`),
   UNIQUE KEY `usercol_UNIQUE` (`userName`),
-  UNIQUE KEY `usercol1_UNIQUE` (`passowrd`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -363,6 +401,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (11,'ch','jaya','sser','1234556','1234@gmail','/db/gh'),(12,'thulina','thul','thulinaaa','12345545','thulinaa@gmail','/db/gh'),(13,'anuradha','anu','sseddd','123455654','anurafha@gmail','/db/gh'),(14,'pasi','purna','kasun','1234556676','pasidu@gmail','/db/gh'),(15,'thul','ina','Wick','123455688','thulina@gmail','/db/gh'),(16,'namal','raja','namala','123445','namala@gmail','/dfg/sdf'),(17,'kamalii','la','kamala','123445','kamala@gmail','/dfg/sdf'),(18,'vimu','kla','vimala','123445','vimala@gmail','/dfg/sdf'),(19,'jami','balaka','jamala','123445','jamala@gmail','/dfg/sdf'),(20,'pami','ooo','pamala','123445','pamala@gmail','/dfg/sdf'),(21,'oop','it2060','useroo','123445','oop@gmail','/dfg/sdf'),(22,'ooc','it202la','september','123445','septem@gmail','/dfg/sdf'),(23,'dms','ssskla','sdfvimala','123445','sdfvimala@gmail','/dfg/sdf'),(24,'werjami','werbalaka','ieriejamala','123445','kljamala@gmail','/dfg/sdf'),(25,'yhpami','yuyuooo','i9pamala','123445','poipamala@gmail','/dfg/sdf'),(26,'kknamal','fgfraja','33namala','123445','gfnamala@gmail','/dfg/sdf'),(27,'mjhkamalii','ghla','ghjykamala','123445','hjkamala@gmail','/dfg/sdf'),(28,'qwerevimu','uiukla','oiuvimala','123445','poivimala@gmail','/dfg/sdf'),(29,'ytujami','tyutyrtbalaka','tyutjamala','123445','miuyjamala@gmail','/dfg/sdf'),(30,'234rtrpami','ert45ooo','ty56pamala','123445','y565pamala@gmail','/dfg/sdf');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -387,10 +426,15 @@ CREATE TABLE `vehicle` (
   `pricePerKm` double NOT NULL,
   `specialNote` varchar(200) NOT NULL,
   `brand` varchar(45) NOT NULL,
+  `registrationNo` varchar(45) NOT NULL,
+  `transmission` varchar(45) NOT NULL,
+  `vehiclePic` varchar(200) NOT NULL,
   PRIMARY KEY (`vehicleID`,`veOID`),
+  UNIQUE KEY `registrationNo_UNIQUE` (`registrationNo`),
+  UNIQUE KEY `license_no_UNIQUE` (`license_no`),
   KEY `veOID&vehi` (`veOID`),
   CONSTRAINT `veOID&vehi` FOREIGN KEY (`veOID`) REFERENCES `vehicleowner` (`veOID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -399,6 +443,7 @@ CREATE TABLE `vehicle` (
 
 LOCK TABLES `vehicle` WRITE;
 /*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
+INSERT INTO `vehicle` VALUES (27,22,'disel','342365','car','blue','big','good',4,'black',300,'4th wheel','Toyota','878787','auto','/234/erer.h'),(24,23,'disel','3423','car','blue','big','good',4,'black',300,'4th wheel','Toyota','123er','auto','/erer/324.jpg'),(24,24,'disel','34245','car','blue','big','good',4,'black',300,'4th wheel','Toyota','123e32r','auto','/sdfd/234.jpeg');
 /*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -423,7 +468,39 @@ CREATE TABLE `vehicleowner` (
 
 LOCK TABLES `vehicleowner` WRITE;
 /*!40000 ALTER TABLE `vehicleowner` DISABLE KEYS */;
+INSERT INTO `vehicleowner` VALUES (24),(27),(28),(29),(30);
 /*!40000 ALTER TABLE `vehicleowner` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vehiownerpay`
+--
+
+DROP TABLE IF EXISTS `vehiownerpay`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `vehiownerpay` (
+  `paymentID` int NOT NULL,
+  `managerID` int NOT NULL,
+  `vehiownerID` int NOT NULL,
+  `payeeacc` int NOT NULL,
+  PRIMARY KEY (`paymentID`,`managerID`,`vehiownerID`),
+  KEY `managerID_idx` (`managerID`),
+  KEY `vehicownerID_idx` (`vehiownerID`),
+  CONSTRAINT `managerIDvehio` FOREIGN KEY (`managerID`) REFERENCES `emp_manager` (`empID`),
+  CONSTRAINT `paymentIDvehio` FOREIGN KEY (`paymentID`) REFERENCES `payment` (`paymentID`) ON DELETE CASCADE,
+  CONSTRAINT `vehicownerIDpay` FOREIGN KEY (`vehiownerID`) REFERENCES `vehicleowner` (`veOID`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vehiownerpay`
+--
+
+LOCK TABLES `vehiownerpay` WRITE;
+/*!40000 ALTER TABLE `vehiownerpay` DISABLE KEYS */;
+INSERT INTO `vehiownerpay` VALUES (9,11,24,12345),(10,14,27,56765),(11,23,28,87897),(12,25,29,123778);
+/*!40000 ALTER TABLE `vehiownerpay` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -447,6 +524,7 @@ CREATE TABLE `vendor` (
 
 LOCK TABLES `vendor` WRITE;
 /*!40000 ALTER TABLE `vendor` DISABLE KEYS */;
+INSERT INTO `vendor` VALUES (18),(19),(20),(21),(22),(24),(27),(28),(29),(30);
 /*!40000 ALTER TABLE `vendor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -459,4 +537,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-09-28 18:14:26
+-- Dump completed on 2021-09-29  6:53:16
