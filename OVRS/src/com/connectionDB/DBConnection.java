@@ -3,8 +3,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class DBConnection {
+	//change your url  and password accordingly
          	private static String url = "jdbc:mysql://localhost:33061/ovrs";
-	       private static String userName = "root";
+	        private static String userName = "root";
             private static String password = "12345678";
              static Connection conn= null;
              private DBConnection() {
