@@ -1773,7 +1773,7 @@ class Collapse extends BaseComponent {
     }
 
     const dimension = this._getDimension();
-
+;
     this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`;
     reflow(this._element);
 
