@@ -26,12 +26,10 @@ public class LoginServlet extends HttpServlet {
 		
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
-		String userType = request.getParameter("userType");
-		boolean isTrue;
 		
-		isTrue = UserDBUtil.validate(userName, password);
+		String userType = UserDBUtil.validate(userName, password);
 		
-		if (isTrue == true) {
+		if (userType!=null) {
 			
 			try{		System.out.println("Passowrd and user name was correct");
 						HttpSession session=request.getSession();
@@ -88,7 +86,10 @@ public class LoginServlet extends HttpServlet {
 							session.setAttribute("vanexpertLevel", driver.getVanexpertLevel());
 							session.setAttribute("jeepexpertLevel", driver.getVanexpertLevel());
 							session.setAttribute("driverlicense", driver. getDriverlicense());
-							
+							System.out.println(driver.getUserName());
+							System.out.println(driver.getLastName());
+							System.out.println(driver.getFirstName());
+							System.out.println(driver.getHomeNo());
 						   response.sendRedirect("Welcome.jsp");
 						
 						
@@ -112,7 +113,7 @@ public class LoginServlet extends HttpServlet {
 						    response.sendRedirect("Welcome.jsp");
 						
 							
-						}else {
+						}else if(userType.equals("emp")) {
 							
 							EmployeeManager emp = UserDBUtil.getEmployeeManager(userName);
 							

@@ -12,25 +12,67 @@ import com.customer.*;
 
 public class UserDBUtil {
 	
-	private static boolean isSuccess;
+	private static String isSuccess;
 	private static Connection con =null;
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
     
-	public static boolean validate(String username, String password) {
+	public static String validate(String username, String password) {
 		System.out.println("I was called");
 		try {
 			con = DBConnection.getDBConnection();
 			stmt = con.createStatement();
 			String sql = "select * from user where userName='"+username+"' and password='"+password+"'";
 			rs = stmt.executeQuery(sql);
-			
+		   int userID=0;
+		
 			if (rs.next()) {
-				System.out.println("Correct credential");
-				isSuccess = true;
+				System.out.println("Correct credential for any user");
+				rs = stmt.executeQuery(sql);
+				while(rs.next())
+					userID=rs.getInt(1);
+				
+				
+				
+				
+				
+				String sql1 = "select * from emp_manager where empID='"+userID+"'";
+				
+				rs=stmt.executeQuery(sql1);
+				
+				if(rs.next()) {
+					isSuccess="emp";
+					return isSuccess;
+				}
+				String sql2 = "select * from driver where driverID='"+userID+"'";
+				
+			   rs=stmt.executeQuery(sql2);
+				if(rs.next()) {
+					System.out.println("I am a driver");
+					isSuccess="driver";
+					return isSuccess;
+				}
+				String sql3 = "select * from vehicleOwner where veOID='"+userID+"'";
+					
+			   rs=stmt.executeQuery(sql3);
+				if(rs.next()) {
+					System.out.println("I am a vehicle owner");
+					isSuccess="carowner";
+					return isSuccess;
+				}
+				String sql4 = "select * from customer where cusID='"+userID+"'";
+					
+				rs=stmt.executeQuery(sql4);
+				if(rs.next()) {
+					System.out.println("I am a customer");
+					isSuccess="customer";
+					return isSuccess;
+				}
+				
+			
 			} else {
 			System.out.println("not matched");
-				isSuccess = false;
+				isSuccess = null;
 			}
 			
 		} catch (Exception e) {
@@ -104,11 +146,12 @@ public class UserDBUtil {
 												} 
 											
 										
-											
+											System.out.println(userID+"\n"+firstName+"\n"+lastName+"\n"+email+"\n"+propic+"\n"+
+												  userNamee+"\n"+password+"\n"+NIC+"\n"+phoneNo+"\n"+streetName+"\n"+city+"\n"+homeNo);
 										vehicleOwner = new VehicleOwner(userID,firstName,lastName,email,propic,
 												  userNamee,password,NIC,phoneNo,streetName,city,homeNo);
 										
-										con.close();
+										
 						 
 		}catch(Exception e) {
 			System.out.println("Outter catch block failed");
@@ -154,7 +197,7 @@ public class UserDBUtil {
 												
 												stmt = con.createStatement();
 											
-											
+												 System.out.println("meees32423dfdfdxcxcxcxc");
 											
 												String sql1 = "select * from externaluser where exuserID='"+userID+"'";
 												rs = stmt.executeQuery(sql);
@@ -186,8 +229,7 @@ public class UserDBUtil {
 										  customer = new Customer(userID,firstName,lastName,email,propic,
 												  userNamee,password,NIC,phoneNo,streetName,city,homeNo);	
 										  
-										  con.close();
-										  
+										 
 						
 		}catch(Exception e) {
 			System.out.println("Outter catch block failed");
@@ -241,7 +283,7 @@ public class UserDBUtil {
 											
 												String sql1 = "select * from externaluser where exuserID='"+userID+"'";
 												String sql2 = "select * from driver where driverID='"+userID+"'";
-												rs = stmt.executeQuery(sql);
+												//rs = stmt.executeQuery(sql);
 												
 												while (rs.next()) {
 												
@@ -271,11 +313,14 @@ public class UserDBUtil {
 												} 
 											
 										
+
+												System.out.println(userID+"\n"+firstName+"\n"+lastName+"\n"+email+"\n"+propic+"\n"+
+													  userNamee+"\n"+password+"\n"+NIC+"\n"+phoneNo+"\n"+streetName+"\n"+city+"\n"+homeNo);
 										driver = new Driver(userID,firstName,lastName,email,propic,
 												  userNamee,password,NIC,phoneNo,streetName,city,homeNo,
 												  carexpertLevel,bikeexpertLevel,vanexpertLevel,jeepexpertLevel,
 												  driverlicense);	
-										con.close();
+								
 							  
 						
 		}catch(Exception e) {
@@ -326,7 +371,9 @@ public class UserDBUtil {
 										 userNamee,password);
 											con.close();
 											
-										  
+
+											System.out.println(userID+"\n"+firstName+"\n"+lastName+"\n"+email+"\n"+propic+"\n"+
+												  userNamee+"\n"+password+"\n");
 									
 		}catch(Exception e) {
 			System.out.println("Outter catch block failed");
