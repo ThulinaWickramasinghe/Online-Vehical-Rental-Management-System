@@ -26,9 +26,9 @@
                 <tr>
                     <td colspan="2">
                         <select name="usertype" id="usertypeID" onchange="chanegeType(this.value)">
-                            <option value="1" selected>Customer</option>
-                            <option value="2">Driver</option>
-                            <option value="3">Vehicle Owner</option>                   
+                            <option value="customer" selected>Customer</option>
+                            <option value="driver">Driver</option>
+                            <option value="vehicleOwner">Vehicle Owner</option>                   
                             </select>
                     </td>
                 <tr>
@@ -49,7 +49,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input  id="accountnumber" type="text" placeholder="Account Number" class="hide">
+                        <input  id="accountnumber" type="hidden" placeholder="Account Number" class="hide">
                     </td>
                 </tr>
                 <tr>
@@ -128,12 +128,15 @@
                 const bankNamae=document.getElementById('bankselectID')
                 const  bankBranch=document.getElementById('brancselectID')
                 const bankAccNo=document.getElementById('accountnumber')
-                if(value==1){
+				//x.setAttribute("type", "hidden");
+                if(value=="customer"){
+					bankAccNo.setAttribute("type","hidden")
                     bankNamae.classList.add('hide')
                       bankBranch.classList.add('hide')
                         bankAccNo.classList.add('hide')
                 }
                 else{
+					bankAccNo.setAttribute("type","text")
                     bankNamae.classList.remove('hide')
                     bankBranch.classList.remove('hide')
                     bankAccNo.classList.remove('hide')
