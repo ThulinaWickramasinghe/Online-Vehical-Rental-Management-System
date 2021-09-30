@@ -35,7 +35,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>logins</servlet-name>
-		<servlet-class>com.customer.LoginServlet</servlet-class>
+		<servlet-class>com.ovrsm.servelets.LoginServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>logins</servlet-name>
@@ -43,7 +43,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>logout</servlet-name>
-		<servlet-class>com.customer.Logout</servlet-class>
+		<servlet-class>com.ovrsm.servelets.LogoutServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>logout</servlet-name>

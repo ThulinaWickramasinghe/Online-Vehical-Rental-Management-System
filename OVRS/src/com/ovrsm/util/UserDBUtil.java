@@ -6,9 +6,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.customer.User;
+import com.ovrsm.model.*;
 import com.rusiru.DBConnect;
-import com.customer.*;
 
 public class UserDBUtil {
 	

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.customer.User;
+import com.ovrsm.model.User;
 import com.ovrsm.util.UserDBUtil;
 
 
