@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 						System.out.println(cus.getLastName());
 						System.out.println(cus.getFirstName());
 						System.out.println(cus.getHomeNo());
-						response.sendRedirect("Welcome.jsp");
+						response.sendRedirect("CustomerDashBoard.jsp");
 						
 							
 						} else if(userType.equals("driver")){
@@ -94,7 +94,7 @@ public class LoginServlet extends HttpServlet {
 							System.out.println(driver.getLastName());
 							System.out.println(driver.getFirstName());
 							System.out.println(driver.getHomeNo());
-						   response.sendRedirect("Welcome.jsp");
+						   response.sendRedirect("DriverDashBoard.jsp");
 						
 						
 							
@@ -114,7 +114,7 @@ public class LoginServlet extends HttpServlet {
 							session.setAttribute("city", vehiowner.getCity());
 							session.setAttribute("homeNo", vehiowner.getHomeNo());
 							
-						    response.sendRedirect("Welcome.jsp");
+						    response.sendRedirect("VehicleOwnerDashBoard.jsp");
 						
 							
 						}else if(userType.equals("emp")) {
@@ -130,7 +130,7 @@ public class LoginServlet extends HttpServlet {
 							session.setAttribute("passwords", emp.getPassword());
 						
 							
-						    response.sendRedirect("Welcome.jsp");
+						    response.sendRedirect("EmployeeManagerDashBoard.jsp");
 						
 							
 						}
@@ -143,7 +143,7 @@ public class LoginServlet extends HttpServlet {
 			
 			out.println("<script type='text/javascript'>");
 			out.println("alert('Your username or password is incorrect');");
-			out.println("location='Login.jsp'");
+			out.println("location='login.jsp'");
 			out.println("</script>");
 			
 			

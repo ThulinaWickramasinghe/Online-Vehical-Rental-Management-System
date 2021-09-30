@@ -49,6 +49,22 @@
 		<servlet-name>logout</servlet-name>
 		<url-pattern>/logout</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>vehicleadd</servlet-name>
+		<servlet-class>com.ovrsm.servelets.VehicleAddServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>vehicleadd</servlet-name>
+		<url-pattern>/vehicleadd</url-pattern>
+	</servlet-mapping>
+		<servlet>
+		<servlet-name>vehicleview</servlet-name>
+		<servlet-class>com.ovrsm.servelets.VehicleViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>vehicleview</servlet-name>
+		<url-pattern>/vehicleview</url-pattern>
+	</servlet-mapping>
 	
 	
 

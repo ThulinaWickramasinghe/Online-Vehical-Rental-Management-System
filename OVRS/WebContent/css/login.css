@@ -1,0 +1,43 @@
+/* body{
+    background-color: #363945;
+} */
+
+input[type=text], [type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+      margin-top: 3%;
+    width: 100%;
+    background-color: #ffffff;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 3px;
+  }
+
+  
+  input[type=submit]:hover {
+    background-color: #dedfe2;
+  }
+  
+  .container_ {
+    padding: 20px;
+    align-items: center;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+
+  .register_now{
+      text-decoration: none;
+  }

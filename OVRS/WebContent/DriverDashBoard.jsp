@@ -1,5 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+   <%
+      if(session.getAttribute("userNames")==null){
+    	   response.sendRedirect("login.jsp");
+     }
+   
+   %>
+  
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 
 <head>
     <meta charset="UTF-8">
@@ -8,6 +19,9 @@
     <title>Document</title>
     <link rel = "stylesheet" href="css/bootstrap.css">
 	 <link rel = "stylesheet" href="css/navBar.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
 </head>
 
@@ -50,9 +64,15 @@
   </div>
     </div>
   </div>
+  
+  
+   <form action="logout">
+   <input type="submit" value="logout">
+   </form>
+  
+  
+  
 </nav>
-
-
 
 
     <script src="js/bootstrap.js">

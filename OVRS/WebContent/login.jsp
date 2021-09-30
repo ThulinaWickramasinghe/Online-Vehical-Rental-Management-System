@@ -1,17 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
- <form action="logins" method="post">
- user name <input type="text" name="username" placeholder="Enter your username"></input><br/><br/>
-  password <input type="password" name="password" placeholder="Enter your password"></input><br/><br/>
 
-  <input type="submit" name="submit" value="Login"/>
- </form>
-</body>
-</html>
+<!DOCTYPE html>  
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="css/login.css">
+        <meta charset="ISO-8859-1">
+    </head>
+
+    <body>
+        <div class="container_">
+
+            <h1>LOGIN</h1>
+            <h4>Enter your Username and Password</h4>
+        <form action="logins" method="post">
+
+                <input type="text" name="username" placeholder="Username"></input>
+                <br>
+                <input type="password" name="password" placeholder="Password"></input>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+            <p>New to application_name? <a href="Register.jsp" class="register_now">Register Now</a> </p>
+        </div>
+    </body>
+    </html>

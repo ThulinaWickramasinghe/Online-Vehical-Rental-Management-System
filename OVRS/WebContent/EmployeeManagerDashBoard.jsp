@@ -1,5 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+    
+   <%
+      if(session.getAttribute("userNames")==null){
+    	   response.sendRedirect("login.jsp");
+     }
+   
+   %>
+  
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 
 <head>
     <meta charset="UTF-8">
@@ -52,11 +63,13 @@
   </div>
   
   
+   <form action="logout">
+   <input type="submit" value="logout">
+   </form>
+  
   
   
 </nav>
-
-
 
 
     <script src="js/bootstrap.js">

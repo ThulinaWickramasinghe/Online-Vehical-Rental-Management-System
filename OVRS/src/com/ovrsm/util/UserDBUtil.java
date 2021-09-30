@@ -351,7 +351,9 @@ public class UserDBUtil {
 							System.out.println("meee");
 							String sql = "select * from user where username='"+userName+"'";
 							System.out.println("meeeffdf");
+							
 							rs = stmt.executeQuery(sql);
+							
 							System.out.println("meeesdfdfd");
 							while (rs.next()) {
 						    userID = rs.getInt(1);
