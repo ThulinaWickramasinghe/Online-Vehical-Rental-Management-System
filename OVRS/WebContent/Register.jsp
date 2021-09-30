@@ -242,6 +242,10 @@
 				
 				if(value=="driver"){
 					driverLicense.setAttribute("type","text")
+				    bankAccNo.setAttribute("type","text")
+                    bankNamae.classList.remove('hide')
+                    bankBranch.classList.remove('hide')
+                    bankAccNo.classList.remove('hide')
 					for(var i=0;i<driverAttr.length;i++){
 						driverAttr[i].classList.remove('hide')
 					}
