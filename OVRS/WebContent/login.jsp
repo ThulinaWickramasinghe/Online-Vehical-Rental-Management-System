@@ -56,11 +56,7 @@
   
 </nav>
 
-
-
-
-   
-    
+       
         <div class="container_">
 
             <h1>LOGIN</h1>
@@ -73,7 +69,7 @@
                 <br>
                 <input type="submit" value="Submit">
             </form>
-            <p>New to application_name? <a href="Register.jsp" class="register_now">Register Now</a> </p>
+            <p>New to Rent Smart..? <a href="Register.jsp" class="register_now">Register Now</a> </p>
         </div>
          <script src="js/bootstrap.js">
     </script>
