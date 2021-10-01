@@ -1,27 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-   <%
+       <%
       if(session.getAttribute("userNames")==null){
     	   response.sendRedirect("login.jsp");
      }
    
    %>
-  
 <!DOCTYPE html>
 <html>
-
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>Employee Manager-Assign jobs</title>
+    <meta charset="ISO-8859-1">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Manager-Dashboard</title>
-    <link rel = "stylesheet" href="css/bootstrap.css">
+         <link rel = "stylesheet" href="css/bootstrap.css">
 	 <link rel = "stylesheet" href="css/navBar.css">
-
 </head>
-
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark nave-style">
   <div class="container">
@@ -70,14 +66,51 @@
   
   
 </nav>
-<a href="EmpMgrAssignJobs.jsp">Go to assign Jobs</a>
 
-    <script src="js/bootstrap.js">
-    </script>
-    <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js">
-    </script>
 
+<form action="assignjobs" method="post"> 
+
+      <table>
+           <tr>
+               <td>
+               <input type="text" name="reserveID" placeholder="ReservationID" ></input>    
+               </td>
+           </tr>
+           <tr>
+                <td>
+              <input type="text" name="cusID" placeholder="customerID"></input>
+                </td>
+           </tr>
+           <tr>
+               <td>               
+               <input type="text" name="driverID" placeholder="DriverID"></input>
+               </td>
+           </tr>
+                      
+               <input type="text" name="managerID" placeholder="managerID" value="${EmpID}" hidden></input>
+               
+           <tr>
+               <td>               
+               <input type="text" name="vehicleID" placeholder="vehicleID"></input>
+               </td>
+           </tr>
+           <tr>
+               <td>
+                <input type="text" name="date" placeholder="Journey Date">
+               </td>
+           </tr>
+             <tr>
+               <td>
+                <input type="text" name="time" placeholder="Pickup Time">
+               </td>
+           </tr>
+           <tr>
+              <td>
+                <input type="submit" name="Assign job" value="Create job">
+             </td>
+           </tr>
+      </table>
+</form>      
+<a href="deleteJobs.jsp" >Delete recommended jobs</a>
 </body>
-
-
 </html>

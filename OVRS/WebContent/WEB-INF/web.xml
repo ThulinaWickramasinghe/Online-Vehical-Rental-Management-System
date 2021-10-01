@@ -66,6 +66,27 @@
 		<url-pattern>/vehicleview</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>assignjobs</servlet-name>
+		<servlet-class>com.ovrsm.servelets.RecommendJobsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>assignjobs</servlet-name>
+		<url-pattern>/assignjobs</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>deletejobs</servlet-name>
+		<servlet-class>com.ovrsm.servelets.DeleteRecommendJobServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>deletejobs</servlet-name>
+		<url-pattern>/deletejobs</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	
 	
 
 	

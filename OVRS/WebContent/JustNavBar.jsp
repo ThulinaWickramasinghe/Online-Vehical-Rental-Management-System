@@ -1,22 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-   <%
-      if(session.getAttribute("userNames")==null){
-    	   response.sendRedirect("login.jsp");
-     }
-   
-   %>
-  
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Manager-Dashboard</title>
+    <title>Document</title>
     <link rel = "stylesheet" href="css/bootstrap.css">
 	 <link rel = "stylesheet" href="css/navBar.css">
 
@@ -63,14 +52,12 @@
   </div>
   
   
-   <form action="logout">
-   <input type="submit" value="logout">
-   </form>
-  
   
   
 </nav>
-<a href="EmpMgrAssignJobs.jsp">Go to assign Jobs</a>
+
+
+
 
     <script src="js/bootstrap.js">
     </script>

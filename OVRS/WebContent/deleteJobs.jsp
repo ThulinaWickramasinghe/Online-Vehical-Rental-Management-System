@@ -1,27 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
-   <%
+           <%
       if(session.getAttribute("userNames")==null){
     	   response.sendRedirect("login.jsp");
      }
    
    %>
-  
 <!DOCTYPE html>
 <html>
-
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+   <meta charset="ISO-8859-1">
+         <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Manager-Dashboard</title>
-    <link rel = "stylesheet" href="css/bootstrap.css">
+         <link rel = "stylesheet" href="css/bootstrap.css">
 	 <link rel = "stylesheet" href="css/navBar.css">
-
+<title>Employee Manager-Delete Jobs</title>
 </head>
-
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark nave-style">
   <div class="container">
@@ -70,14 +65,23 @@
   
   
 </nav>
-<a href="EmpMgrAssignJobs.jsp">Go to assign Jobs</a>
+<h1>Enter reservation ID of the customer reservations that has been completed
+To delete the recommended jobs</h1>
+<form action="deletejobs" method="post">
+         <tr>
+               <td>
+                <input type="text" name="reservationID" placeholder="Reservatin ID">
+               </td>
+           </tr>
+           <tr>
+              <td>
+                <input type="submit" name="delete jobs" value="Delete this job">
+             </td>
+           </tr>
+      </table>
 
-    <script src="js/bootstrap.js">
-    </script>
-    <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js">
-    </script>
+</form>
 
+<a href="EmpMgrAssignJobs.jsp">Back to job assign</a>>
 </body>
-
-
 </html>

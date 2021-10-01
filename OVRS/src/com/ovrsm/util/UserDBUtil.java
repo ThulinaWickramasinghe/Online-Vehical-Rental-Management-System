@@ -370,7 +370,7 @@ public class UserDBUtil {
 											
 										 emp= new EmployeeManager(userID,firstName,lastName,email,propic,
 										 userNamee,password);
-											con.close();
+										
 											
 
 											System.out.println(userID+"\n"+firstName+"\n"+lastName+"\n"+email+"\n"+propic+"\n"+

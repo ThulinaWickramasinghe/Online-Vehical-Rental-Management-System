@@ -44,38 +44,6 @@ LOCK TABLES `bankaccount` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `cusstomer`
---
-
-DROP TABLE IF EXISTS `cusstomer`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cusstomer` (
-  `id` int NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `phone` varchar(10) NOT NULL,
-  `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
-  UNIQUE KEY `phone_UNIQUE` (`phone`),
-  UNIQUE KEY `username_UNIQUE` (`username`),
-  UNIQUE KEY `password_UNIQUE` (`password`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `cusstomer`
---
-
-LOCK TABLES `cusstomer` WRITE;
-/*!40000 ALTER TABLE `cusstomer` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cusstomer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `customer`
 --
 
@@ -285,6 +253,7 @@ CREATE TABLE `recommendjobs` (
   `managerID` int NOT NULL,
   `dateTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `driverAccept` int NOT NULL DEFAULT '0',
+  `vehicleID` int DEFAULT NULL,
   PRIMARY KEY (`reservationID`,`cusID`,`driverID`,`managerID`),
   KEY `cusID_idx` (`cusID`),
   KEY `managerID_idx` (`managerID`),
@@ -299,7 +268,7 @@ CREATE TABLE `recommendjobs` (
 
 LOCK TABLES `recommendjobs` WRITE;
 /*!40000 ALTER TABLE `recommendjobs` DISABLE KEYS */;
-INSERT INTO `recommendjobs` VALUES (1,12,18,23,'2020-12-13 18:30:00',0),(2,13,19,11,'2019-10-21 18:30:00',1),(3,15,20,11,'2021-04-04 18:30:00',1),(4,16,21,14,'2021-12-09 18:30:00',0);
+INSERT INTO `recommendjobs` VALUES (1,12,18,23,'2020-12-13 18:30:00',0,NULL);
 /*!40000 ALTER TABLE `recommendjobs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -433,7 +402,7 @@ CREATE TABLE `vehicle` (
   UNIQUE KEY `license_no_UNIQUE` (`license_no`),
   KEY `veOID&vehi` (`veOID`),
   CONSTRAINT `veOID&vehi` FOREIGN KEY (`veOID`) REFERENCES `vehicleowner` (`veOID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -442,7 +411,7 @@ CREATE TABLE `vehicle` (
 
 LOCK TABLES `vehicle` WRITE;
 /*!40000 ALTER TABLE `vehicle` DISABLE KEYS */;
-INSERT INTO `vehicle` VALUES (27,22,'disel','342365','car','blue','big','good',4,'black',300,'4th wheel','Toyota','878787','auto','/234/erer.h'),(24,23,'disel','3423','car','blue','big','good',4,'black',300,'4th wheel','Toyota','123er','auto','/erer/324.jpg'),(24,24,'disel','34245','car','blue','big','good',4,'black',300,'4th wheel','Toyota','123e32r','auto','/sdfd/234.jpeg'),(27,25,'Diesel','sdfd','Van','Orange','cn','new',2,'2.8',200,'sdfdf','mnn','sdfd','yrd','/images/cars/car.jpg'),(27,27,'Petrol','sdddddddddddddddd','Car','Red','sdfsdfsdf','sdfsdfsdfdf',3,'sdfdff',4000,'dfdsfdsfsdfdfdf','sdfsdf','sdfsdfffffffff','sdfsdfsdfd','/images/cars/car.jpg'),(27,28,'Gasoline','sdfdf343','Bike','Orange','sdfdf','sdf',33,'dsfd',3434,'dsfsd','BMW','sdfdf34','sdfdf','/images/cars/car.jpg'),(27,29,'Gasoline','sdfdf343sdfsdfsdfyttttttttt','Bike','Orange','sdfdf','sdfsdfsdf',335555,'dsfd',343455,'dsfsdfghg','BMWdfsdf','555555555','sdfdf','/images/cars/car.jpg'),(27,30,'Natural Gas','sdfdf343sdfsdfsdfytttttttttdfggggg','Jeep','Purple','sdfdffddddddddd','sdfsdfsdfdffffffffg',335555444,'dsfdfggggggggg',3434554444444,'dsfsdfghgfddddddddddg','BMWdfsdfdffffffffg','555555555dfgdfg','sdfdfdfffffffffg','/images/cars/car.jpg'),(27,31,'Natural Gas','sdfdf343sdfsdfsdfytttttttttdfgggggdsfd','Jeep','Orange','sdfdffdddddddddfdg','sdfsdfsdfdffffffffgsdfdf',33,'dsfdfgggggggggsdfdfd',3434,'dsfsdfghgfddddddddddgfgf','BMWdfsdfdffffffffgsdfd','555555555dfgdfgfcgrter','sdfdfdfffffffffgsdfdgf','/images/cars/car.jpg'),(27,33,'Natural Gas','sf','Jeep','Purple','sdf898','sdfsdfs9889',33,'dsfdfg988',3434,'dsfsdfghgfddddddddddgfgfcvb','B77','555555555dfgdfgfcgrterdfgfg','sdf7779','/images/cars/car.jpg'),(27,34,'Diesel','3434sfd','Van','Purple','sdfdfdf','hgfhfghgh',232,'erer',343,'234','fgdfg','dsfsdf343','dsfsdf','/images/cars/car.jpg');
+INSERT INTO `vehicle` VALUES (27,22,'disel','342365','car','blue','big','good',4,'black',300,'4th wheel','Toyota','878787','auto','/234/erer.h'),(24,23,'disel','3423','car','blue','big','good',4,'black',300,'4th wheel','Toyota','123er','auto','/erer/324.jpg'),(24,24,'disel','34245','car','blue','big','good',4,'black',300,'4th wheel','Toyota','123e32r','auto','/sdfd/234.jpeg'),(27,25,'Diesel','sdfd','Van','Orange','cn','new',2,'2.8',200,'sdfdf','mnn','sdfd','yrd','/images/cars/car.jpg'),(27,27,'Petrol','sdddddddddddddddd','Car','Red','sdfsdfsdf','sdfsdfsdfdf',3,'sdfdff',4000,'dfdsfdsfsdfdfdf','sdfsdf','sdfsdfffffffff','sdfsdfsdfd','/images/cars/car.jpg'),(27,28,'Gasoline','sdfdf343','Bike','Orange','sdfdf','sdf',33,'dsfd',3434,'dsfsd','BMW','sdfdf34','sdfdf','/images/cars/car.jpg'),(27,29,'Gasoline','sdfdf343sdfsdfsdfyttttttttt','Bike','Orange','sdfdf','sdfsdfsdf',335555,'dsfd',343455,'dsfsdfghg','BMWdfsdf','555555555','sdfdf','/images/cars/car.jpg'),(27,30,'Natural Gas','sdfdf343sdfsdfsdfytttttttttdfggggg','Jeep','Purple','sdfdffddddddddd','sdfsdfsdfdffffffffg',335555444,'dsfdfggggggggg',3434554444444,'dsfsdfghgfddddddddddg','BMWdfsdfdffffffffg','555555555dfgdfg','sdfdfdfffffffffg','/images/cars/car.jpg'),(27,31,'Natural Gas','sdfdf343sdfsdfsdfytttttttttdfgggggdsfd','Jeep','Orange','sdfdffdddddddddfdg','sdfsdfsdfdffffffffgsdfdf',33,'dsfdfgggggggggsdfdfd',3434,'dsfsdfghgfddddddddddgfgf','BMWdfsdfdffffffffgsdfd','555555555dfgdfgfcgrter','sdfdfdfffffffffgsdfdgf','/images/cars/car.jpg'),(27,33,'Natural Gas','sf','Jeep','Purple','sdf898','sdfsdfs9889',33,'dsfdfg988',3434,'dsfsdfghgfddddddddddgfgfcvb','B77','555555555dfgdfgfcgrterdfgfg','sdf7779','/images/cars/car.jpg'),(27,34,'Diesel','3434sfd','Van','Purple','sdfdfdf','hgfhfghgh',232,'erer',343,'234','fgdfg','dsfsdf343','dsfsdf','/images/cars/car.jpg'),(27,38,'Diesel','jk90','Van','Red','yes','no',89,'1.6 turbo boost',700,'cashii','hybrid','l','auto','/images/cars/car.jpg');
 /*!40000 ALTER TABLE `vehicle` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -536,4 +505,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-10-01  1:54:13
+-- Dump completed on 2021-10-01 11:08:07
