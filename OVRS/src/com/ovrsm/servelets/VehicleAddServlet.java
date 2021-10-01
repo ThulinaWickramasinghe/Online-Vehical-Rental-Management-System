@@ -1,6 +1,7 @@
 package com.ovrsm.servelets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -27,6 +28,10 @@ public class VehicleAddServlet extends HttpServlet {
  
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
+		
+		PrintWriter out = response.getWriter();
+		response.setContentType("text/html");
+		
 		int veOID=Integer.parseInt(request.getParameter("veOID"));
 		String fuel_type=request.getParameter("fuelType");
 		String license_no=request.getParameter("licenseNo");
@@ -47,19 +52,20 @@ public class VehicleAddServlet extends HttpServlet {
 				pricePerKm, specialNote, brand, registration,transmission,vehiclePic);
 		
 		if(isSuccess==true) {
-			try{
-		    List<Vehicle> vehicleDetails=VehicleOwnerUtil.getVehicleDetails(veOID);
-		   
-			request.setAttribute("vehiDetails", vehicleDetails);
-			}catch(Exception e) {
-				e.printStackTrace();
+			   System.out.println("Sucess");
 				
-			}
-			RequestDispatcher dis =request.getRequestDispatcher("vehicles.jsp");
-			dis.forward(request, response);
+				out.println("<script type='text/javascript'>");
+				out.println("alert('Vehicle was  added successfully');");
+				out.println("location='vehicleRental.jsp'");
+				out.println("</script>");
 			
 		}else {
-			System.out.println("There was a problem in servlet");
+			 System.out.println("Unsucess");
+				
+				out.println("<script type='text/javascript'>");
+				out.println("alert('Vehicle was not added successfully');");
+				out.println("location='vehicleRental.jsp'");
+				out.println("</script>");
 			
 		}
 	}
