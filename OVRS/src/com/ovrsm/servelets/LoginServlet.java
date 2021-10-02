@@ -94,7 +94,7 @@ public class LoginServlet extends HttpServlet {
 							System.out.println(driver.getLastName());
 							System.out.println(driver.getFirstName());
 							System.out.println(driver.getHomeNo());
-						   response.sendRedirect("DriverDashBoard.jsp");
+						   response.sendRedirect("Driver-DashBoard.jsp");
 						
 						
 							

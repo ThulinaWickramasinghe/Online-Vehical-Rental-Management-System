@@ -90,7 +90,7 @@ public class UserDBUtil {
 	    String lastName = null;
 	    String email=null;
 	    String propic=null;
-	    String userNamee=null;
+	  
 	    String password=null;
 	 //external user attribues 
 	    String NIC=null;
@@ -108,24 +108,13 @@ public class UserDBUtil {
 			con = DBConnection.getDBConnection();
 			System.out.println("meee");
 			String sql = "select * from user where username='"+userName+"'";
-			System.out.println("meeeffdf");
-			rs = stmt.executeQuery(sql);
-			System.out.println("meeesdfdfd");
-			while(rs.next())
-		    userID = rs.getInt(1);
-		    System.out.println("meeesdfdfdxcxcxcxc");
-			
-								
-								stmt = con.createStatement();
-												
-												
-											
-											
-												String sql1 = "select * from externaluser where exuserID='"+userID+"'";
+																			
+																																														
+		                                       stmt = con.createStatement();
 												rs = stmt.executeQuery(sql);
 												
 												while (rs.next()) {
-													
+													   userID = rs.getInt(1);
 													   firstName=rs.getString(2);			
 											           lastName=rs.getString(3);	
 											           userName=rs.getString(4);	
@@ -135,6 +124,8 @@ public class UserDBUtil {
 									
 												
 												}
+												String sql1 = "select * from externaluser where exuserID='"+userID+"'";
+												stmt = con.createStatement();
 												rs = stmt.executeQuery(sql1);
 												while(rs.next()) {
 													NIC=rs.getString(2);
@@ -146,9 +137,9 @@ public class UserDBUtil {
 											
 										
 											System.out.println(userID+"\n"+firstName+"\n"+lastName+"\n"+email+"\n"+propic+"\n"+
-												  userNamee+"\n"+password+"\n"+NIC+"\n"+phoneNo+"\n"+streetName+"\n"+city+"\n"+homeNo);
+												  userName+"\n"+password+"\n"+NIC+"\n"+phoneNo+"\n"+streetName+"\n"+city+"\n"+homeNo);
 										vehicleOwner = new VehicleOwner(userID,firstName,lastName,email,propic,
-												  userNamee,password,NIC,phoneNo,streetName,city,homeNo);
+												  userName,password,NIC,phoneNo,streetName,city,homeNo);
 										
 										
 						 
@@ -170,7 +161,7 @@ public class UserDBUtil {
 	    String lastName = null;
 	    String email=null;
 	    String propic=null;
-	    String userNamee=null;
+	  
 	    String password=null;
 	 //external user attribues 
 	    String NIC=null;
@@ -184,24 +175,22 @@ public class UserDBUtil {
 		int userID=0;	
 		try {	
 							con = DBConnection.getDBConnection();
-							System.out.println("meee");
+							
 							String sql = "select * from user where username='"+userName+"'";
-							System.out.println("meeeffdf");
-							rs = stmt.executeQuery(sql);
-							System.out.println("meeesdfdfd");
-							while(rs.next())
-						    userID = rs.getInt(1);
-						    System.out.println("meeesdfdfdxcxcxcxc");
+						
+							
+							
+							
 							
 												
 												stmt = con.createStatement();
-											
-												 System.out.println("meees32423dfdfdxcxcxcxc");
-											
-												String sql1 = "select * from externaluser where exuserID='"+userID+"'";
 												rs = stmt.executeQuery(sql);
+											
+											
+												
 												
 												while (rs.next()) {
+													   userID = rs.getInt(1);
 													   firstName=rs.getString(2);			
 											           lastName=rs.getString(3);	
 											           userName=rs.getString(4);
@@ -211,7 +200,11 @@ public class UserDBUtil {
 													   propic=rs.getString(7);
 												
 												}
-												rs = stmt.executeQuery(sql1);
+												String sql1 = "select * from externaluser where exuserID='"+userID+"'";
+												stmt = con.createStatement();
+												rs = stmt.executeQuery(sql);
+												
+												
 												while(rs.next()) {
 													NIC=rs.getString(2);
 													phoneNo=rs.getString(3);
@@ -222,11 +215,11 @@ public class UserDBUtil {
 												
 										
 										 System.out.println(userID+firstName+lastName+email+propic+"\n"+
-												  userNamee+password+NIC+phoneNo+streetName+city+homeNo);
+												  userName+password+NIC+phoneNo+streetName+city+homeNo);
 										 
 										 
 										  customer = new Customer(userID,firstName,lastName,email,propic,
-												  userNamee,password,NIC,phoneNo,streetName,city,homeNo);	
+												  userName,password,NIC,phoneNo,streetName,city,homeNo);	
 										  
 										 
 						
@@ -247,7 +240,7 @@ public class UserDBUtil {
 	    String lastName = null;
 	    String email=null;
 	    String propic=null;
-	    String userNamee=null;
+	  
 	    String password=null;
 	 //external user attribues 
 	    String NIC=null;
@@ -268,24 +261,22 @@ public class UserDBUtil {
 							con = DBConnection.getDBConnection();
 							System.out.println("meee");
 							String sql = "select * from user where username='"+userName+"'";
-							System.out.println("meeeffdf");
-							rs = stmt.executeQuery(sql);
-							System.out.println("meeesdfdfd");
-							while(rs.next())
-						    userID = rs.getInt(1);
-						    System.out.println("meeesdfdfdxcxcxcxc");
+						
 						
 												
-												stmt = con.createStatement();
+												
 											
 											
 											
-												String sql1 = "select * from externaluser where exuserID='"+userID+"'";
-												String sql2 = "select * from driver where driverID='"+userID+"'";
-												//rs = stmt.executeQuery(sql);
+											
+							                   stmt = con.createStatement();
+												rs = stmt.executeQuery(sql);
+												
+												
+												
 												
 												while (rs.next()) {
-												
+													  userID = rs.getInt(1);
 													   firstName=rs.getString(2);			
 											           lastName=rs.getString(3);	
 											           userName=rs.getString(4);	
@@ -294,6 +285,9 @@ public class UserDBUtil {
 													   propic=rs.getString(7);
 												
 												}
+												
+												String sql1 = "select * from externaluser where exuserID='"+userID+"'";
+												stmt = con.createStatement();
 												rs = stmt.executeQuery(sql1);
 												while(rs.next()) {
 													NIC=rs.getString(2);
@@ -301,7 +295,10 @@ public class UserDBUtil {
 													homeNo=rs.getString(4);
 													streetName=rs.getString(5);				
 											        city=rs.getString(6);
-												} 
+												}
+												
+												String sql2 = "select * from driver where driverID='"+userID+"'";
+												stmt = con.createStatement();
 												rs = stmt.executeQuery(sql2);
 												while(rs.next()) {
 													carexpertLevel=rs.getString(2);
@@ -314,9 +311,9 @@ public class UserDBUtil {
 										
 
 												System.out.println(userID+"\n"+firstName+"\n"+lastName+"\n"+email+"\n"+propic+"\n"+
-													  userNamee+"\n"+password+"\n"+NIC+"\n"+phoneNo+"\n"+streetName+"\n"+city+"\n"+homeNo);
+													  userName+"\n"+password+"\n"+NIC+"\n"+phoneNo+"\n"+streetName+"\n"+city+"\n"+homeNo);
 										driver = new Driver(userID,firstName,lastName,email,propic,
-												  userNamee,password,NIC,phoneNo,streetName,city,homeNo,
+												  userName,password,NIC,phoneNo,streetName,city,homeNo,
 												  carexpertLevel,bikeexpertLevel,vanexpertLevel,jeepexpertLevel,
 												  driverlicense);	
 								
@@ -340,7 +337,7 @@ public class UserDBUtil {
 	    String lastName = null;
 	    String email=null;
 	    String propic=null;
-	    String userNamee=null;
+	   
 	    String password=null;
 	
 	
@@ -369,12 +366,12 @@ public class UserDBUtil {
 										}
 											
 										 emp= new EmployeeManager(userID,firstName,lastName,email,propic,
-										 userNamee,password);
+										 userName,password);
 										
 											
 
 											System.out.println(userID+"\n"+firstName+"\n"+lastName+"\n"+email+"\n"+propic+"\n"+
-												  userNamee+"\n"+password+"\n");
+												  userName+"\n"+password+"\n");
 									
 		}catch(Exception e) {
 			System.out.println("Outter catch block failed");
