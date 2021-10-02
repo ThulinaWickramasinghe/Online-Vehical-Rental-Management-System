@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ovrsm.model.*;
-import com.rusiru.DBConnect;
+
 public class VehicleOwnerUtil {
 
 	private static boolean isSuccess;
