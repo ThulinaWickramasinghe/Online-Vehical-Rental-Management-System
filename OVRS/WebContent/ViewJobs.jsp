@@ -1,31 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <%
+       <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   <%
       if(session.getAttribute("userNames")==null){
     	   response.sendRedirect("login.jsp");
      }
    
-
- %>
-
+   %>
+    
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>Insert title here</title>
-
-  <meta charset="ISO-8859-1">
-         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <link rel = "stylesheet" href="css/bootstrap.css">
-	 <link rel = "stylesheet" href="css/navBar.css">
-
+<meta charset="ISO-8859-1">
+<title>View-Jobs</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+        <link rel = "stylesheet" href="css/bootstrap.css">
+	 <link rel = "stylesheet" href="css/navBar.css">
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark nave-style">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark nave-style">
   <div class="container">
     
 	  <a class="navbar-brand" href="#">
@@ -64,55 +59,96 @@
     </div>
   </div>
   
-  
-   <form action="logout">
-   <input type="submit" value="logout">
-   </form>
-  
-  
+ 
   
 </nav>
-<body>
-<a href="vehicleRental.jsp">Click here to go to rent a vehicle page</a>
-   <br/>
-   <br/> 
-    <c:forEach var="vehi" items="${vehiDetails}">
-    <table border="1">
-     <tr>
-     <td>${vehi.vehiclePic}</td>
-     <td>${vehi.vehicleID}</td>
-     <td>${vehi.fuel_type}</td>
-     <td>${vehi.license_no}</td> 
-    
-     </tr>   
-     <tr>
-     <td> ${vehi.vehi_type}</td>
-     <td>${vehi.color}</td>
-     <td>${vehi.body_type}</td>
-      <td>${vehi.model}</td>
-     </tr>
-      <tr>
-     <td> ${vehi.noOfPeeps}</td>
-     <td>${vehi.brand}</td>
-     <td>${vehi.edition}</td>
-      <td>${vehi.registrationNo}</td>
-     </tr> 
-      <tr>
-     <td> ${vehi.specialNote}</td>
-     <td>${vehi.pricePerKm}</td>
-      <td>${vehi.transmission}</td>
-      <td>${vehi.owneruserID}</td>
-     </tr>  
-    </table>
-    <br/>
-    </c:forEach>
 
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <a class="nav-link " href="Driver-DashBoard.jsp">My Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="#">My Jobs</a>
+      </li>
+  
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    
+    
+    
+    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">View My Payments</button>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <h5 id="offcanvasRightLabel">Payments</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+  
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+       <th scope="col">Handle</th>
+        <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>  
+
+
+
+
+
+
+  </div>
+</div>
     
     
     
     
     
     
-   
+    
+    
+  <!--  
+   <a href="#" class="btn btn-primary">Go somewhere</a>
+   <a href="#" class="btn btn-primary">Go somewhere</a> -->
+  </div>
+</div>
+
+
+
+
+
+
+
+
 </body>
 </html>
