@@ -68,7 +68,7 @@ public class LoginServlet extends HttpServlet {
 							
 							Driver driver = UserDBUtil.getDriver(userName);
 							session.setAttribute("driverID",driver.getUserID());
-							session.setAttribute("firtName", driver.getFirstName());
+							session.setAttribute("firstName", driver.getFirstName());
 							session.setAttribute("lastName", driver.getLastName());
 							session.setAttribute("email", driver.getEmail());
 							session.setAttribute("propic", driver.getPropic());

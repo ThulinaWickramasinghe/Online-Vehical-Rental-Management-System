@@ -1,67 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-       <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-   <%
-      if(session.getAttribute("userNames")==null){
-    	   response.sendRedirect("login.jsp");
-     }
-   
-   %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="ISO-8859-1">
-<title>Driver-DashBoard</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-        <link rel = "stylesheet" href="css/bootstrap.css">
-	 <link rel = "stylesheet" href="css/navBar.css">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark nave-style">
-  <div class="container">
-    
-	  <a class="navbar-brand" href="#">
-	<img src="images/logo1.jpeg" alt="logo image" width="130" height="50">
-	</a>
-	
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Services</a>
-        </li>
-		 <li class="nav-item">
-          <a class="nav-link" href="#">Rent a Vehicle</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link " href="#"  >Contact Us</a>
-        </li>
-		
-      </ul>
-	  <div class="search-result">
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" >
-      <button class="btn btn-outline-success btn-sm" type="submit">Search</button>
-    </form>
-  </div>
-    </div>
-  </div>
-  
- 
-  
-</nav>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <jsp:include page="MainNavBar.jsp" />
 <div class="card text-center">
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
@@ -76,61 +15,99 @@
   </div>
   <div class="card-body">
   
-  
-  
-  
-  
-  <div class="container rounded bg-white mt-5 mb-5">
+
+    
+  <div class="container rounded bg-white mt-5 mb-5 border border-primary" >
     <div class="row">
         <div class="col-md-3 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">Driver Id - ${driverID}</span><span class="text-black-50">${email} </span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">DriverID-${driverID}</span><span class="text-black-50">${email} </span><span> </span></div>
         </div>
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <h4 class="text-right">Profile Settings</h4>
                 </div>
+               
+                
                 <div class="row mt-2">
-                    <div class="col-md-6"><label class="labels-1 float-start">First Name</label><input type="text" class="form-control" placeholder="first name" value="" readonly></div>
-                    <div class="col-md-6"><label class="labels-1 float-start">Last Name</label><input type="text" class="form-control" value="" placeholder="surname" readonly></div>
+                    <div class="col-md-6"><label class="labels-1 float-start">First Name</label><input type="text" class="form-control" value="${firstName}" readonly></div>
+                    <div class="col-md-6"><label class="labels-1 float-start">Last Name</label><input type="text" class="form-control" value="${lastName}"  readonly></div>
                 </div>
                 <div class="row mt-3">                                           
-                    <div class="col-md-12"><label class="labels-1 float-start">User Name</label><input type="text" class="form-control"  value="" readonly></div>
-                    <div class="col-md-12"><label class="labels-1 float-start">Mobile Number</label><input type="text" class="form-control"  value="" readonly></div>
-                    <div class="col-md-12"><label class="labels-1 float-start">Address Line 2</label><input type="text" class="form-control"  value="" readonly></div>
-                    <div class="col-md-12"><label class="labels-1 float-start">Postcode</label><input type="text" class="form-control"  value="" readonly></div>
-                    <div class="col-md-12"><label class="labels-1 float-start">State</label><input type="text" class="form-control"  value="" readonly></div>
-                    <div class="col-md-12"><label class="labels-1 float-start">Area</label><input type="text" class="form-control"  value="" readonly></div>
-                    <div class="col-md-12"><label class="labels-1 float-start">Email ID</label><input type="text" class="form-control" " value="" readonly></div>
-                    <div class="col-md-12"><label class="labels-1 float-start">Education</label><input type="text" class="form-control"  value="" readonly></div>
+                    <div class="col-md-12"><label class="labels-1 float-start">User Name</label><input type="text" class="form-control"  value="${userNames}" readonly></div>
+                    <div class="col-md-12"><label class="labels-1 float-start">Mobile Number</label><input type="text" class="form-control"  value="${phoneNo}" readonly></div>
+                    <div class="col-md-12"><label class="labels-1 float-start">Password</label><input type="text" class="form-control"  value="${passwords}" readonly></div>
+                    <div class="col-md-12"><label class="labels-1 float-start">NIC</label><input type="text" class="form-control"  value="${NIC}" readonly></div>
+                   
+                    <div class="col-md-12"><label class="labels-1 float-start">Home Number</label><input type="text" class="form-control"  value="${homeNo}" readonly></div>
+                    <div class="col-md-12"><label class="labels-1 float-start">Street Name</label><input type="text" class="form-control"  value="${streetName}" readonly></div>
+                    <div class="col-md-12"><label class="labels-1 float-start">City</label><input type="text" class="form-control"  value="${city}" readonly></div>
                 </div>
-                <div class="row mt-3">
-                    <div class="col-md-6"><label class="labels-1 float-start">Country</label><input type="text" class="form-control"  value="" readonly></div>
-                    <div class="col-md-6"><label class="labels-1 float-start">State/Region</label><input type="text" class="form-control"  readonly></div>
-                </div>
+              
                <div class="d-flex float-end"> 
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Update Profile</button></div>
-                <div class="mt-5 text-center"><button class="btn btn-danger profile-button" type="button">Delete Profile</button></div>
+           
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" data-bs-toggle="modal" data-bs-target="#update">Update Profile</button></div>
+
+           
+                <div class="mt-5 text-center"><button class="btn btn-danger profile-button" type="submit" data-bs-toggle="modal" data-bs-target="#delete">Delete Profile</button></div>
+             
                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="p-3 py-5">
-                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-                <div class="col-md-12"><label class="labels-1 float-start">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
-                <div class="col-md-12"><label class="labels-1 float-start">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
-            </div>
-        </div>
+  
     </div>
+    <br/>
 </div>
 </div>
 </div>
   
-  
-    
-  
+      <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Launch static backdrop modal
+</button>
+
+<!-- Modal update -->
+<div class="modal fade" id="update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Reminders</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Please update every field,specially user name
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+       <a href="ProfileUpdate.jsp"> <button type="button" class="btn btn-primary">Understood</button></a>
+      </div>
+    </div>
   </div>
 </div>
+  <!-- Modal delete -->
+<div class="modal fade" id="delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Are you sure ?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        If  you delete  this account, there is no chance of  getting back this account.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <form action="#" method="post">
+        <input name="driverID" value="${driverID}" hidden>
+        <button type="button" class="btn btn-primary">Yes</button>
+        
+        </form>
+      </div>
+    </div>
+  </div>
+</div>  
+  
+
 
 
 

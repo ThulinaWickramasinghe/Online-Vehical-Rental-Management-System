@@ -7,32 +7,6 @@
          version="3.1">
          
 
-    <servlet>
-    	<servlet-name>customerinsert</servlet-name>
-    	<servlet-class>com.customer.CustomerInsert</servlet-class>
-    </servlet>
-    <servlet-mapping>
-    	<servlet-name>customerinsert</servlet-name>
-    	<url-pattern>/insert</url-pattern>
-    </servlet-mapping>
-
-	<servlet>
-		<servlet-name>updatecustomer</servlet-name>
-		<servlet-class>com.customer.UpdateCustomerServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>updatecustomer</servlet-name>
-		<url-pattern>/update</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>deletecustomer</servlet-name>
-		<servlet-class>com.customer.DeleteCustomerServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>deletecustomer</servlet-name>
-		<url-pattern>/delete</url-pattern>
-	</servlet-mapping>
 	<servlet>
 		<servlet-name>logins</servlet-name>
 		<servlet-class>com.ovrsm.servelets.LoginServlet</servlet-class>
@@ -83,6 +57,25 @@
 		<servlet-name>deletejobs</servlet-name>
 		<url-pattern>/deletejobs</url-pattern>
 	</servlet-mapping>
+    <servlet>
+		<servlet-name>requestvehicle</servlet-name>
+		<servlet-class>com.ovrsm.servelets.VehicleReservationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>requestvehicle</servlet-name>
+		<url-pattern>/requestvehicle</url-pattern>
+	</servlet-mapping>
+	
+	
+	 <servlet>
+		<servlet-name>profileupdate</servlet-name>
+		<servlet-class>com.ovrsm.servelets.DriverAccountUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>profileupdate</servlet-name>
+		<url-pattern>/profileupdate</url-pattern>
+	</servlet-mapping>
+	
 	
 	
 	
