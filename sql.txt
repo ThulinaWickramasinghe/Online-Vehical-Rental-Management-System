@@ -1,0 +1,152 @@
+select *from vehicle
+select *from driver
+select *from vehicleOwner
+select *from vendor
+select *from customer
+select *from emp_manager
+select *from externaluser
+select *from user
+recommendjobsreservationrecommendjobsvehiclevehicle
+recommendjobsdriverpaymentpayment
+insert into User values(0,'ch','jaya','sser','1234556'
+,'1234@gmail','/db/gh'),
+(0,'thulina','emp_managerthul','thulinaaa','12345545'
+,'thulinaa@gmail','/db/gh'),
+(0,'anuradha','anu','sseddd','123455654'
+,'anurafha@gmail','/db/gh'),
+(0,'pasi','purna','kasun','1234556676'
+,'pasidu@gmail','/db/gh'),
+(0,'thul','ina','Wick','123455688'
+,'thulina@gmail','/db/gh')
+,(0,'namal','raja','namala','123445','namala@gmail','/dfg/sdf'),
+(0,'kamalii','la','kamala','123445','kamala@gmail','/dfg/sdf'),
+(0,'vimu','kla','vimala','123445','vimala@gmail','/dfg/sdf'),
+(0,'jami','balaka','jamala','123445','jamala@gmail','/dfg/sdf'),
+(0,'pami','ooo','pamala','123445','pamala@gmail','/dfg/sdf'),
+
+(0,'oop','it2060','useroo','123445','oop@gmail','/dfg/sdf'),
+(0,'ooc','it202la','september','123445','septem@gmail','/dfg/sdf'),
+(0,'dms','ssskla','sdfvimala','123445','sdfvimala@gmail','/dfg/sdf'),
+(0,'werjami','werbalaka','ieriejamala','123445','kljamala@gmail','/dfg/sdf'),
+(0,'yhpami','yuyuooo','i9pamala','123445','poipamala@gmail','/dfg/sdf'),
+
+(0,'kknamal','fgfraja','33namala','123445','gfnamala@gmail','/dfg/sdf'),
+(0,'mjhkamalii','ghla','ghjykamala','123445','hjkamala@gmail','/dfg/sdf'),
+(0,'qwerevimu','uiukla','oiuvimala','123445','poivimala@gmail','/dfg/sdf'),
+(0,'ytujami','tyutyrtbalaka','tyutjamala','123445','miuyjamala@gmail','/dfg/sdf'),
+(0,'234rtrpami','ert45ooo','ty56pamala','123445','y565pamala@gmail','/dfg/sdf')
+
+insert into emp_manager values(11),(14),(23),(25),(26)
+
+insert into externaluser values(12,'992962062V',0710957213,'177/9','Gonahean Road','Kadawatha'),
+(13,'992962062V',0770957213,'178/9','Mahakade Road','Kadawatha'),
+(15,'952962062V',0760957213,'179/9','kribathgoda Road','Kadawatha'),
+(16,'962962062V',0740957213,'170/9','panasala Road','Kadawatha'),
+(17,'972962062V',0720957213,'171/9','road Road','Kadawatha'),
+(18,'976862062V',0770954213,'178/9','Mahakade Road','Colombo'),
+(19,'992962768V',0723457213,'145/9','Mahakade Road','Kandy'),
+(20,'992976832V',0776857213,'234/9','Mahakade Road','Galle'),
+(21,'762962062V',0709857213,'876/9','Mahakade Road','Kurununagla'),
+(22,'976962062V',0712357213,'178/9C','Mahakade Road','Kaduwela'),
+(24,'992907462V',0745757213,'156/9','Mahakade Road','Katunayake'),
+(27,'992965722V',0798757213,'456/9','Mahakade Road','Moratuwa'),
+(28,'992962007V',0712557213,'9776/9','Mahakade Road','Badulla'),
+(29,'992962168V',0716857213,'345/9','Mahakade Road','Peradeniya'),
+(30,'990702062V',0705657213,'234/9','Mahakade Road','Kegalla')
+
+insert into vendor values(24),(27),(28),(29),(30)
+,(18),(19),(20),(21),(22)
+insert into driver values(18,'expert','newbie','expert','23wer','medium'),
+(19,'medium','expert','newbie','23wersdf','medium'),
+(20,'medium','expert','newbie','23wersfdf','expert'),
+(21,'expert','newbie','expert','23wer324234','newbie'),
+(22,'medium','newbie','expert','6756ghg','expert')
+insert into vehicleOwner value(24),(27),(28),(29),(30)
+ select *from vehicleOwner
+select  *from recommendjobs
+
+  
+insert into customer values(12),(13),(15),(16),(17)
+select *from vehicle
+delete from vehicle where veOID=27
+insert into vehicle values
+(27,0,'disel','342365','car','blue','big',
+'good',4,'black',300.00,'4th wheel','Toyota','878787','auto','/234/erer.h')
+,(24,0,'disel','3423','car','blue','big',
+'good',4,'black',300.00,'4th wheel','Toyota','123er','auto','/erer/324.jpg')
+,(24,0,'disel','34245','car','blue','big',
+'good',4,'black',300.00,'4th wheel','Toyota','123e32r','auto','/sdfd/234.jpeg')
+
+insert into bankAccount(123456,24,'BOC','KADAWATHA-1'),
+(1234534,24,'BOC','KADAWATHA-2'),
+(12345632,27,'BOC','KADAWATHA-1'),
+(123456,24,'BOC','KADAWATHA-1')
+select *from payment
+
+insert into Payment values
+(0,400,'debited','2021-10-19','receipt'),
+(0,560,'debited','2021-03-12','card'),
+(0,600,'creadited','2021-03-14','visa'),
+(0,560,'debited','2021-03-12','card'),recommendjobs
+(0,3455,'debited','2021-10-19','receipt'),
+(0,876,'debited','2021-03-12','card'),
+(0,908,'creadited','2021-03-14','visa'),
+(0,1244,'debited','2021-03-12','card'),
+(0,8978,'debited','2021-10-19','receipt'),
+(0,67865,'debited','2021-03-12','card'),
+(0,345,'creadited','2021-03-14','visa'),
+(0,987,'debited','2021-03-12','card'),
+(0,909,'debited','2021-10-19','receipt'),
+(0,1234,'debited','2021-03-12','card'),
+(0,2345,'creadited','2021-03-14','visa'),
+(0,765,'debited','2021-03-12','card')
+insert into driverpayment values(2,11,18,123456),
+(3,14,18,123456),
+(6,14,18,123456),
+(5,14,18,123456)
+
+delete from driverpayment where paymentID=4
+insert into vehiownerpay values
+(9,11,24,12345),
+(10,14,27,56765),
+(11,23,28,87897),
+(12,25,29,123778)
+select *from vehiownerpay
+select *from driverpayment
+select *from reservation
+
+
+insert into reservation values(0,12,'car','2021-10-05','10:30',
+5,0,30,'expert',1,10,'kadawatha',0,0)
+,(0,13,'bike','2021-10-05','10:30',
+5,0,30,'expert',1,10,'kadawatha',0,0),
+(0,15,'bike','2021-10-05','10:30',
+5,0,30,'expert',1,10,'kadawatha',0,0),
+(0,16,'bike','2021-10-05','10:30',
+5,0,30,'expert',1,10,'kadawatha',0,0)
+select *from respayment
+insert into respayment values(4,1,12,'Ere4324'),
+(8,2,13,'ESddfe4324'),
+(12,3,15,'567fg324'),
+(16,4,16,'fghg#424')
+select *from payment
+
+insert into recommendjobs values
+
+(10,12,18,11,'2019-10-22',1,23),
+(11,12,18,11,'2021-04-05',1,24),
+(12,12,21,14,'2021-12-10',0,25)
+select *from driver
+
+select *from recommendjobsreservationpaymentreservationpayment
+update recommendjobs set vehicleID=22 where reservationID=1
+
+insert into payment values(0,2000,'credited','2021-10-02 10:30:30','visa'),
+(0,2000,'credited','2021-11-02 10:30:30','visa'),
+(0,2000,'credited','2021-12-02 10:30:30','visa'),
+(0,2000,'credited','2022-01-02 10:30:30','visa'),
+(0,2000,'credited','2022-02-02 10:30:30','debit card'),
+(0,2000,'credited','2022-02-04 10:30:30','credit card')
+
+insert
+select *from driverpayment
