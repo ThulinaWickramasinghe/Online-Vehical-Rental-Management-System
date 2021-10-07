@@ -75,8 +75,34 @@
 		<servlet-name>profileupdate</servlet-name>
 		<url-pattern>/profileupdate</url-pattern>
 	</servlet-mapping>
+
+ <servlet>
+		<servlet-name>jobs</servlet-name>
+		<servlet-class>com.ovrsm.servelets.DriverJobsandPaymentsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jobs</servlet-name>
+		<url-pattern>/jobs</url-pattern>
+	</servlet-mapping>
 	
+	 <servlet>
+		<servlet-name>updateVehicle</servlet-name>
+		<servlet-class>com.ovrsm.servelets.VehicleUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateVehicle</servlet-name>
+		<url-pattern>/updateVehicle</url-pattern>
+	</servlet-mapping>
+		 <servlet>
+		<servlet-name>vehicleDelete</servlet-name>
+		<servlet-class>com.ovrsm.servelets.VehicleDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>vehicleDelete</servlet-name>
+		<url-pattern>/vehicleDelete</url-pattern>
+	</servlet-mapping>
 	
+
 	
 	
 	

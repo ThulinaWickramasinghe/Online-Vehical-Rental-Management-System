@@ -5,10 +5,20 @@
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
-        <a class="nav-link active" href="#">My Profile</a>
+      <button type="button"  class="btn btn-primary" value="My profiles" onclick="window.location.href = '#';">
+     My profile       
+</button>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="ViewJobs.jsp">My Jobs</a>
+       
+      <form action="jobs" method="post">
+      <input type="text" name="driverID" value="${driverID}" hidden>
+  <button type="submit" class="btn btn-primary ">
+      My jobs
+        </button>
+     
+     </form>
+ 
       </li>
     
     </ul>
@@ -38,7 +48,7 @@
                     <div class="col-md-12"><label class="labels-1 float-start">Mobile Number</label><input type="text" class="form-control"  value="${phoneNo}" readonly></div>
                     <div class="col-md-12"><label class="labels-1 float-start">Password</label><input type="text" class="form-control"  value="${passwords}" readonly></div>
                     <div class="col-md-12"><label class="labels-1 float-start">NIC</label><input type="text" class="form-control"  value="${NIC}" readonly></div>
-                   
+                    <div class="col-md-12"><label class="labels-1 float-start">e-mail</label><input type="text" class="form-control"  value="${email}" readonly></div>
                     <div class="col-md-12"><label class="labels-1 float-start">Home Number</label><input type="text" class="form-control"  value="${homeNo}" readonly></div>
                     <div class="col-md-12"><label class="labels-1 float-start">Street Name</label><input type="text" class="form-control"  value="${streetName}" readonly></div>
                     <div class="col-md-12"><label class="labels-1 float-start">City</label><input type="text" class="form-control"  value="${city}" readonly></div>

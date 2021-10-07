@@ -22,7 +22,7 @@
                     <div class="col-md-12"><label class="labels-1 float-start">Mobile Number</label><input type="text" class="form-control" name="phoneNo" value="${phoneNo}" ></div>
                     <div class="col-md-12"><label class="labels-1 float-start">Password</label><input type="text" class="form-control"  name="passwords" value="${passwords}" ></div>
                     <div class="col-md-12"><label class="labels-1 float-start">NIC</label><input type="text" class="form-control"  name="NIC" value="${NIC}" ></div>
-                   <div class="col-md-12"><input type="text" class="form-control" name="email" value="${email}" hidden></div>
+                      <div class="col-md-12"><label class="labels-1 float-start">e-mail</label><input type="text" class="form-control"  value="${email}" name="email"></div>
                     <div class="col-md-12"><label class="labels-1 float-start">Home Number</label><input type="text" class="form-control" name="homeNo" value="${homeNo}" ></div>
                     <div class="col-md-12"><label class="labels-1 float-start">Street Name</label><input type="text" class="form-control" name="streetName" value="${streetName}" ></div>
                     <div class="col-md-12"><label class="labels-1 float-start">City</label><input type="text" class="form-control"  name="city" value="${city}" ></div>

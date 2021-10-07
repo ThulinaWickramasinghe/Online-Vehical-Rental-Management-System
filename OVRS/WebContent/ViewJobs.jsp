@@ -1,17 +1,71 @@
  <jsp:include page="MainNavBar.jsp" />
-
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="card text-center">
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
-        <a class="nav-link " href="Driver-DashBoard.jsp">My Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" href="#">My Jobs</a>
-      </li>
   
+     
+        <button type="button" value="My Profile" class="btn btn-primary"  onclick="window.location.href = 'Driver-DashBoard.jsp';">
+           My profile
+        </button>
+     
+     
+      </li>
+      <li>
+        <form action="jobs" method="post">
+      <input type="text" name="driverID" value="${driverID}" hidden>
+       
+        <button type="submit" class="btn btn-primary  active" value="My jobs">
+        My jobs
+        </button>
+     
+     </form>
+  </li>
     </ul>
   </div>
+  
+ <c:forEach var="job" items="${jobs}"> 
+ 
+ <c:set var="distance" value="${job.reservation.how_far}"/>
+
+  
+  <table border="1">
+ 
+  
+     <tr>
+     <td>${job.vehicle.vehicleID}</td>
+     <td>${job.empID}</td>
+     <td>${job.reservation.reservationID}</td>
+     <td>${job.reservation.cusID}</td> 
+     <td>${job.reservation.how_far}</td> 
+    
+     <td> ${job.dateTime}</td>
+     <td>${job.driverAccept}</td>
+  
+   
+     </tr>  
+    </table>
+ </c:forEach>
+ <br/>
+  <br/>
+   <br/>
+  <c:forEach var="pay" items="${pays}"> 
+  <table border="1">
+     <tr>
+     <td>${pay.paymentID}</td>
+     <td>${pay.amount}</td>
+     <td>${pay.paymentType}</td>
+     <td>${pay.paymethod}</td> 
+    
+  
+     <td> ${pay.paydateTime}</td>
+   
+     </tr>  
+    </table>
+ </c:forEach>
+ 
+ 
 <div class="d-flex justify-content-center align-items-center  ">  
   <div class="card text-center  " style="width: 18rem;">
   <div class="card-body">
@@ -21,27 +75,11 @@
   </div>
 </div>
   
-  <div class="card text-center  " style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-<div class="card text-center " style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
-  </div>  
+
   
   
   
-  
-  
-  
+   
   
   
   
