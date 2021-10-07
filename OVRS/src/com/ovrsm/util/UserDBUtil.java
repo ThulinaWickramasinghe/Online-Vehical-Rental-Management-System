@@ -1,6 +1,7 @@
 package com.ovrsm.util;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class UserDBUtil {
 			stmt = con.createStatement();
 			String sql = "select * from user where userName='"+username+"' and password='"+password+"'";
 			rs = stmt.executeQuery(sql);
-		   int userID=0;
+		    int userID=0;
 		
 			if (rs.next()) {
 				System.out.println("Correct credential for any user");
@@ -383,21 +384,110 @@ public class UserDBUtil {
 	}
 		
 	
-/*  public static boolean insertcustomer(String name, String email, String phone, String username, String password) {
+  public static boolean insertUser(String firstName, String lastName, String userName, String password, String email, String NIC,int phoneNo, String homeNo, String streetName, String city, Object userType, String bankName, String branchName, String carexpertLevel, String bikeexpertLevel, String vanexpertLevel,String driverlicense,String jeepexperLevel) {
     	
     	boolean isSuccess = false;
     	
     	try {
-    		con = DBConnect.getConnection();
-    		stmt = con.createStatement();
-    	    String sql = "insert into customer values (0,'"+name+"','"+email+"','"+phone+"','"+username+"','"+password+"')";
-    		int rs = stmt.executeUpdate(sql);
+    		con = DBConnection.getDBConnection();
+ 		   
+		    String query="insert into user(firstName,lastName,userName,password,email)"
+		    		+ "values(?,?,?,?,?)";
+		    
+		    System.out.println("My password is"+password);
+		    PreparedStatement ps=con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+			//int r = stmt.executeUpdate(query);
+		    ps.setString(1, firstName);
+		    ps.setString(2, lastName);
+		    ps.setString(3, userName);
+		    ps.setString(4, password);
+			ps.setString(5, email);
+		
+			System.out.println("4444444444444444444");
+			ps.addBatch();
+			System.out.println("&&&&&&&&&&&&&&s444444444");
+	
+			ps.executeBatch();
+			System.out.println("((((((((((444444444");
+			
+			rs=ps.getGeneratedKeys();
+			System.out.println("777777777777888888888888888888");
     		
-    		if(rs > 0) {
-    			isSuccess = true;
-    		} else {
-    			isSuccess = false;
-    		}
+    	int userID=0;
+    	 
+    	while(rs.next()) {
+    		userID=rs.getInt(1);
+		}
+    	System.out.println("userID is "+userID);
+    	String sql="insert into externaluser values('"+userID+"','"+NIC+"','"+
+    	    	phoneNo+"','"+homeNo+"','"+streetName+"','"+city+"')";
+    	       
+    	stmt = con.createStatement();
+    	
+       int  rs2 = stmt.executeUpdate(sql);
+        if(rs2>0) {
+        	System.out.println("external user entered successfully");
+        	
+        	if(userType.equals("customer")) {
+        		stmt = con.createStatement();
+              	String sql1="insert into customer values('"+userID+"')";
+            	       
+               int  rs3 = stmt.executeUpdate(sql1);
+                if(rs3>0) {
+                	System.out.println("Customer inserted successfully");
+                	isSuccess=true;
+                }else {
+                	System.out.println("Customer is not inserted successfully");
+                	isSuccess=false;
+                }
+        	}else if(userType.equals("vehicleOwner")||userType.equals("driver")) {
+        	stmt = con.createStatement();
+          	String sql1="insert into vendor values('"+userID+"')";
+        	       
+           int rs4 = stmt.executeUpdate(sql1);
+             if(rs4>0) {
+            	System.out.println("vendor inserted successfully");
+            	stmt = con.createStatement();
+              	String sql2="insert into bankaccount values('"+0+"','"+userID+"','"+bankName+"','"+branchName+"')";
+            	       
+               int  rs5 = stmt.executeUpdate(sql2);
+                if(rs5>0) {
+                	System.out.println("Bank details inserted successfully");
+                }else {
+                	System.out.println("Bank details inserted successfully");
+                }
+                
+                
+                if(userType.equals("vehicleOwner")) {
+                			stmt = con.createStatement();
+                			String sql3="insert into vehicleowner values('"+userID+"')";
+            	       
+                			int rs7 = stmt.executeUpdate(sql3);
+                				if(rs7>0){
+                						System.out.println("vehicle Owner entered sussefully");
+                						isSuccess=true;
+                				}else {
+                					System.out.println("vehicle Owner entered unsussefull");
+            						isSuccess=false;
+                				}
+                }else {
+                			stmt = con.createStatement();
+                			String sql3="insert into driver values('"+userID+"','"+carexpertLevel+"','"+bikeexpertLevel+"','"+vanexpertLevel+"','"+driverlicense+"','"+ jeepexperLevel+"')";
+                	       
+                			int rs6 = stmt.executeUpdate(sql3);
+                			if(rs6>0){
+                				System.out.println("Driver entered sussefully");
+                				isSuccess=true;
+                			}else {
+                				System.out.println("Driver entered unsussefull");
+                				isSuccess=false;
+                			}
+                }
+             }
+            
+        	}
+        
+        }
     		
     	}
     	catch (Exception e) {
@@ -406,87 +496,10 @@ public class UserDBUtil {
  	
     	return isSuccess;
     }
+
     
-    public static boolean updatecustomer(String id, String name, String email, String phone, String username, String password) {
-    	
-    	try {
-    		
-    		con = DBConnect.getConnection();
-    		stmt = con.createStatement();
-    		String sql = "update customer set name='"+name+"',email='"+email+"',phone='"+phone+"',username='"+username+"',password='"+password+"'"
-    				+ "where id='"+id+"'";
-    		int rs = stmt.executeUpdate(sql);
-    		
-    		if(rs > 0) {
-    			isSuccess = true;
-    		}
-    		else {
-    			isSuccess = false;
-    		}
-    		
-    	}
-    	catch(Exception e) {
-    		e.printStackTrace();
-    	}
-    	
-    	return isSuccess;
-    }
- 
-    public static List<User> getCustomerDetails(String Id) {
-    	
-    ArrayList userDetails =new ArrayList()
-	  //all user attrributes 
-	    int userID;
-	    String firstName;
-	    String lastName;
-	    String email;
-	    String propic;
-	    String userNamee;
-	    String password;
-	 //external user attribues 
-	    String NIC;
-		String phoneNo;
-		String streetName;
-		String city;
-		String homeNo;
-	    //Drivers attribute
-		String carexpertLevel;
-		String bikexpertLevel;
-		String vanexpertLevel;
-		String jeepexpertLevel;
-		String driverlicense;
-    	int convertedID = Integer.parseInt(Id);
-    	
-    	ArrayList<User> cus = new ArrayList<>();
-    	
-    	try {
-    		
-    		con = DBConnect.getConnection();
-    		stmt = con.createStatement();
-    		String sql = "select * from customer where id='"+convertedID+"'";
-    		rs = stmt.executeQuery(sql);
-    		
-    		while(rs.next()) {
-    			int id = rs.getInt(1);
-    			String name = rs.getString(2);
-    			String email = rs.getString(3);
-    			String phone = rs.getString(4);
-    			String username = rs.getString(5);
-    			String password = rs.getString(6);
-    			
-    			User c = new User(id,name,email,phone,username,password);
-    			cus.add(c);
-    		}
-    		
-    	}
-    	catch(Exception e) {
-    		e.printStackTrace();
-    	}	
-    	return cus;	
-    }
-    
-    
-    public static boolean deleteCustomer(String id) {
+      /*
+    public static boolean deleteUser(String id) {
     	
     	int convId = Integer.parseInt(id);
     	
@@ -494,7 +507,7 @@ public class UserDBUtil {
     		
     		con = DBConnect.getConnection();
     		stmt = con.createStatement();
-    		String sql = "delete from customer where id='"+convId+"'";
+    		String sql = "delete from user where id='"+convId+"'";
     		int r = stmt.executeUpdate(sql);
     		
     		if (r > 0) {

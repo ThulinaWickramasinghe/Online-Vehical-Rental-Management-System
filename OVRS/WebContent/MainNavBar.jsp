@@ -33,7 +33,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About Us</a>
@@ -45,7 +45,7 @@
           <a class="nav-link" href="#">Rent a Vehicle</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#"  >Contact Us</a>
+          <a class="nav-link " href="ContactUs.jsp"  >Contact Us</a>
         </li>
 		
       </ul>

@@ -10,6 +10,10 @@
 		    .hide{
 				display:none;
 			}
+			.hidden{
+				display:none;
+			}
+			
 		</style>
 		<meta charset="ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -85,7 +89,7 @@
     
         <div class="container_">
             <h1>Register Now</h1>
-         <form action="#" method="post">
+         <form action="signup" id="form" method="post">
 
             <table>
                 <tr>
@@ -104,17 +108,17 @@
                     </td>
                 <tr>
                     <td>
-                        <select name="branch" id="bankselectID" class="hide" > 
-                                                    <option value="1" selected>BOC</option>
-                                                    <option value="2">NSB</option>
+                        <select name="bank" id="bankselectID" class="hide bank" > 
+                                                    <option value="BOC" selected>BOC</option>
+                                                    <option value="NSB">NSB</option>
                                                     <option value="3">Sampath</option>       
                         </select>
                     </td>
                     <td>
-                        <select name="branch" id="brancselectID" class="hide" >
-                                                    <option value="1" selected>Kadawatha-1</option>
-                                                    <option value="2">Kadawatha-2</option>
-                                                    <option value="3">Kadawatha-3</option>                    
+                        <select name="branch" id="brancselectID" class="hide bank" >
+                                                    <option value="Kadawatha-1" selected>Kadawatha-1</option>
+                                                    <option value="Kadawatha-2">Kadawatha-2</option>
+                                                    <option value="Kadawatha-3">Kadawatha-3</option>                    
                         </select>
                     </td>
                 </tr>
@@ -122,29 +126,26 @@
 				
                 <tr>
                     <td colspan="2">
-                        <input  id="accountnumber" type="hidden" placeholder="Account Number" class="hide">
+                        <input  id="accountnumber"  name="accountnumber" type="text" placeholder="Account Number" class="bank hide">
                     </td>
                 </tr>
 				<tr>
 				     <td colspan="2" >
-					          <input  type="hidden" id="driverLicense" name="driverLicense" placeholder="Driver License" class="hide driver">
+					          <input  type="text" id="driverLicense" name="driverLicense" placeholder="Driver License" class="driver hidden">
 					 </td>
 				</tr>
 				<tr>
 				     <td>
-	                    <select name="vehicleType" id="brancselectID" class="hide driver">
-                                                    <option value="Car" selected>Car</option>
-                                                    <option value="Bike">Bike</option>
-                                                    <option value="Jeep">Jeep</option>    
-                                                   <option value="Jeep">Van</option>   													
-                        </select>
+	                    <label  class="driver hide" >car</label>
+                                                    													
+                        
 					 </td>
 					 <td>
-							    <input type="radio" id="vehicle14" name="expertLevel" value="newBie" class="hide driver">
+							    <input type="radio" id="vehicle14" name="carexpertLevel" value="newBie" class="hide driver">
                                <label for="vehicle1"> <small class="hide driver" >NB</small></label>
-                               <input type="radio" id="vehicle15" name="expertLevel" value="medium" class="hide driver">
+                               <input type="radio" id="vehicle15" name="carexpertLevel" value="medium" class="hide driver">
                                <label for="vehicle2"> <small class="hide driver" >MD</small></label>
-                               <input type="radio" id="vehicle16" name="expertLevel" value="expert" class="hide driver">
+                               <input type="radio" id="vehicle16" name="carexpertLevel" value="expert" class="hide driver">
                                <label for="vehicle3"><small class="hide driver"> EX</small></label>
 					 </td>
 				</tr>
@@ -154,19 +155,15 @@
 				</tr>
 					<tr>
 				     <td>
-	                    <select name="vehicleType" id="brancselectID" class="hide driver">
-                                                    <option value="Car" >Car</option>
-                                                    <option value="Bike" selected>Bike</option>
-                                                    <option value="Jeep">Jeep</option>    
-                                                   <option value="Jeep">Van</option>   													
-                        </select>
+	                       <label  class="driver hide" >Bike</label>
+                                                    
 					 </td>
 					 <td>
-							   <input type="radio" id="vehicle4" name="expertLevel" value="newBie" class="hide driver">
+							   <input type="radio" id="vehicle4" name="bikeexpertLevel" value="newBie" class="hide driver">
                                <label for="vehicle1"> <small class="hide driver" >NB</small></label>
-                               <input type="radio" id="vehicle5" name="expertLevel" value="medium" class="hide driver">
+                               <input type="radio" id="vehicle5" name="bikeexpertLevel" value="medium" class="hide driver">
                                <label for="vehicle2"> <small class="hide driver" >MD</small></label>
-                               <input type="radio" id="vehicle6" name="expertLevel" value="expert" class="hide driver">
+                               <input type="radio" id="vehicle6" name="bikeexpertLevel" value="expert" class="hide driver">
                                <label for="vehicle3"><small class="hide driver"> EX</small></label>
 					 </td>
 				</tr>
@@ -176,37 +173,29 @@
 				</tr>
 					<tr>
 				     <td>
-	                    <select name="vehicleType" id="brancselectID" class="hide driver">
-                                                    <option value="Car" >Car</option>
-                                                    <option value="Bike">Bike</option>
-                                                    <option value="Jeep" selected>Jeep</option>    
-                                                   <option value="Jeep">Van</option>   													
-                        </select>
+	                        <label  class="driver hide" >Van</label>
+                                                     													
+                      
 					 </td>
 					 <td>
-							   <input type="radio" id="vehicle7" name="expertLevel" value="newBie" class="hide driver">
+							   <input type="radio" id="vehicle7" name="vanexpertLevel" value="newBie" class="hide driver">
                                <label for="vehicle1"> <small class="hide driver" >NB</small></label>
-                               <input type="radio" id="vehicle8" name="expertLevel" value="medium" class="hide driver">
+                               <input type="radio" id="vehicle8" name="vanexpertLevel" value="medium" class="hide driver">
                                <label for="vehicle2"> <small class="hide driver" >MD</small></label>
-                               <input type="radio" id="vehicle9" name="expertLevel" value="expert" class="hide driver">
+                               <input type="radio" id="vehicle9" name="vanexpertLevel" value="expert" class="hide driver">
                                <label for="vehicle3"><small class="hide driver"> EX</small></label>
 					 </td>
 				</tr>
 							<tr>
 				     <td>
-	                    <select name="vehicleType" id="brancselectID" class="hide driver">
-                                                    <option value="Car" >Car</option>
-                                                    <option value="Bike">Bike</option>
-                                                    <option value="Jeep">Jeep</option>    
-                                                   <option value="Jeep" selected>Van</option>   													
-                        </select>
+	                    <label  class="driver hide" >Jeep</label>
 					 </td>
 					 <td>
-							   <input type="radio" id="vehicle10" name="expertLevel" value="newBie" class="hide driver">
+							   <input type="radio" id="vehicle10" name="jeepexpertLevel" value="newBie" class="hide driver">
                                <label for="vehicle1"> <small class="hide driver">NB</small></label>
-                               <input type="radio" id="vehicle11" name="expertLevel" value="medium" class="hide driver">
+                               <input type="radio" id="vehicle11" name="jeepexpertLevel" value="medium" class="hide driver">
                                <label for="vehicle2"> <small class="hide driver">MD</small></label>
-                               <input type="radio" id="vehicle12" name="expertLevel" value="expert" class="hide driver">
+                               <input type="radio" id="vehicle12" name="jeepexpertLevel" value="expert" class="hide driver">
                                <label for="vehicle3"><small class="hide driver"> EX</small></label>
 					 </td>
 				</tr>
@@ -229,7 +218,7 @@
 
                     </td>
                     <td>
-                        <input type="password" name="rpassword" placeholder="Re-enter Password"></input>
+                        <input type="password" name="repassword" placeholder="Re-enter Password"></input>
                         
                     </td>
                 </tr>
@@ -275,50 +264,48 @@
             </div>
                </td>
            </tr>
-        </div>       
+        
     </table>
          </form>
-
+    </div>   
 
 
          <script>  
             function chanegeType(value){
-                const bankNamae=document.getElementById('bankselectID')
-                const  bankBranch=document.getElementById('brancselectID')
-                const bankAccNo=document.getElementById('accountnumber')
-				const driverLicense=document.getElementById('driverLicense')
-				var driverAttr=document.getElementsByClassName('Driver')
-				//x.setAttribute("type", "hidden");
+         
+				var driverAttr=document.getElementsByClassName('driver')
+				var bankAttr=document.getElementsByClassName('bank')
+			
+			
                 if(value=="customer"){
-					bankAccNo.setAttribute("type","hidden")
-                    driverLicense.setAttribute("type","hidden")
-					bankNamae.classList.add('hide')
-                    bankBranch.classList.add('hide')
-                    bankAccNo.classList.add('hide')
-					for(var i=0;i<driverAttr.length;i++){
-						driverAttr[i].classList.add('hide')
+					for(let i=0;i<driverAttr.length;i++){
+						console.log("^^^^^")
+						driverAttr[i].classList.add('hidden');
 					}
+					for(let i=0;i<bankAttr.length;i++){
+						console.log("kkkkkkkkkk")
+						bankAttr[i].classList.add('hidden');
+					}
+					
 					
                 }
                 if( value=="vehicleOwner"){
-					driverLicense.setAttribute("type","hidden")
-					bankAccNo.setAttribute("type","text")
-                    bankNamae.classList.remove('hide')
-                    bankBranch.classList.remove('hide')
-                    bankAccNo.classList.remove('hide')
-					for(var i=0;i<driverAttr.length;i++){
-						driverAttr[i].classList.add('hide')
+                	for(let i=0;i<bankAttr.length;i++){
+                		console.log("kkkkkkkkkksssssssss")
+						bankAttr[i].classList.remove('hide');
+					}
+                	for(let i=0;i<driverAttr.length;i++){
+                		console.log("kkkkkkkkkksssssssss")
+                		driverAttr[i].classList.add('hide');
 					}
                 }
 				
 				if(value=="driver"){
-					driverLicense.setAttribute("type","text")
-				    bankAccNo.setAttribute("type","text")
-                    bankNamae.classList.remove('hide')
-                    bankBranch.classList.remove('hide')
-                    bankAccNo.classList.remove('hide')
-					for(var i=0;i<driverAttr.length;i++){
-						driverAttr[i].classList.remove('hide')
+					for(let i=0;i<bankAttr.length;i++){
+						bankAttr[i].classList.remove('hide');
+					}
+                	for(let i=0;i<driverAttr.length;i++){
+						driverAttr[i].classList.remove('hide');
 					}
 				}
                          
