@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ovrsm.model.*;
-import com.rusiru.DBConnect;
+
 public class VehicleOwnerUtil {
 
 	private static boolean isSuccess;
@@ -58,24 +58,29 @@ public class VehicleOwnerUtil {
 	}
 	//String has to converted into integer in the servelet
 	public static boolean removeVehicle(int vehiID,int ownerID) {
-		String query="delete from vehicle where vehicleID= '"+vehiID+"'and veOID ="+ownerID+"')";
-		return false;
+		String query="delete from vehicle where vehicleID ='"+vehiID+"'and veOID ='"+ownerID+"'";
+		
+		try {
+			con = DBConnection.getDBConnection();
+			stmt = con.createStatement();
+			
+			int rs = stmt.executeUpdate(query);
+			if(rs>0) {
+				System.out.println("Successfully deleted");
+				isSuccess=true;
+			}else {
+				System.out.println("deletion not successfull");
+				isSuccess=false;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return isSuccess;
 	}
 	
 	
 	
-	 public static boolean updateVehicleDetails(
-				int veOID,int vehicleID,String fuel_type,String license_no,
-				String vehi_type,String color,String body_type,String model
-				,int noOfPeeps,String edition,
-				double pricePerKm,String specialNote,
-				String brand,String registrationNo,String transmission,
-				String vehiclePic) {
-		
-		
-	  return false;	
-	}
-	
+
 	
 	
 	
@@ -112,15 +117,7 @@ public class VehicleOwnerUtil {
 		    	String registrationNo=rs.getString(14);
 		    	String transmission=rs.getString(15);
 		    	String vehiclePic=rs.getString(16);
-		    	System.out.println("**************");
-		    	System.out.println(vehicleID+"\n"+
-		    			fuel_type+"\n"+license_no+"\n"+
-		    			vehi_type+"\n"+color+"\n"+
-		    			body_type+"\n"+model+"\n"+
-		    			noOfPeeps+"\n"+edition+"\n"+
-		    			pricePerKm+"\n"+specialNote+"\n"+
-		    			brand+"\n"+registrationNo+"\n"+
-		    			transmission+"\n"+vehiclePic+"\n");
+		    
 		    	
 		    	
 		    	
@@ -129,17 +126,53 @@ public class VehicleOwnerUtil {
 		    			,vehi_type,color,body_type,
 		    			model,noOfPeeps,edition,pricePerKm,specialNote,
 		    			brand,registrationNo,transmission,vehiclePic);
-		    	System.out.println(vehi.getDetails());
+		    	
 		    	vehicles.add(vehi);
 		    }
 		
 		
 		}catch(Exception e) {
-			System.out.println("Vehicle getting vehicles not completed");
+			
 			e.printStackTrace();
 			
 		}
 		    return vehicles;
+	}
+	public static boolean updateVehicle(int veOID,int vehicleID,String fuel_type,String license_no,
+			String vehi_type,String color,String body_type,String model,
+			int noOfPeeps,String edition,double pricePerKm,String specialNote,
+			String brand,String registrationNo,String transmission) {
+		   
+		String query="update vehicle set fuel_type='"
+		+fuel_type+"',license_no='"+license_no+"',vehi_type='"
+		+vehi_type+"',color='"+color+"',body_type='"
+		+body_type+"',model='"+model+"',noOfPeeps='"
+		+noOfPeeps+"',edition='"+edition+"',pricePerKm='"
+		+pricePerKm+"',specialNote='"+specialNote+"',brand='"
+		+brand+"',registrationNo='"+registrationNo+"',transmission='"
+		+transmission+"' where veOID='"+veOID+"'and vehicleID='"+vehicleID+"'";
+		try {
+			   con = DBConnection.getDBConnection();
+				
+			    stmt = con.createStatement();
+			   int  rs=stmt.executeUpdate(query);
+			    
+			    if(rs>0) {
+			    	isSuccess=true;
+			    	
+			    }else {
+			    	isSuccess=false;
+			    }
+		   }catch(Exception e) {
+			   e.printStackTrace();
+		   }
+		
+		
+		
+		
+		
+		
+		return isSuccess;
 	}
     
 }

@@ -7,32 +7,6 @@
          version="3.1">
          
 
-    <servlet>
-    	<servlet-name>customerinsert</servlet-name>
-    	<servlet-class>com.customer.CustomerInsert</servlet-class>
-    </servlet>
-    <servlet-mapping>
-    	<servlet-name>customerinsert</servlet-name>
-    	<url-pattern>/insert</url-pattern>
-    </servlet-mapping>
-
-	<servlet>
-		<servlet-name>updatecustomer</servlet-name>
-		<servlet-class>com.customer.UpdateCustomerServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>updatecustomer</servlet-name>
-		<url-pattern>/update</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>deletecustomer</servlet-name>
-		<servlet-class>com.customer.DeleteCustomerServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>deletecustomer</servlet-name>
-		<url-pattern>/delete</url-pattern>
-	</servlet-mapping>
 	<servlet>
 		<servlet-name>logins</servlet-name>
 		<servlet-class>com.ovrsm.servelets.LoginServlet</servlet-class>
@@ -83,7 +57,73 @@
 		<servlet-name>deletejobs</servlet-name>
 		<url-pattern>/deletejobs</url-pattern>
 	</servlet-mapping>
+    <servlet>
+		<servlet-name>requestvehicle</servlet-name>
+		<servlet-class>com.ovrsm.servelets.VehicleReservationServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>requestvehicle</servlet-name>
+		<url-pattern>/requestvehicle</url-pattern>
+	</servlet-mapping>
 	
+	
+	 <servlet>
+		<servlet-name>profileupdate</servlet-name>
+		<servlet-class>com.ovrsm.servelets.DriverAccountUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>profileupdate</servlet-name>
+		<url-pattern>/profileupdate</url-pattern>
+	</servlet-mapping>
+
+ <servlet>
+		<servlet-name>jobs</servlet-name>
+		<servlet-class>com.ovrsm.servelets.DriverJobsandPaymentsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jobs</servlet-name>
+		<url-pattern>/jobs</url-pattern>
+	</servlet-mapping>
+	
+	 <servlet>
+		<servlet-name>updateVehicle</servlet-name>
+		<servlet-class>com.ovrsm.servelets.VehicleUpdateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateVehicle</servlet-name>
+		<url-pattern>/updateVehicle</url-pattern>
+	</servlet-mapping>
+		 <servlet>
+		<servlet-name>vehicleDelete</servlet-name>
+		<servlet-class>com.ovrsm.servelets.VehicleDeleteServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>vehicleDelete</servlet-name>
+		<url-pattern>/vehicleDelete</url-pattern>
+	</servlet-mapping>
+	
+	
+			 <servlet>
+		<servlet-name>feedBack</servlet-name>
+		<servlet-class>com.ovrsm.servelets.FeedBackServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>feedBack</servlet-name>
+		<url-pattern>/feedBack</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+			 <servlet>
+		<servlet-name>signup</servlet-name>
+		<servlet-class>com.ovrsm.servelets.SignUpServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>signup</servlet-name>
+		<url-pattern>/signup</url-pattern>
+	</servlet-mapping>
+	
+
 	
 	
 	

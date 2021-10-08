@@ -24,7 +24,7 @@ public class Vehicle {
     public Vehicle(int owneruserID, int vehicleID, String fuel_type, String license_no, String vehi_type, String color,
 			String body_type, String model, int noOfPeeps, String edition, double pricePerKm, String specialNote,
 			String brand, String registrationNo,String transmission,String vehiclePic) {
-		super();
+	
 		this.owneruserID = owneruserID;
 		this.vehicleID = vehicleID;
 		this.fuel_type = fuel_type;

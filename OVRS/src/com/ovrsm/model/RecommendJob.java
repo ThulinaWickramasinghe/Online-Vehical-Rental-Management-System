@@ -1,35 +1,34 @@
 package com.ovrsm.model;
 
 public class RecommendJob {
-      private int reservationID;
-      private int cusID;
-      private int driverID;
-      private int managerID;
-      private String dateTime;
-      private int driverAccept;
-      private int vehicleID;
-	public RecommendJob(int reservationID, int cusID, int driverID, int managerID, String dateTime, int driverAccept,
-			int vehicleID) {
-		super();
-		this.reservationID = reservationID;
-		this.cusID = cusID;
+	
+	private Vehicle vehicle;
+    private int empID;
+    private Reservation reservation;
+    private int driverID;
+    
+    private String dateTime;
+    private int driverAccept;
+    
+      public RecommendJob(Vehicle vehicle, int empmanager, Reservation reservation, int driverID,
+			String dateTime, int driverAccept) {
+	
+		this.vehicle = vehicle;
+		this.empID = empmanager;
+		this.reservation = reservation;
 		this.driverID = driverID;
-		this.managerID = managerID;
 		this.dateTime = dateTime;
 		this.driverAccept = driverAccept;
-		this.vehicleID = vehicleID;
 	}
-	public int getReservationID() {
-		return reservationID;
+	public Vehicle getVehicle() {
+		return vehicle;
 	}
-	public int getCusID() {
-		return cusID;
+	
+	public Reservation getReservation() {
+		return reservation;
 	}
 	public int getDriverID() {
 		return driverID;
-	}
-	public int getManagerID() {
-		return managerID;
 	}
 	public String getDateTime() {
 		return dateTime;
@@ -37,20 +36,15 @@ public class RecommendJob {
 	public int getDriverAccept() {
 		return driverAccept;
 	}
-	public int getVehicleID() {
-		return vehicleID;
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
 	}
-	public void setReservationID(int reservationID) {
-		this.reservationID = reservationID;
-	}
-	public void setCusID(int cusID) {
-		this.cusID = cusID;
+	
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
 	}
 	public void setDriverID(int driverID) {
 		this.driverID = driverID;
-	}
-	public void setManagerID(int managerID) {
-		this.managerID = managerID;
 	}
 	public void setDateTime(String dateTime) {
 		this.dateTime = dateTime;
@@ -58,8 +52,14 @@ public class RecommendJob {
 	public void setDriverAccept(int driverAccept) {
 		this.driverAccept = driverAccept;
 	}
-	public void setVehicleID(int vehicleID) {
-		this.vehicleID = vehicleID;
+	public int getEmpID() {
+		return empID;
 	}
+	public void setEmpID(int empID) {
+		this.empID = empID;
+	}
+
+   
+	
       
 }

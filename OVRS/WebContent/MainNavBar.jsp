@@ -1,20 +1,31 @@
-
-<!DOCTYPE html>  
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+       <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   <%
+      if(session.getAttribute("userNames")==null){
+    	   response.sendRedirect("login.jsp");
+     }
+   
+   %>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>Login</title>
-        <link rel="stylesheet" href="css/login.css">
-        <meta charset="ISO-8859-1">
-         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <link rel = "stylesheet" href="css/bootstrap.css">
-	 <link rel = "stylesheet" href="css/navBar.css">
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+<meta charset="ISO-8859-1">
+<title>Driver-DashBoard</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    </head>
-
-    <body>
+ <link rel = "stylesheet" href="css/bootstrap.css">
+	 <link rel = "stylesheet" href="css/navBar.css">
+	 
+	 <style>
+	     table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+	 </style>
+</head>
+<body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark nave-style">
   <div class="container">
     
@@ -29,7 +40,7 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="index.jsp">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">About Us</a>
@@ -41,7 +52,7 @@
           <a class="nav-link" href="#">Rent a Vehicle</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="#"  >Contact Us</a>
+          <a class="nav-link " href="ContactUs.jsp"  >Contact Us</a>
         </li>
 		
       </ul>
@@ -53,30 +64,9 @@
   </div>
     </div>
   </div>
-  
-  
-  
+    <form action="logout">
+   <input type="submit" value="logout">
+   </form>
+ 
   
 </nav>
-
-       
-        <div class="container_">
-
-            <h1>LOGIN</h1>
-            <h4>Enter your Username and Password</h4>
-        <form action="logins" method="post">
-
-                <input type="text" name="username" placeholder="Username"></input>
-                <br>
-                <input type="password" name="password" placeholder="Password"></input>
-                <br>
-                <input type="submit" value="Submit">
-            </form>
-            <p>New to Rent Smart..? <a href="Register.jsp" class="register_now">Register Now</a> </p>
-        </div>
-         <script src="js/bootstrap.js">
-    </script>
-    <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js">
-    </script>
-    </body>
-    </html>
