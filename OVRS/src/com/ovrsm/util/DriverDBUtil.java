@@ -128,7 +128,7 @@ public class DriverDBUtil {
 	public static List<RecommendJob> getJobs(int driverID){
 		
 		ArrayList<RecommendJob> jobs = new ArrayList<RecommendJob>();
-		List<Vehicle> vehicle=new ArrayList<Vehicle>();
+	
 
 	   Reservation reservation=null;
 		try {
@@ -138,9 +138,9 @@ public class DriverDBUtil {
 		    stmt = con.createStatement();
 		    String query="select  *from recommendjobs where driverID = '"+driverID+"'";
 		    String query1="select vehicle_type,pickUpdate,pickUpTime,hours,days,minutes,driverexp,driverstatus,how_far,pickup_location,fullPaid,journey_status from reservation where reservationID= ? and cusID= ?";
-		    String query2="select veOID from vehicle where vehicleID= ?";
+		  
 		   	mystmt = con.prepareStatement(query1);
-		   	mystmt2 = con.prepareStatement(query2);
+		 
 		   	rs=stmt.executeQuery(query);
 		    while(rs.next()) {
 		    	int reservationID=rs.getInt(1);
@@ -174,27 +174,58 @@ public class DriverDBUtil {
 		    	    hours,days,minutes,driverexp,driverStatus,how_far,pickup_location,fullPaid,journey_status);
 		    	}
 		    	
+		    	int owneruserID=0;
+		    	String fuel_type=null;
+		    	String license_no =null;
+		    	String vehi_type=null;
+		    	String color =null;
+		    	String body_type=null;
+		    	String model=null;
+		    	int noOfPeeps=0;
+		    	String edition=null;
+		    	double pricePerKm=0;
+		    	String specialNote=null;
+		    	String brand= null;
+		    	String registrationNo=null;
+		    	String transmission=null;
+		    	String vehiclePic=null;
+		    	
+		    	String query2="select *from vehicle where vehicleID='"+vehicleID+"'";
+		    	stmt = con.createStatement();
+		    	rs3=stmt.executeQuery(query2);
+		    	while(rs3.next()) {
+		    	owneruserID=rs3.getInt(1);
+		        fuel_type=rs3.getString(3);
+		    	license_no =rs3.getString(4);
+		    	vehi_type=rs3.getString(5);
+		    	color =rs3.getString(6);
+		    	body_type=rs3.getString(7);
+		    	 model=rs3.getString(8);
+		    	noOfPeeps=rs3.getInt(9);
+		    	edition=rs3.getString(10);
+		    	pricePerKm=rs3.getDouble(11);
+		    	specialNote=rs3.getString(12);
+		    	brand= rs3.getString(13);
+		    	registrationNo=rs3.getString(14);
+		    	transmission=rs3.getString(15);
+		    	vehiclePic=rs3.getString(16);
+		    	}
 		    	
 		    	
-		    	mystmt2.setInt(1, vehicleID);
-		    
-		        rs3=mystmt2.executeQuery();
-		        System.out.println("Vehicle ID is "+vehicleID);
-		      
-		        while(rs3.next()) {
-		        	int veOID=rs3.getInt(1);
-		        	  System.out.println("Vehicle ID is "+veOID);
-		        	vehicle = VehicleOwnerUtil.getVehicleDetails(veOID);
-		        	
-		        	System.out.println("I retrieved an vehicle");
-		        
-		        }
+		    	
+		    	Vehicle vehi=new Vehicle(owneruserID,vehicleID,
+		    			fuel_type,license_no
+		    			,vehi_type,color,body_type,
+		    			model,noOfPeeps,edition,pricePerKm,specialNote,
+		    			brand,registrationNo,transmission,vehiclePic);
+		    	
+		    	
 		        System.out.println(reservation.getCusID()+"\n"
 		        		+reservation.getDriverStatus()+"VehicleID"+vehicleID);
 		        
 		    	
-		    	RecommendJob rc=new RecommendJob(vehicle.get(0),managerID,reservation,driverID,dateTime,driverAccept);
-		    	vehicle=null;
+		    	RecommendJob rc=new RecommendJob(vehi,managerID,reservation,driverID,dateTime,driverAccept);
+		    	vehi=null;
 		    	jobs.add(rc);
 		    }
 			
