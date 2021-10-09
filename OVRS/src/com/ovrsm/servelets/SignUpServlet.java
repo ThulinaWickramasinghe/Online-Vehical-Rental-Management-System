@@ -30,7 +30,7 @@ public class SignUpServlet extends HttpServlet {
 		String userType=request.getParameter("usertype");		
 		String branch=null;
 		String bank=null;
-		int accountNo;
+		int accountNo = 0;
 		String driverLicense=null;
 		String carexpertLevel=null;
 		String bikeexpertLevel=null;
@@ -60,7 +60,7 @@ public class SignUpServlet extends HttpServlet {
 		    }
 		}
 		
-		boolean isSucess=UserDBUtil.insertUser(firstname, lastname, username, password, email, nic, phonenumber, homeno, streetname, city, userType, bank, branch, carexpertLevel, bikeexpertLevel, vanexpertLevel, driverLicense, jeepexpertLevel);
+		boolean isSucess=UserDBUtil.insertUser(firstname, lastname, username, password, email, nic, phonenumber, homeno, streetname, city, userType, bank, branch, carexpertLevel, bikeexpertLevel, vanexpertLevel, driverLicense, jeepexpertLevel, accountNo);
 		if(isSucess) {
             System.out.println("Sucessfully user Created");
 			
