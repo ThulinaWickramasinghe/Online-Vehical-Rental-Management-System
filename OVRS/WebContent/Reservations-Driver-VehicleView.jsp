@@ -14,6 +14,7 @@
  <c:forEach var="reservation"  items="${rs.rows}" >
  <tr>
  <td>
+ 
  <c:out value="${reservation.reservationID}"></c:out>  
  </td>
  <td>
@@ -89,7 +90,7 @@
  </c:forEach>
 </table>
 <br/>
-<h3> Drivers</h3>
+<h3>Vehicles</h3>
 <sql:query var="rs2" dataSource="${db}">
  select * from vehicle
  </sql:query>
@@ -146,5 +147,4 @@
  </tr>
  </c:forEach>
 </table>
-</body>
-</html>
+    <jsp:include page="footer.jsp" />
