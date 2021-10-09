@@ -23,6 +23,10 @@
   border: 1px solid black;
   border-collapse: collapse;
 }
+.hidden-input-out{
+     display:hidden;
+}
+
 	 </style>
 </head>
 <body>

@@ -209,7 +209,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="text" name="username" placeholder="Username"></input>
+                        <input type="text" name="username" placeholder="Username"></input><!--unique-->
                     </td>
                 </tr>
                 <tr>
@@ -229,7 +229,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="text" name="email" placeholder="E-Mail"></input>
+                        <input type="text" name="email" placeholder="E-Mail"></input> <!--unique-->
                     </td>
                 </tr>
                 <tr>
