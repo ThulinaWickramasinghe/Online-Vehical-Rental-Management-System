@@ -5,7 +5,7 @@
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
-      <button type="button"  class="btn btn-primary" value="My profiles" onclick="window.location.href = '#';">
+      <button type="button"  class="btn btn-primary" value="My profiles" onclick="window.location.href = '#?page=7';">
      My profile       
 </button>
       </li>

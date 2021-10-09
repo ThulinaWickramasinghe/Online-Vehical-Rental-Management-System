@@ -56,6 +56,7 @@ public class LoginServlet extends HttpServlet {
 						session.setAttribute("streetName", cus.getStreetName());
 						session.setAttribute("city", cus.getCity());
 						session.setAttribute("homeNo", cus.getHomeNo());
+						session.setAttribute("user", userType);
 						System.out.println("I am  notsdffffffffffffffffffffffffffffff here");
 						System.out.println(cus.getUserName());
 						System.out.println(cus.getLastName());
@@ -85,7 +86,7 @@ public class LoginServlet extends HttpServlet {
 						
 						
 						
-				
+							session.setAttribute("user", userType);
 				            session.setAttribute("bikeexpertLevel", driver.getBikeexpertLevel());
 							session.setAttribute("vanexpertLevel", driver.getVanexpertLevel());
 							session.setAttribute("jeepexpertLevel", driver.getVanexpertLevel());
@@ -113,7 +114,7 @@ public class LoginServlet extends HttpServlet {
 							session.setAttribute("streetName", vehiowner.getStreetName());
 							session.setAttribute("city", vehiowner.getCity());
 							session.setAttribute("homeNo", vehiowner.getHomeNo());
-							
+							session.setAttribute("user", userType);
 						    response.sendRedirect("VehicleOwnerDashBoard.jsp");
 						
 							
@@ -129,7 +130,7 @@ public class LoginServlet extends HttpServlet {
 							session.setAttribute("userNames", userName);
 							session.setAttribute("passwords", emp.getPassword());
 						
-							
+							session.setAttribute("user", userType);
 						    response.sendRedirect("EmployeeManagerDashBoard.jsp");
 						
 							
@@ -143,7 +144,7 @@ public class LoginServlet extends HttpServlet {
 			
 			out.println("<script type='text/javascript'>");
 			out.println("alert('Your username or password is incorrect');");
-			out.println("location='login.jsp'");
+			out.println("location='login.jsp?page=5'");
 			out.println("</script>");
 			
 			

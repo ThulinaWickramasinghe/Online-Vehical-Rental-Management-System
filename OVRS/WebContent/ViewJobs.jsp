@@ -6,7 +6,7 @@
       <li class="nav-item">
   
      
-        <button type="button" value="My Profile" class="btn btn-primary"  onclick="window.location.href = 'Driver-DashBoard.jsp';">
+        <button type="button" value="My Profile" class="btn btn-primary"  onclick="window.location.href = 'Driver-DashBoard.jsp?page=7';">
            My profile
         </button>
      
@@ -178,7 +178,7 @@
    <a href="#" class="btn btn-primary">Go somewhere</a> -->
   </div>
 </div>
-
+</div>
 
 
 
