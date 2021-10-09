@@ -1,0 +1,183 @@
+
+.body-width {
+	width: 80%;
+}
+
+h3{
+    color: #96d2ea;
+}
+
+.my-a {
+	text-decoration: none;
+}
+
+.logo {
+    padding-top: 3%;
+     height: 200px;
+ }
+
+
+
+.my-header-title {
+    font-size: 72px;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.my-para {
+    font-size: 28px;
+    text-align: center;
+}
+
+.navbar-custom {
+    background-color: #696969;
+}
+
+form {
+    padding-top: 180px;
+    width: 500px;
+    margin: auto;
+}
+
+
+.my-container {
+    max-width: 1900;
+}
+
+.row-h {
+    height: 120px;
+}
+
+@media screen and (max-width: 800px) {
+    .my-header-title {
+      font-size: 42px;
+    }
+    .my-para {
+        font-size: 20px;
+    }
+    form {
+        padding-top: 35px;
+        width: 350px;
+        margin: auto;
+    }
+    .row-h {
+        height: 190px;
+    }
+  }
+
+  .nav-col-h {
+      height: 100px;
+  }
+
+ 
+
+  .sidebar {
+    background-color: #DCDCDC;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .sidebar a {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+   
+  .sidebar a.active {
+    background-color: #555;
+    color: white;
+  }
+  
+  .sidebar a:hover:not(.active) {
+    background-color: #2F4F4F;
+    color: white;
+  }
+  
+  div.content {
+    /*background-color: #D3D3D3;*/
+    height: auto;
+    padding-top: 28px;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .sidebar {
+      background-color: #B22222;
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }
+
+
+a {
+	text-decoration: none;
+}
+
+.full-page {
+	width: 90%;
+	padding-left: 11%;
+	padding-top: 2%;
+	padding-bottom: 6%;
+}
+
+.inside-container {
+	background-color: #FFFFFF;
+}
+
+
+
+.full-background {
+	background-image: linear-gradient(to bottom, #004855, #205f6f, #387789, #5190a5, #69a9c2, #78b6cf, #87c4dd, #96d2ea, #9fd7eb, #a9dced, #b2e0ee, #bce5f0);
+}
+
+
+@media (max-width: 575.98px) {
+	.full-page {
+	width: 100%;
+	padding-left: 0;
+	padding-top: 0;
+	}
+	
+}
+
+
+@media (max-width: 767.98px) {
+	.full-page {
+	width: 100%;
+	padding-left: 0;
+	padding-top: 0;
+	}
+
+}
+
+
+@media (max-width: 991.98px) {
+	.full-page {
+	width: 100%;
+	padding-left: 0;
+	padding-top: 0;
+	}
+	
+}
+
+
+@media (max-width: 1199.98px) {
+	.full-page {
+	width: 100%;
+	padding-left: 0;
+	padding-top: 0;
+	}
+
+}
+
+

@@ -27,7 +27,7 @@
   
  <c:forEach var="job" items="${jobs}"> 
  
- <c:set var="distance" value="${job.reservation.how_far}"/>
+ 
 
   
   <table border="1">
@@ -186,5 +186,4 @@
 
 
 
-</body>
-</html>
+    <jsp:include page="footer.jsp" />

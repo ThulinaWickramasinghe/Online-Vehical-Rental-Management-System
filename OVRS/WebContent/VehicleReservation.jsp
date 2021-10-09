@@ -139,6 +139,7 @@
                const driverExpLevel=document.getElementById("explevel").value;
                var beforeNext=document.getElementsByClassName("hidden-input");
                var afterNext=document.getElementsByClassName("after-choice");
+
                var otherInputs=document.getElementsByClassName("hidden-input-out");
                //
                submission.setAttribute("type","submit");
@@ -230,7 +231,5 @@
               console.log(prePayment);
               console.log(fullPayment);
             }
-            </script>
-     
-</body>
-</html>
+      </script>
+    <jsp:include page="footer.jsp" />

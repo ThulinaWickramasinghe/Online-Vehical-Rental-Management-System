@@ -116,6 +116,7 @@
 
    
    </form>
+   </div>
 
 
     <script src="js/bootstrap.js">
@@ -123,7 +124,4 @@
     <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js">
     </script>
 
-</body>
-
-
-</html>
+    <jsp:include page="footer.jsp" />

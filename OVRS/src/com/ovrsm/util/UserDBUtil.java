@@ -384,7 +384,7 @@ public class UserDBUtil {
 	}
 		
 	
-  public static boolean insertUser(String firstName, String lastName, String userName, String password, String email, String NIC,int phoneNo, String homeNo, String streetName, String city, Object userType, String bankName, String branchName, String carexpertLevel, String bikeexpertLevel, String vanexpertLevel,String driverlicense,String jeepexperLevel) {
+  public static boolean insertUser(String firstName, String lastName, String userName, String password, String email, String NIC,int phoneNo, String homeNo, String streetName, String city, Object userType, String bankName, String branchName, String carexpertLevel, String bikeexpertLevel, String vanexpertLevel,String driverlicense,String jeepexperLevel, int accountNo) {
     	
     	boolean isSuccess = false;
     	
@@ -448,7 +448,7 @@ public class UserDBUtil {
              if(rs4>0) {
             	System.out.println("vendor inserted successfully");
             	stmt = con.createStatement();
-              	String sql2="insert into bankaccount values('"+0+"','"+userID+"','"+bankName+"','"+branchName+"')";
+              	String sql2="insert into bankaccount values('"+accountNo+"','"+userID+"','"+bankName+"','"+branchName+"')";
             	       
                int  rs5 = stmt.executeUpdate(sql2);
                 if(rs5>0) {
