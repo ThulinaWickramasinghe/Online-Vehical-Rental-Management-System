@@ -54,7 +54,7 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active text-light px-4 fs-5" aria-current="page" href="#">Home</a>
+                <a class="nav-link active text-light px-4 fs-5" aria-current="page" href="index.jsp">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-light px-4 fs-5" href="#">About Us</a>
@@ -63,13 +63,13 @@
                 <a class="nav-link text-light px-4 fs-5" href="#">Services</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-light px-4 fs-5" href="#">Contact Us</a>
+                <a class="nav-link text-light px-4 fs-5" href="ContactUs.jsp">Contact Us</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link text-light px-4 fs-5" href="#">Login</a>
+              <li class="nav-item" id="log-a" >
+                <a class="nav-link text-light px-4 fs-5" href="login.jsp">Login</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link text-light px-4 fs-5" href="#">Sign Up</a>
+              <li class="nav-item" id="signup-a">
+                <a class="nav-link text-light px-4 fs-5" href="Register.jsp">Sign Up</a>
               </li>
               <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -103,7 +103,11 @@
  
   if(logging=="true"){
 	  var element = document.getElementById("logout");
+	  var logs = document.getElementById("log-a");
+	  var sign = document.getElementById("signup-a");
 	  element.classList.remove("hidden-logout")
+	  logs.classList.add("hidden-logout")
+	  sign.classList.add("hidden-logout")
 	 
   }
   </script>

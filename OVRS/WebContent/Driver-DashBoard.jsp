@@ -99,11 +99,12 @@
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Are you sure ?</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Ado why bn? ?</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         If  you delete  this account, there is no chance of  getting back this account.
+        <div class="tenor-gif-embed" data-postid="17939096" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%"><a href="https://tenor.com/view/pakistani-fan-disappointed-gif-17939096">Pakistani Fan GIF</a>from <a href="https://tenor.com/search/pakistani-gifs">Pakistani GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
