@@ -13,11 +13,10 @@
                 <br>
                 <input type="submit" value="Submit">
             </form>
-            <p>New to Rent Smart..? <a href="Register.jsp" class="register_now">Register Now</a> </p>
+            <p>New to Rent Smart..? <a href="Register.jsp?page=6" class="register_now">Register Now</a> </p>
         </div>
          <script src="js/bootstrap.js">
     </script>
     <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js">
     </script>
-     <jsp:include page='footer.jsp' />
-     
+     <jsp:include page="footer.jsp" />
