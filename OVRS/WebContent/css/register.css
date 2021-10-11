@@ -39,3 +39,7 @@ input[type=text], [type=password],select {
 .subtopic{
     font-size: 12px;
 }
+.hide{
+	display:none;
+}
+
