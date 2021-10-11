@@ -124,4 +124,4 @@
     <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js">
     </script>
 
-    <jsp:include page="footer.jsp" />
+        <jsp:include page='footer.jsp' />

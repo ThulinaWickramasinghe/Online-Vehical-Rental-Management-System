@@ -45,4 +45,4 @@
       </table>
 </form>      
 <a href="deleteJobs.jsp" >Delete recommended jobs</a>
-    <jsp:include page="footer.jsp" />
+        <jsp:include page='footer.jsp' />

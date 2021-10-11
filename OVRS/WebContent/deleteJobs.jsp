@@ -17,4 +17,4 @@ To delete the recommended jobs</h1>
 </form>
 
 <a href="EmpMgrAssignJobs.jsp">Back to job assign</a>>
-    <jsp:include page="footer.jsp" />
+        <jsp:include page='footer.jsp' />

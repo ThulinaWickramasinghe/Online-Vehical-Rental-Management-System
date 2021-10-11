@@ -12,4 +12,4 @@ String owneruserID=request.getParameter("owneruserID");
         <input type="text" name="vehicleID" value="<%=id%>"  readonly>
          <input type="submit" name="delete" value="delete">
 </form>
-    <jsp:include page="footer.jsp" />
+        <jsp:include page='footer.jsp' />
