@@ -282,4 +282,57 @@ public class DriverDBUtil {
 		return ps;
 		
 	}
+	public static boolean removeJob(int reservationID, int cusID, int driverID, int managerID) {
+		
+		
+		try {
+			 con = DBConnection.getDBConnection();
+				
+		        
+			 stmt = con.createStatement();
+			 //DELETE FROM table_name WHERE condition
+			 String sql="delete from recommendjobs where reservationID='"+reservationID+"'and cusID= ' "+cusID+"' and driverID='"+driverID+"'and managerID= '"+managerID+"'";
+		   
+			 int rs=stmt.executeUpdate(sql);
+			 if(rs>0) {
+				 isSuccess=true; 
+			 }else {
+				 isSuccess=false;
+			 }
+		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		
+		return isSuccess;
+	}
+	
+	public static boolean updateJourneyStatus(int reservationID,int cusID ) {
+		
+		
+		try {
+			 con = DBConnection.getDBConnection();
+				
+		        
+			 stmt = con.createStatement();
+			 //set journey status as 1 to indicate that journey is over
+			 String sql="update reservation set journey_status=1 where reservationID='"+reservationID+"'and cusID= ' "+cusID+"'";
+			   
+			 int rs=stmt.executeUpdate(sql);
+			 
+			 if(rs>0) {
+				 isSuccess=true;
+			 }else {
+				 isSuccess=false;
+			 }
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return isSuccess;
+		
+	} 
 }

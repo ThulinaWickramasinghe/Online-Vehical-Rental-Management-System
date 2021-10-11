@@ -20,7 +20,10 @@ public class DriverJobsandPaymentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	     int driverID= Integer.parseInt(request.getParameter("driverID"));
+	  
+		int driverID= Integer.parseInt(request.getParameter("driverID"));
+	     
+	    
 	
 	   try{
 	         List<RecommendJob> recommendedjobs=DriverDBUtil.getJobs(driverID);

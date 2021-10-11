@@ -41,10 +41,6 @@
 
      display:none;
 }
-.hidden-input-out{
-     display:hidden;
-}
-
 	 </style>
 </head>
 <body>
@@ -103,7 +99,9 @@
   <c:set var="logged" value="<%=log%>"/>
 
     <form action="logout" class="hidden-logout" id="logout">
-   <input type="submit" value="logout">
+   <button type="submit"  class="btn btn-secondary">
+   Logout
+   </button>
    </form>
    <script>
   var logging= '${logged}';
