@@ -1,11 +1,13 @@
  <jsp:include page="MainNavBar.jsp" />
-
+<link rel="stylesheet" href="css/vehicleReservation.css">
 <a href="CustomerDashBoard.jsp"> Go to CustomerDashBoard</a>
 <form action="requestvehicle" method="post">
 <table >
      <tr>
        <td>
        <small class="after-choice" >Vehicle Type</small>
+       </td>
+       <td>
           <select class="after-choice"  name="vehicleType" id="vehicleType" >
                             <option value="car" selected>Car</option>
                             <option value="bike">Bike</option>
@@ -17,36 +19,48 @@
      <tr>
         <td>
         <small class="after-choice" >Pick Up Date</small>
-         <input class="after-choice"  type="text" name="pickupDate">
+        </td>
+        <td>
+         <input class="after-choice-out"  type="text" name="pickupDate">
         </td>
      </tr>
       <tr>
         <td>
               <small class="after-choice" >Pick Up Time</small>
-         <input class="after-choice" type="text" name="pickupTime">
+         </td>
+        <td>     
+         <input  class="after-choice-out" type="text" name="pickupTime">
         </td>
      </tr>
       <tr>
         <td>
                  <small class="after-choice" >For How many hours</small>
-          <input class="after-choice" type="text" name="hours">
+        </td>
+        <td>  
+          <input  class="after-choice-out" type="text" name="hours">
         </td>
      </tr>
       <tr>
         <td>
            <small class="after-choice" >For how many days</small>
-        <input class="after-choice" type="text" name="days">
+        </td>
+        <td>
+        <input  class="after-choice-out" type="text" name="days">
         </td>
      </tr>
      <tr>
         <td>
            <small class="after-choice">For how many minutes</small>
-        <input type="text" name="minutes" class="after-choice">
+        </td>
+        <td>
+        <input type="text" name="minutes"  class="after-choice-out">
         </td>
      </tr>
      <tr>
      <td>
        <small class="after-choice">With or Without Driver</small>
+      </td>
+        <td>
           <select name="driverStatus" id="driverStatus" class="after-choice">
                             <option value="1" selected>With Driver</option>
                             <option value="0">Without Driver</option>                                                                         
@@ -56,6 +70,8 @@
       <tr>
        <td>
        <small class="after-choice" >Driver Experience Level</small>
+         </td>
+        <td>
           <select name="explevel" id="explevel" class="after-choice" >
                             <option value="Newbie" selected>Newbie</option>
                             <option value="Medium">Medium</option>
@@ -67,12 +83,16 @@
      <tr>
         <td>
          <small class="after-choice">How many kilometers?</small>
-           <input class="after-choice" type="text" name="howFar" id="kilometer"/>
+        </td>
+        <td>  
+           <input  class="after-choice-out" type="text" name="howFar" id="kilometer"/>
         </td>
      </tr>
       <tr>
       <td>
          <small class="after-choice" >Pick Up Location</small>
+       </td>
+        <td>  
           <select class="after-choice" name="pickUpLocation" id="pickUp" >
                             <option value="Kadawatha" selected>Kadawatha</option>
                             <option value="Delgoda">Delgoda</option>
@@ -88,30 +108,40 @@
      </tr>
      <tr>
      <td>
+     </td>
+     <td>
         <input type="button" class="after-choice" name="next" value="Next" onclick="calculatePayment();">
      </td>
      </tr>
      <tr>
      <td>
        <small class="hidden-input"  >Total Amount</small>
-        <input type="text" name="fullPay" id="fullpay" class="hidden-input-out" disabled>
+       </td>
+        <td>
+        <input type="hidden" name="fullPay" id="fullpay" class="hidden-input-out" readonly>
      </td>
      </tr>
       <tr>
      <td>
        <small class="hidden-input"  >20% of total amount</small>
-        <input type="text" name="prePay" id="prepay" class="hidden-input-out">
+       </td>
+        <td>
+        <input type="hidden" name="prePay" id="prepay" class="hidden-input-out" readonly>
      </td>
      </tr>
     <tr>
      <td>
         <small class="hidden-input" >Enter RecieptNumber </small>
-        <input type="text" name="recieptNumber" id="recieptNumber"  class="hidden-input-out">
+  </td>
+        <td>
+        <input type="hidden" name="recieptNumber" id="recieptNumber"  class="hidden-input-out">
      </td>
     </tr>
    
     <tr>
-     <td>
+    <td>
+    </td>
+     <td >
      <!-- class="hidden-input"-->
         <input type="button" name="Pay" value="Pay & confirm" id="submission" class="hidden-input">
      </td>
@@ -141,6 +171,7 @@
                var afterNext=document.getElementsByClassName("after-choice");
 
                var otherInputs=document.getElementsByClassName("hidden-input-out");
+               var afterout=document.getElementsByClassName("after-choice-out");
                //
                submission.setAttribute("type","submit");
               for(var i=0;i<beforeNext.length;i++){
@@ -151,12 +182,18 @@
 
               for(var i=0;i<otherInputs.length;i++){
             
-            	  otherInputs[i].style.display = "inline";
+            	  otherInputs[i].type = "text";
               }
 
               for(var i=0;i<afterNext.length;i++){
             	  afterNext[i].classList.add("hidden-input")
               }
+              for(var i=0;i<afterout.length;i++){
+            	  afterout[i].type="hidden";
+              }
+              
+              
+              
               
               
               var fullPayment =0; 
@@ -232,4 +269,4 @@
               console.log(fullPayment);
             }
       </script>
-        <jsp:include page='footer.jsp' />
+    <jsp:include page="footer.jsp" />
