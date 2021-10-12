@@ -1,5 +1,9 @@
 package com.ovrsm.util;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +21,7 @@ public class UserDBUtil {
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
     
+	public static final Logger log = Logger.getLogger(UserDBUtil.class.getName());
 	public static String validate(String username, String password) {
 		System.out.println("I was called");
 		try {
@@ -77,6 +82,12 @@ public class UserDBUtil {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				
+			}catch(Exception e) {
+				
+			}
 		}
 		
 		return isSuccess;

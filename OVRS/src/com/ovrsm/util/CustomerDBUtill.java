@@ -1,5 +1,8 @@
 package com.ovrsm.util;
 
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,6 +16,7 @@ public class CustomerDBUtill {
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
 	
+	public static final Logger log = Logger.getLogger(CustomerDBUtill.class.getName());
 	public static  int makeReservation(int cusID, String vehicle_type, String pickupDate, 
 			String pickupTime, int hours, int days, int minutes, String driverExp, int driverStatus,
 			double how_far, String pickup_location) {

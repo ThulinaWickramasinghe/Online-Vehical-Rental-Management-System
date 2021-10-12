@@ -1,8 +1,12 @@
 package com.ovrsm.util;
 
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +27,8 @@ public class DriverDBUtil {
 	private static ResultSet rs3 = null;
 	private static PreparedStatement mystmt=null;
 	private static PreparedStatement mystmt2=null;
+	
+	public static final Logger log = Logger.getLogger(DriverDBUtil.class.getName());
 	
 	public  static int updateProfile(int userID,String firstName,String lastName,String userName,String password,String email,String propic
 			,String NIC,int phoneNo,String homeNo,String streetName,String city) {
@@ -104,20 +110,21 @@ public class DriverDBUtil {
 		   } 
 		    
 		
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		  
-		    
+		    		   		 		  		  			   		    		  		    
 		    
 		}catch(Exception e) {
-			e.printStackTrace();
-		
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		
 		
@@ -230,8 +237,21 @@ public class DriverDBUtil {
 		    }
 			
 		}catch(Exception e) {
-			System.out.println("I was  failed here");
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if(mystmt!=null) {
+					mystmt.close();
+				}
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		
 		
@@ -275,8 +295,21 @@ public class DriverDBUtil {
 			    	System.out.println("i was here for ");
 			    }
 		}catch(Exception e) {
-			System.out.println("it was payment who failed");
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				if(mystmt!=null) {
+					mystmt.close();
+				}
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		
 		return ps;
@@ -301,9 +334,20 @@ public class DriverDBUtil {
 			 }
 		
 		}catch(Exception e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
-		
 		
 		
 		
@@ -330,7 +374,19 @@ public class DriverDBUtil {
 				 isSuccess=false;
 			 }
 		}catch(Exception e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		return isSuccess;
 		

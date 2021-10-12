@@ -1,7 +1,11 @@
 package com.ovrsm.util;
 
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class EmloyeeManagerUtil {
@@ -10,6 +14,8 @@ public class EmloyeeManagerUtil {
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
 	
+	
+	public static final Logger log = Logger.getLogger(EmloyeeManagerUtil.class.getName());
 	public static boolean assignJobs(int resID,int cusID,int driverID,int managerID,
 			String dateTime,int vehicleID) {
 		
@@ -31,7 +37,18 @@ public class EmloyeeManagerUtil {
 			
 		    
 		}catch(Exception e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		
 		return isSuccess;
@@ -56,9 +73,19 @@ public class EmloyeeManagerUtil {
 			
 		    
 		}catch(Exception e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
-		
 		return isSuccess;
 	}
 	//public  static boolean update
