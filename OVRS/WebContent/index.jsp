@@ -21,7 +21,7 @@
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="./images/pexels-ahmad-ramadan-131811.jpg" class="d-block w-100" alt="...">
+      <img src="../images/pexels-ahmad-ramadan-131811.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5 class="fs-3">Variety of Vehicles</h5>
         <div>
@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img src="./images/secondCarResized.jpg" class="d-block w-100" alt="...">
+      <img src="../images/secondCarResized.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5 class="fs-3">With experienced drivers</h5>
         <p class="text-white">You can request drivers for the vehicle who are rated <br>
@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="carousel-item">
-      <img src="./images/pexels-prithivi-rajan-4297503.jpg" class="d-block w-100" alt="...">
+      <img src="../images/pexels-prithivi-rajan-4297503.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
         <h5 class="fs-3">At fare rates</h5>
         <p>We offer the lowest rates in the country</p>
@@ -61,7 +61,7 @@
   <h2>About Us</h2>
   <p class="mx-5 px-5 fst-italic">
     We established in 1987 as the pioneering Rent a Car Company and now it's been 
-    40 years of our service. We have always lived up to our company motto, "Excellence Unmatched" beyond mere words with the secret of success of our company being a team of dedicated and dynamic staff members striving to go the extra mile in improving the quality of service offered to each and every customer since the company’s inception. Our wide range of vehicles offered for transportation needs consists of over 25 Vans, 100 cars, 20 cabs, 10 jeeps and motorbikes.
+    40 years of our service. We have always lived up to our company motto, "Excellence Unmatched" beyond mere words with the secret of success of our company being a team of dedicated and dynamic staff members striving to go the extra mile in improving the quality of service offered to each and every customer since the company's inception. Our wide range of vehicles offered for transportation needs consists of over 25 Vans, 100 cars, 20 cabs, 10 jeeps and motorbikes.
   </p>
 </div>	
  <jsp:include page='footer.jsp' />
