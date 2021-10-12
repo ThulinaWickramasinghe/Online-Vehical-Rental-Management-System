@@ -37,6 +37,10 @@ public class CommonUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
+				
 				
 			}catch(SQLException e) {
 				log.log(Level.SEVERE,e.getMessage());
