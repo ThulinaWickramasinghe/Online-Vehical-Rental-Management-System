@@ -35,9 +35,7 @@
 	 
 	 <style>
 
-.hidden-input-out{
-     display:none;
-}
+
 .hidden-logout{
 
      display:none;
@@ -98,7 +96,7 @@
           </div>
         </div>
   <c:set var="logged" value="<%=log%>"/>
-
+<button type="button" class="btn btn-secondary hidden-logout ms-3 me-3" onclick="window.location.href = 'Driver-DashBoard.jsp?page=7';"id="toProfile">Back To Profile</button>
     <form action="logout" class="hidden-logout" id="logout">
    <button type="submit"  class="btn btn-secondary">
    Logout
@@ -110,9 +108,11 @@
 
   if(logging=="true"){
 	  var element = document.getElementById("logout");
+	  var element2 = document.getElementById("toProfile");
 	  var logs = document.getElementById("log-a");
 	  var sign = document.getElementById("signup-a");
 	  element.classList.remove("hidden-logout")
+	  element2.classList.remove("hidden-logout")
 	  logs.classList.add("hidden-logout")
 	  sign.classList.add("hidden-logout")
 	 
