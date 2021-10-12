@@ -7,7 +7,6 @@
 
 
 
-<!-- Footer -->
 <footer class="bg-primary bg-gradient text-white font-small">
 
   <div class="bg-secondary bg-gradient">
@@ -26,23 +25,23 @@
         <div class="col-md-6 col-lg-7 text-center text-md-right">
 
           <!-- Facebook -->
-          <a class="px-5">
+          <a class="px-5 text-decoration-none" href="https://www.facebook.com/groups/786129821988575">
             <i class="bi bi-facebook text-light" style="font-size: 1.5rem;"></i>
           </a>
           <!-- Twitter -->
-          <a class="px-5">
+          <a class="px-5 text-decoration-none" href="https://www.facebook.com/groups/532513128099032">
             <i class="bi bi-twitter text-light " style="font-size: 1.5rem;"></i>
           </a>
     
           <!--Linkedin -->
-          <a class="px-5">
+          <a class="px-5 text-decoration-none" href="https://www.linkedin.com/in/thulina-wickramasinghe-28b7281b8/">
             <i class="bi bi-linkedin text-light" style="font-size: 1.5rem;"></i>
           </a>
           <!--Instagram-->
-          <a class="px-5">
+          <a class="px-5 text-decoration-none" href="https://www.facebook.com/groups/ElonMuskQuotes">
             <i class="bi bi-instagram text-white" style="font-size: 1.5rem;"></i>
           </a>
-
+          
         </div>
         <!-- Grid column -->
 
@@ -79,21 +78,24 @@
       <div class="col-md-3 mx-auto mt-3 mt-md-0 mb-0 mb-md-4">
 
         <!-- Links -->
-        <h5>Products</h5>
+        <h5>Our Services</h5>
         <hr class="color-primary mb-4 mt-0 d-inline-block mx-auto w-60">
 
         <ul class="list-unstyled foot-desc">
           <li class="mb-2">
-            <a href="#!">MDBootstrap</a>
+            <a href="#!" class="text-decoration-none text-white-50">Tours</a>
           </li>
           <li class="mb-2">
-            <a href="#!">MDWordPress</a>
+            <a href="#!" class="text-decoration-none text-white-50">Wedding Hires</a>
           </li>
           <li class="mb-2">
-            <a href="#!">BrandFlow</a>
+            <a href="#!" class="text-decoration-none text-white-50">VIP Hires</a>
           </li>
           <li class="mb-2">
-            <a href="#!">Bootstrap Angular</a>
+            <a href="#!" class="text-decoration-none text-white-50">Self-drive rental</a>
+          </li>
+          <li class="mb-2">
+            <a href="#!" class="text-decoration-none text-white-50">Airport Transfers</a>
           </li>
         </ul>
 
@@ -111,16 +113,19 @@
 
         <ul class="list-unstyled foot-desc">
           <li class="mb-2">
-            <a href="#!">Your Account</a>
+            <a href="#!" class="text-decoration-none text-white-50">Cars</a>
           </li>
           <li class="mb-2">
-            <a href="#!">Become an Affiliate</a>
+            <a href="#!" class="text-decoration-none text-white-50">Vans</a>
           </li>
           <li class="mb-2">
-            <a href="#!">Shipping Rates</a>
+            <a href="#!" class="text-decoration-none text-white-50">Motor-Bikes</a>
           </li>
           <li class="mb-2">
-            <a href="#!">Help</a>
+            <a href="#!" class="text-decoration-none text-white-50">Jeeps</a>
+          </li>
+          <li class="mb-2">
+            <a href="#!" class="text-decoration-none text-white-50">Cabs</a>
           </li>
         </ul>
 
@@ -136,12 +141,12 @@
         <h5>Contact Us</h5>
         <hr class="color-primary mb-4 mt-0 d-inline-block mx-auto w-60">
 
-        <ul class="fa-ul foot-desc ml-4">
-          <li class="mb-2"><span class="fa-li"><i class="far fa-map"></i></span>Colombo Rd, Kegalle
+        <ul class="fa-ul ml-4 text-white-50 list-unstyled">
+          <li class="py-2"><i class="bi bi-house">&nbsp</i> Colombo Rd, Kegalle
           </li>
-          <li class="mb-2"><span class="fa-li"><i class="fas fa-phone-alt"></i></span>+943 589 683 690</li>
-          <li class="mb-2"><span class="fa-li"><i class="far fa-envelope"></i></span>company@example.com</li>
-          <li><span class="fa-li"><i class="far fa-clock"></i></span>Monday - Friday: 10-17</li>
+          <li class="py-2"><i class="bi bi-telephone-plus">&nbsp;</i>+943 589 683 690</li>
+          <li class="py-2"><i class="bi bi-envelope">&nbsp;</i>smartrent@google.com</li>
+          <li class="py-2"><i class="bi bi-alarm">&nbsp;</i> Monday - Friday: 10-17</li>
         </ul>
 
       </div>
@@ -154,16 +159,13 @@
   <!-- Footer Links -->
 
   <!-- Copyright -->
-  <div class="text-center py-4 bg-dark bg-gradient">© 2021 CodeArt Pvt Ltd<br>
+  <div class="text-center py-1 bg-dark">© 2021 CodeArt Pvt Ltd<br>
     All rights reserved.
   </div>
   <!-- Copyright -->
 
 </footer>
 <!-- Footer -->
-
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
-</html>
 </body>
 </html>
