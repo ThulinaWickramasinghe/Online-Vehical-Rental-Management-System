@@ -43,7 +43,7 @@
       <td>Model: ${vehi.model}</td>
      </tr>
       <tr>
-     <td style="">Windows:  ${vehi.noOfPeeps}</td>
+     <td>Windows:  ${vehi.noOfPeeps}</td>
      <td>Brand: ${vehi.brand}</td>
      <td>Edition: ${vehi.edition}</td>
       <td>Registration No: ${vehi.registrationNo}</td>
