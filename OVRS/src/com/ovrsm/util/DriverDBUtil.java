@@ -26,7 +26,7 @@ public class DriverDBUtil {
 	private static ResultSet rs2 = null;
 	private static ResultSet rs3 = null;
 	private static PreparedStatement mystmt=null;
-	private static PreparedStatement mystmt2=null;
+
 	
 	public static final Logger log = Logger.getLogger(DriverDBUtil.class.getName());
 	
@@ -119,6 +119,11 @@ public class DriverDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
+				
+				
 			
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());
@@ -245,6 +250,11 @@ public class DriverDBUtil {
 				if(mystmt!=null) {
 					mystmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
+				
+				
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());
 			}
@@ -301,6 +311,11 @@ public class DriverDBUtil {
 				if(mystmt!=null) {
 					mystmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
+				
+				
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());
 			}
@@ -334,6 +349,11 @@ public class DriverDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
+				
+				
 			
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());
@@ -356,7 +376,7 @@ public class DriverDBUtil {
 			 stmt = con.createStatement();
 			 //set journey status as 1 to indicate that journey is over
 			 String sql="update reservation set journey_status=1 where reservationID='"+reservationID+"'and cusID= ' "+cusID+"'";
-			   
+			 //execute the sql statement and returns the number of rows affected  
 			 int rs=stmt.executeUpdate(sql);
 			 
 			 if(rs>0) {
@@ -371,6 +391,10 @@ public class DriverDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
+				
 				
 				
 			} catch (SQLException e) {

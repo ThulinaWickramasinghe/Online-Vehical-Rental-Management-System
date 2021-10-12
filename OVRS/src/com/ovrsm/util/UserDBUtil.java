@@ -21,7 +21,7 @@ public class UserDBUtil {
 	private static Connection con =null;
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
-    
+	private static PreparedStatement ps=null;
 	public static final Logger log = Logger.getLogger(UserDBUtil.class.getName());
 	public static String validate(String username, String password) {
 		System.out.println("I was called");
@@ -88,6 +88,10 @@ public class UserDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
+				
 			
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());
@@ -165,6 +169,10 @@ public class UserDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
+				
 			
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());
@@ -251,6 +259,10 @@ public class UserDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
+				
 			
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());
@@ -354,6 +366,9 @@ public class UserDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
 				
 				
 			} catch (SQLException e) {
@@ -415,6 +430,9 @@ public class UserDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
 				
 				
 			} catch (SQLException e) {
@@ -465,10 +483,10 @@ public class UserDBUtil {
     	String sql="insert into externaluser values('"+userID+"','"+NIC+"','"+
     	    	phoneNo+"','"+homeNo+"','"+streetName+"','"+city+"')";
     	       
-    	stmt = con.createStatement();
+       stmt = con.createStatement();
     	
        int  rs2 = stmt.executeUpdate(sql);
-        if(rs2>0) {
+         if(rs2>0) {
         	
         	
         	if(userType.equals("customer")) {
@@ -536,6 +554,9 @@ public class UserDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
+				if (con != null) {
+					con.close();
+				}
 				
 				
 			} catch (SQLException e) {
@@ -547,29 +568,41 @@ public class UserDBUtil {
     }
 
     
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  public static boolean deleteUser(int ownerID) {
+	  
+	  boolean isSuccess=false;
+	  try{ 
+		  con = DBConnection.getDBConnection();
+		  stmt = con.createStatement();
+	       
+		  String query="delet from user where userID='"+ownerID+"'";
+	  
+	      int rs=stmt.executeUpdate(query);
+	      
+	      if(rs>0) {
+	    	  isSuccess=true;
+	      }else {
+	    	  isSuccess=false;
+	      }
+	  }catch(Exception e) {
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				
+				
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
+		}
+	  
+	  return isSuccess;
+  }
+                                 
+       
 }

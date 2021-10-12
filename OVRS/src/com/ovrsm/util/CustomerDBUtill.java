@@ -16,7 +16,8 @@ public class CustomerDBUtill {
 	private static Connection con =null;
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
-	
+	//create the prepared statement 
+    private static PreparedStatement ps=null;
 	public static final Logger log = Logger.getLogger(CustomerDBUtill.class.getName());
 	public static  int makeReservation(int cusID, String vehicle_type, String pickupDate, 
 			String pickupTime, int hours, int days, int minutes, String driverExp, int driverStatus,
@@ -25,15 +26,15 @@ public class CustomerDBUtill {
 		
 
 		try{
-			//This is a new method thulina 
+			//Get data base connection
 			con = DBConnection.getDBConnection();
-		   
+		   //Sql query to  insert reservation details into the reservation table
 		    String query="insert into reservation(cusID,vehicle_type,pickupdate,pickuptime,hours,days,minutes,driverexp,driverstatus,how_far,pickup_location,fullPaid,journey_status)"
 		    		+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		    
-		    
-		    PreparedStatement ps=con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
-			//int r = stmt.executeUpdate(query);
+		   //create the prepared statement 
+		  ps=con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+		//set values for each column	
 		    ps.setInt(1, cusID);
 		    ps.setString(2, vehicle_type);
 		    ps.setString(3, pickupDate);
@@ -64,6 +65,21 @@ public class CustomerDBUtill {
 			System.out.println(reservationID);
 		}catch(Exception e) {
 			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				//close the statement
+				if (ps != null) {
+					ps.close();
+				}
+				if (con != null) {
+					con.close();
+				}
+				
+				
+			
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		return reservationID;
 		
@@ -71,16 +87,19 @@ public class CustomerDBUtill {
 	
 	public static boolean makePayment(double amount, String paymentType, String dateTime, String paymethod, int reservationID, int cusID,String  recieptNumber) {
 		// TODO Auto-generated method stub
-		System.out.println("MakePaymentCalled");
+	
         int paymentID=0;
 		try{
-			
+			//get data base connection
 			con = DBConnection.getDBConnection();
 		   
-		    //To payment
+		   //Sql statement to insert values to payment entity
 			String query="insert into payment(amount,paymentType,paydateTime,paymethod) values(?,?,?,?)";
-			//This is a new method thulina 
-		    PreparedStatement ps=con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+		/*
+		 * Prepared statement is used here to get the generated primary key for payment
+		 */
+		    ps=con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+		    //set values for each column
 		    ps.setDouble(1, amount);
 		    ps.setString(2, paymentType);
 		    ps.setString(3,dateTime);
@@ -89,28 +108,21 @@ public class CustomerDBUtill {
 		    ps.addBatch();
 		    
 		    ps.executeBatch();
-		    
+		  //returns the generated key  
 		    rs=ps.getGeneratedKeys();
 		    
 		    while(rs.next()) {
 		    	
 		    	paymentID=rs.getInt(1);
 		    }
-		    System.out.println(paymentID);
-		    
-		    //To resPaymentTable
-		  /*  String query2="insert into respayment(cusID,vehicle_type,pickupdate,pickuptime,hours,days,minutes,driverexp,driverstatus,how_far,pickup_location,fullPaid,journey_status)"
-		    		+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-		    
-		    PreparedStatement ps1=con.prepareStatement(query2,Statement.RETURN_GENERATED_KEYS);
-		    
-		    ps1.addBatch();
-		    
-		    ps1.executeBatch();*/
+		   
+		 //Sql query to insert reservation Payments into reservation payment entity
 		    String query2="insert into resPayment values('"+paymentID+"','"+reservationID+"','"+cusID+"','"+recieptNumber+"')";
-		    
+		   
+		    //Creates a Statement object for sending SQL statements
 		    stmt = con.createStatement();
-			int rs = stmt.executeUpdate(query2);
+			//execute the created statement and assign the returned values
+		    int rs = stmt.executeUpdate(query2);
 			
 			if(rs>0) {
 			
@@ -123,9 +135,19 @@ public class CustomerDBUtill {
 			log.log(Level.SEVERE, e.getMessage());
 		}finally {
 			try {
+				//close the statement
 				if (stmt != null) {
 					stmt.close();
 				}
+				//close prepared statement
+				if (ps != null) {
+					ps.close();
+				}
+				//close db  connection
+				if (con != null) {
+					con.close();
+				}
+				
 				
 			
 			} catch (SQLException e) {
