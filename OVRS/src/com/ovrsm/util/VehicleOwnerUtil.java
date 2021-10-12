@@ -58,9 +58,7 @@ public class VehicleOwnerUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
-				if (con != null) {
-					con.close();
-				}
+			
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());
 			}
@@ -93,9 +91,7 @@ public class VehicleOwnerUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
-				if (con != null) {
-					con.close();
-				}
+				
 			} catch(Exception e) {
 				log.log(Level.SEVERE, e.getMessage());
 			}finally {
@@ -176,9 +172,7 @@ public class VehicleOwnerUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
-				if (con != null) {
-					con.close();
-				}
+				
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());
 			}
@@ -217,9 +211,7 @@ public class VehicleOwnerUtil {
 					if (stmt != null) {
 						stmt.close();
 					}
-					if (con != null) {
-						con.close();
-					}
+					
 				} catch (SQLException e) {
 					log.log(Level.SEVERE, e.getMessage());
 				}

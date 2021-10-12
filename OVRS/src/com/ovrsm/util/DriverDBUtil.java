@@ -119,9 +119,7 @@ public class DriverDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
-				if (con != null) {
-					con.close();
-				}
+			
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());
 			}
@@ -243,9 +241,7 @@ public class DriverDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
-				if (con != null) {
-					con.close();
-				}
+				
 				if(mystmt!=null) {
 					mystmt.close();
 				}
@@ -301,9 +297,7 @@ public class DriverDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
-				if (con != null) {
-					con.close();
-				}
+				
 				if(mystmt!=null) {
 					mystmt.close();
 				}
@@ -339,9 +333,6 @@ public class DriverDBUtil {
 			try {
 				if (stmt != null) {
 					stmt.close();
-				}
-				if (con != null) {
-					con.close();
 				}
 			
 			} catch (SQLException e) {
@@ -380,9 +371,7 @@ public class DriverDBUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
-				if (con != null) {
-					con.close();
-				}
+				
 				
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());

@@ -43,9 +43,7 @@ public class EmloyeeManagerUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
-				if (con != null) {
-					con.close();
-				}
+				
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());
 			}
@@ -79,14 +77,12 @@ public class EmloyeeManagerUtil {
 				if (stmt != null) {
 					stmt.close();
 				}
-				if (con != null) {
-					con.close();
-				}
+			
 			} catch (SQLException e) {
 				log.log(Level.SEVERE, e.getMessage());
 			}
 		}
 		return isSuccess;
 	}
-	//public  static boolean update
+
 }
