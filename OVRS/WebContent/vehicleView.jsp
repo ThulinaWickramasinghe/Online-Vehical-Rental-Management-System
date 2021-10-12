@@ -4,7 +4,10 @@
    <br/>
    <br/> 
     <c:forEach var="vehi" items="${vehiDetails}">
-    <table border="1">
+    
+    <div class="container">
+   	<div class="table-responsive">
+    <table border="2" class="table table-bordered my-table2">
     
     <c:set var="vehicleID" value="${vehi.vehicleID}" />
     <c:set var="fuel_type" value="${vehi.fuel_type}" />
@@ -26,35 +29,34 @@
     <c:set var="owneruserID" value="${vehi.owneruserID}" />
  
     
-    
      <tr>
      <td>${vehi.vehiclePic}</td>
-     <td>${vehi.vehicleID}</td>
-     <td>${vehi.fuel_type}</td>
-     <td>${vehi.license_no}</td> 
+     <td>Veh ID: ${vehi.vehicleID}</td>
+     <td>Fuel Type: ${vehi.fuel_type}</td>
+     <td>License No: ${vehi.license_no}</td> 
     
      </tr>   
      <tr>
-     <td> ${vehi.vehi_type}</td>
-     <td>${vehi.color}</td>
-     <td>${vehi.body_type}</td>
-      <td>${vehi.model}</td>
+     <td>Type:  ${vehi.vehi_type}</td>
+     <td>Color: ${vehi.color}</td>
+     <td>Body Type: ${vehi.body_type}</td>
+      <td>Model: ${vehi.model}</td>
      </tr>
       <tr>
-     <td> ${vehi.noOfPeeps}</td>
-     <td>${vehi.brand}</td>
-     <td>${vehi.edition}</td>
-      <td>${vehi.registrationNo}</td>
+     <td style="">Windows:  ${vehi.noOfPeeps}</td>
+     <td>Brand: ${vehi.brand}</td>
+     <td>Edition: ${vehi.edition}</td>
+      <td>Registration No: ${vehi.registrationNo}</td>
      </tr> 
       <tr>
-     <td> ${vehi.specialNote}</td>
-     <td>${vehi.pricePerKm}</td>
-      <td>${vehi.transmission}</td>
-      <td>${vehi.owneruserID}</td>
+     <td>Special Notes:  ${vehi.specialNote}</td>
+     <td>Price per KM: ${vehi.pricePerKm}</td>
+      <td>Transmission: ${vehi.transmission}</td>
+      <td>Owner User ID: ${vehi.owneruserID}</td>
      </tr>  
      <tr>
        
-       <td>
+       <td colspan="2">
        <c:url value="updateVehicle.jsp" var="vehiUpdate" >
          <c:param name="vehicleID" value="${vehicleID}" />
          <c:param name="fuel_type" value="${fuel_type}" />
@@ -73,20 +75,20 @@
            <c:param name="owneruserID" value="${owneruserID}" />   
        </c:url>
        <a href="${vehiUpdate}">
-         <input type="button" name="update" value="update">
+         <input type="button" name="update" class="btn btn-warning" value="update">
        </a>
        </td>
-       <td>
+       <td colspan="2">
         <c:url value="deleteVehicle.jsp" var="vehidelete" >
          <c:param name="vehicleID" value="${vehicleID}" />
           <c:param name="owneruserID" value="${owneruserID}" />
        </c:url>
    <a href="${vehidelete}">
-         <input type="button" name="delete" value="delete">
+         <input type="button" name="delete" class="btn btn-danger" value="delete">
         </a>
        </td>
      </tr>
-    </table>
+    </table></div></div>
     <br/>
     </c:forEach>
 
@@ -97,4 +99,4 @@
     
     
    
-        <jsp:include page='footer.jsp' />
+    <jsp:include page="footer.jsp" />
