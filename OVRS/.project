@@ -28,11 +28,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>WebContent/css/vehDash.css</name>
-			<type>1</type>
-			<locationURI>PARENT-3-PROJECT_LOC/proje/Online-Vehical-Rental-Management-System%201/OVRS/WebContent/css/vehDash.css</locationURI>
-		</link>
-	</linkedResources>
 </projectDescription>
