@@ -1,8 +1,12 @@
 package com.ovrsm.util;
 
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 
@@ -13,6 +17,7 @@ public class CustomerDBUtill {
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
 	
+	public static final Logger log = Logger.getLogger(CustomerDBUtill.class.getName());
 	public static  int makeReservation(int cusID, String vehicle_type, String pickupDate, 
 			String pickupTime, int hours, int days, int minutes, String driverExp, int driverStatus,
 			double how_far, String pickup_location) {
@@ -42,15 +47,15 @@ public class CustomerDBUtill {
 			ps.setString(11,pickup_location);
 			ps.setInt(12,0);
 			ps.setInt(13,0);
-			System.out.println("4444444444444444444");
+	
 			ps.addBatch();
-			System.out.println("&&&&&&&&&&&&&&s444444444");
+	
 	
 			ps.executeBatch();
-			System.out.println("((((((((((444444444");
+	
 			
 			rs=ps.getGeneratedKeys();
-			System.out.println("777777777777888888888888888888");
+		
 			while(rs.next()) {
 				reservationID=rs.getInt(1);
 			}
@@ -58,11 +63,8 @@ public class CustomerDBUtill {
 
 			System.out.println(reservationID);
 		}catch(Exception e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
 		}
-		
-		System.out.println("oooo");
-		
 		return reservationID;
 		
 	}
@@ -111,16 +113,25 @@ public class CustomerDBUtill {
 			int rs = stmt.executeUpdate(query2);
 			
 			if(rs>0) {
-				System.out.println("Payment successfull");
+			
 				isSuccess=true;
 			}else {
-				System.out.println("Payment not successfull");
+			
 				isSuccess=false;
 			}
 		}catch(Exception e) {
-			e.printStackTrace();
-		}    
-		
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				
+			
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
+		}
 		
 		return isSuccess;
 		

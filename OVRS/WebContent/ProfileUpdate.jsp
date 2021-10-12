@@ -31,7 +31,7 @@
                <div class="d-flex float-end"> 
              
                <input name="driverID" value="${driverID}" hidden>
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="Submit">Save Changes</button></div>
+                <div class="mt-5 text-center"><button class="btn btn-secondary profile-button" type="Submit">Save Changes</button></div>
                  </div>
                </form>
             
@@ -43,4 +43,4 @@
   </div>
    
 
-    <jsp:include page='footer.jsp' />
+    <jsp:include page="footer.jsp" />

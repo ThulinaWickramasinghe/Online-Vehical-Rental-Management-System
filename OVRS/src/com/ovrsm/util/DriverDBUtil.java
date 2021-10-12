@@ -1,8 +1,12 @@
 package com.ovrsm.util;
 
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,6 +27,8 @@ public class DriverDBUtil {
 	private static ResultSet rs3 = null;
 	private static PreparedStatement mystmt=null;
 	private static PreparedStatement mystmt2=null;
+	
+	public static final Logger log = Logger.getLogger(DriverDBUtil.class.getName());
 	
 	public  static int updateProfile(int userID,String firstName,String lastName,String userName,String password,String email,String propic
 			,String NIC,int phoneNo,String homeNo,String streetName,String city) {
@@ -104,20 +110,19 @@ public class DriverDBUtil {
 		   } 
 		    
 		
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		    
-		  
-		    
+		    		   		 		  		  			   		    		  		    
 		    
 		}catch(Exception e) {
-			e.printStackTrace();
-		
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		
 		
@@ -230,8 +235,19 @@ public class DriverDBUtil {
 		    }
 			
 		}catch(Exception e) {
-			System.out.println("I was  failed here");
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				
+				if(mystmt!=null) {
+					mystmt.close();
+				}
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		
 		
@@ -275,11 +291,93 @@ public class DriverDBUtil {
 			    	System.out.println("i was here for ");
 			    }
 		}catch(Exception e) {
-			System.out.println("it was payment who failed");
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				
+				if(mystmt!=null) {
+					mystmt.close();
+				}
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		
 		return ps;
 		
 	}
+	public static boolean removeJob(int reservationID, int cusID, int driverID, int managerID) {
+		
+		
+		try {
+			 con = DBConnection.getDBConnection();
+				
+		        
+			 stmt = con.createStatement();
+			 //DELETE FROM table_name WHERE condition
+			 String sql="delete from recommendjobs where reservationID='"+reservationID+"'and cusID= ' "+cusID+"' and driverID='"+driverID+"'and managerID= '"+managerID+"'";
+		   
+			 int rs=stmt.executeUpdate(sql);
+			 if(rs>0) {
+				 isSuccess=true; 
+			 }else {
+				 isSuccess=false;
+			 }
+		
+		}catch(Exception e) {
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
+		}
+		
+		
+		
+		
+		return isSuccess;
+	}
+	
+	public static boolean updateJourneyStatus(int reservationID,int cusID ) {
+		
+		
+		try {
+			 con = DBConnection.getDBConnection();
+				
+		        
+			 stmt = con.createStatement();
+			 //set journey status as 1 to indicate that journey is over
+			 String sql="update reservation set journey_status=1 where reservationID='"+reservationID+"'and cusID= ' "+cusID+"'";
+			   
+			 int rs=stmt.executeUpdate(sql);
+			 
+			 if(rs>0) {
+				 isSuccess=true;
+			 }else {
+				 isSuccess=false;
+			 }
+		}catch(Exception e) {
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				
+				
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
+		}
+		return isSuccess;
+		
+	} 
 }

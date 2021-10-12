@@ -1,8 +1,10 @@
 package com.ovrsm.util;
 
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,7 @@ public class VehicleOwnerUtil {
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
 	
+	public static final Logger log = Logger.getLogger(UserDBUtil.class.getName());
 	//return vehicle array
 	public static boolean addVehicle(
 	int veOID,String fuel_type,String license_no,
@@ -40,16 +43,25 @@ public class VehicleOwnerUtil {
 		int rs = stmt.executeUpdate(query);
 		
 		if(rs>0) {
-			System.out.println("Successfully inserted");
+			
 			isSuccess=true;
 		}else {
-			System.out.println("Insertion not successfull");
+			
 			isSuccess=false;
 		}
 		
 		}catch(Exception e) {
-			System.out.println("Insertion failed!");
-			e.printStackTrace();
+			
+			log.log(Level.SEVERE,e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		return isSuccess;
 		
@@ -73,7 +85,27 @@ public class VehicleOwnerUtil {
 				isSuccess=false;
 			}
 		}catch(Exception e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				
+			} catch(Exception e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}finally {
+				try {
+					if (stmt != null) {
+						stmt.close();
+					}
+					if (con != null) {
+						con.close();
+					}
+				} catch (SQLException e) {
+					log.log(Level.SEVERE, e.getMessage());
+				}
+			}
 		}
 		return isSuccess;
 	}
@@ -133,8 +165,17 @@ public class VehicleOwnerUtil {
 		
 		}catch(Exception e) {
 			
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
 			
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		    return vehicles;
 	}
@@ -164,8 +205,17 @@ public class VehicleOwnerUtil {
 			    	isSuccess=false;
 			    }
 		   }catch(Exception e) {
-			   e.printStackTrace();
-		   }
+			   log.log(Level.SEVERE, e.getMessage());
+		   }finally {
+				try {
+					if (stmt != null) {
+						stmt.close();
+					}
+					
+				} catch (SQLException e) {
+					log.log(Level.SEVERE, e.getMessage());
+				}
+			}
 		
 		
 		

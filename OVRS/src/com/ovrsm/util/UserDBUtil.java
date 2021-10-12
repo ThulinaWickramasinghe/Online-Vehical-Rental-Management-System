@@ -1,8 +1,13 @@
 package com.ovrsm.util;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +22,7 @@ public class UserDBUtil {
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
     
+	public static final Logger log = Logger.getLogger(UserDBUtil.class.getName());
 	public static String validate(String username, String password) {
 		System.out.println("I was called");
 		try {
@@ -27,7 +33,7 @@ public class UserDBUtil {
 		    int userID=0;
 		
 			if (rs.next()) {
-				System.out.println("Correct credential for any user");
+			
 				rs = stmt.executeQuery(sql);
 				while(rs.next())
 					userID=rs.getInt(1);
@@ -48,7 +54,7 @@ public class UserDBUtil {
 				
 			   rs=stmt.executeQuery(sql2);
 				if(rs.next()) {
-					System.out.println("I am a driver");
+					
 					isSuccess="driver";
 					return isSuccess;
 				}
@@ -56,7 +62,7 @@ public class UserDBUtil {
 					
 			   rs=stmt.executeQuery(sql3);
 				if(rs.next()) {
-					System.out.println("I am a vehicle owner");
+					
 					isSuccess="carowner";
 					return isSuccess;
 				}
@@ -64,19 +70,28 @@ public class UserDBUtil {
 					
 				rs=stmt.executeQuery(sql4);
 				if(rs.next()) {
-					System.out.println("I am a customer");
+				
 					isSuccess="customer";
 					return isSuccess;
 				}
 				
 			
 			} else {
-			System.out.println("not matched");
+		
 				isSuccess = null;
 			}
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch(Exception e) {
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		
 		return isSuccess;
@@ -137,16 +152,23 @@ public class UserDBUtil {
 												} 
 											
 										
-											System.out.println(userID+"\n"+firstName+"\n"+lastName+"\n"+email+"\n"+propic+"\n"+
-												  userName+"\n"+password+"\n"+NIC+"\n"+phoneNo+"\n"+streetName+"\n"+city+"\n"+homeNo);
+									
 										vehicleOwner = new VehicleOwner(userID,firstName,lastName,email,propic,
 												  userName,password,NIC,phoneNo,streetName,city,homeNo);
 										
 										
 						 
 		}catch(Exception e) {
-			System.out.println("Outter catch block failed");
-		   e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		
 		
@@ -214,9 +236,7 @@ public class UserDBUtil {
 											        city=rs.getString(6);
 												}    
 												
-										
-										 System.out.println(userID+firstName+lastName+email+propic+"\n"+
-												  userName+password+NIC+phoneNo+streetName+city+homeNo);
+									
 										 
 										 
 										  customer = new Customer(userID,firstName,lastName,email,propic,
@@ -225,8 +245,16 @@ public class UserDBUtil {
 										 
 						
 		}catch(Exception e) {
-			System.out.println("Outter catch block failed");
-		   e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+			
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		
 		
@@ -260,7 +288,7 @@ public class UserDBUtil {
 		int userID=0;	
 		try {	
 							con = DBConnection.getDBConnection();
-							System.out.println("meee");
+						
 							String sql = "select * from user where username='"+userName+"'";
 						
 						
@@ -311,8 +339,7 @@ public class UserDBUtil {
 											
 										
 
-												System.out.println(userID+"\n"+firstName+"\n"+lastName+"\n"+email+"\n"+propic+"\n"+
-													  userName+"\n"+password+"\n"+NIC+"\n"+phoneNo+"\n"+streetName+"\n"+city+"\n"+homeNo);
+												
 										driver = new Driver(userID,firstName,lastName,email,propic,
 												  userName,password,NIC,phoneNo,streetName,city,homeNo,
 												  carexpertLevel,bikeexpertLevel,vanexpertLevel,jeepexpertLevel,
@@ -321,8 +348,17 @@ public class UserDBUtil {
 							  
 						
 		}catch(Exception e) {
-			System.out.println("Outter catch block failed");
-		   e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				
+				
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		
 		
@@ -346,13 +382,13 @@ public class UserDBUtil {
 		int userID=0;	
 		try {	
 							con = DBConnection.getDBConnection();
-							System.out.println("meee");
+				
 							String sql = "select * from user where username='"+userName+"'";
-							System.out.println("meeeffdf");
+					
 							
 							rs = stmt.executeQuery(sql);
 							
-							System.out.println("meeesdfdfd");
+						
 							while (rs.next()) {
 						    userID = rs.getInt(1);
 					
@@ -371,12 +407,19 @@ public class UserDBUtil {
 										
 											
 
-											System.out.println(userID+"\n"+firstName+"\n"+lastName+"\n"+email+"\n"+propic+"\n"+
-												  userName+"\n"+password+"\n");
 									
 		}catch(Exception e) {
-			System.out.println("Outter catch block failed");
-		   e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				
+				
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
 		}
 		
 		
@@ -403,22 +446,22 @@ public class UserDBUtil {
 		    ps.setString(4, password);
 			ps.setString(5, email);
 		
-			System.out.println("4444444444444444444");
+	
 			ps.addBatch();
-			System.out.println("&&&&&&&&&&&&&&s444444444");
+		
 	
 			ps.executeBatch();
-			System.out.println("((((((((((444444444");
+			
 			
 			rs=ps.getGeneratedKeys();
-			System.out.println("777777777777888888888888888888");
+		
     		
     	int userID=0;
     	 
     	while(rs.next()) {
     		userID=rs.getInt(1);
 		}
-    	System.out.println("userID is "+userID);
+    
     	String sql="insert into externaluser values('"+userID+"','"+NIC+"','"+
     	    	phoneNo+"','"+homeNo+"','"+streetName+"','"+city+"')";
     	       
@@ -426,7 +469,7 @@ public class UserDBUtil {
     	
        int  rs2 = stmt.executeUpdate(sql);
         if(rs2>0) {
-        	System.out.println("external user entered successfully");
+        	
         	
         	if(userType.equals("customer")) {
         		stmt = con.createStatement();
@@ -434,10 +477,10 @@ public class UserDBUtil {
             	       
                int  rs3 = stmt.executeUpdate(sql1);
                 if(rs3>0) {
-                	System.out.println("Customer inserted successfully");
+                	
                 	isSuccess=true;
                 }else {
-                	System.out.println("Customer is not inserted successfully");
+                	
                 	isSuccess=false;
                 }
         	}else if(userType.equals("vehicleOwner")||userType.equals("driver")) {
@@ -446,16 +489,12 @@ public class UserDBUtil {
         	       
            int rs4 = stmt.executeUpdate(sql1);
              if(rs4>0) {
-            	System.out.println("vendor inserted successfully");
+            
             	stmt = con.createStatement();
               	String sql2="insert into bankaccount values('"+accountNo+"','"+userID+"','"+bankName+"','"+branchName+"')";
             	       
                int  rs5 = stmt.executeUpdate(sql2);
-                if(rs5>0) {
-                	System.out.println("Bank details inserted successfully");
-                }else {
-                	System.out.println("Bank details inserted successfully");
-                }
+              
                 
                 
                 if(userType.equals("vehicleOwner")) {
@@ -464,10 +503,10 @@ public class UserDBUtil {
             	       
                 			int rs7 = stmt.executeUpdate(sql3);
                 				if(rs7>0){
-                						System.out.println("vehicle Owner entered sussefully");
+                						
                 						isSuccess=true;
                 				}else {
-                					System.out.println("vehicle Owner entered unsussefull");
+                				
             						isSuccess=false;
                 				}
                 }else {
@@ -476,10 +515,10 @@ public class UserDBUtil {
                 	       
                 			int rs6 = stmt.executeUpdate(sql3);
                 			if(rs6>0){
-                				System.out.println("Driver entered sussefully");
+                				
                 				isSuccess=true;
                 			}else {
-                				System.out.println("Driver entered unsussefull");
+                			
                 				isSuccess=false;
                 			}
                 }
@@ -490,44 +529,25 @@ public class UserDBUtil {
         }
     		
     	}
-    	catch (Exception e) {
-    		e.printStackTrace();
-    	}
+    	catch(Exception e) {
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				
+				
+			} catch (SQLException e) {
+				log.log(Level.SEVERE, e.getMessage());
+			}
+		}
  	
     	return isSuccess;
     }
 
     
-      /*
-    public static boolean deleteUser(String id) {
-    	
-    	int convId = Integer.parseInt(id);
-    	
-    	try {
-    		
-    		con = DBConnect.getConnection();
-    		stmt = con.createStatement();
-    		String sql = "delete from user where id='"+convId+"'";
-    		int r = stmt.executeUpdate(sql);
-    		
-    		if (r > 0) {
-    			isSuccess = true;
-    		}
-    		else {
-    			isSuccess = false;
-    		}
-    		
-    	}
-    	catch (Exception e) {
-    		e.printStackTrace();
-    	}
-    	
-    	return isSuccess;
-    }
-    
-    
-    
-*/    
+   
     
     
     

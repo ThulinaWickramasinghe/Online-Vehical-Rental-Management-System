@@ -31,20 +31,15 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 <link rel = "stylesheet" href="css/bootstrap.css">
 <link rel = "stylesheet" href="css/navBar.css">
+<link rel="stylesheet" href="css/style.css">
 	 
 	 <style>
 
-.hidden-input-out{
-     display:none;
-}
+
 .hidden-logout{
 
      display:none;
 }
-.hidden-input-out{
-     display:hidden;
-}
-
 	 </style>
 </head>
 <body>
@@ -87,9 +82,11 @@
           </div>
         </div>
   <c:set var="logged" value="<%=log%>"/>
-
+<button type="button" class="btn btn-secondary hidden-logout ms-3 me-3" onclick="window.location.href = 'Driver-DashBoard.jsp?page=7';"id="toProfile">Back To Profile</button>
     <form action="logout" class="hidden-logout" id="logout">
-   <input type="submit" value="logout">
+   <button type="submit"  class="btn btn-secondary">
+   Logout
+   </button>
    </form>
    <script>
   var logging= '${logged}';
@@ -97,9 +94,11 @@
 
   if(logging=="true"){
 	  var element = document.getElementById("logout");
+	  var element2 = document.getElementById("toProfile");
 	  var logs = document.getElementById("log-a");
 	  var sign = document.getElementById("signup-a");
 	  element.classList.remove("hidden-logout")
+	  element2.classList.remove("hidden-logout")
 	  logs.classList.add("hidden-logout")
 	  sign.classList.add("hidden-logout")
 	 
@@ -130,3 +129,4 @@
   </script>
   
 </nav>
+

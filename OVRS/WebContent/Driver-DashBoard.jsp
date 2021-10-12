@@ -5,15 +5,15 @@
   <div class="card-header">
     <ul class="nav nav-pills card-header-pills">
       <li class="nav-item">
-      <button type="button"  class="btn btn-primary" value="My profiles" onclick="window.location.href = '#?page=7';">
+      <button type="button"  class="btn btn-secondary" value="My profiles" onclick="window.location.href = '#?page=7';">
      My profile       
 </button>
       </li>
-      <li class="nav-item">
+      <li class="nav-item ms-3">
        
       <form action="jobs" method="post">
       <input type="text" name="driverID" value="${driverID}" hidden>
-  <button type="submit" class="btn btn-primary ">
+  <button type="submit" class="btn btn-secondary ">
       My jobs
         </button>
      
@@ -48,37 +48,42 @@
                     <div class="col-md-12"><label class="labels-1 float-start">Mobile Number</label><input type="text" class="form-control"  value="${phoneNo}" readonly></div>
                     <div class="col-md-12"><label class="labels-1 float-start">Password</label><input type="text" class="form-control"  value="${passwords}" readonly></div>
                     <div class="col-md-12"><label class="labels-1 float-start">NIC</label><input type="text" class="form-control"  value="${NIC}" readonly></div>
-                    <div class="col-md-12"><label class="labels-1 float-start">e-mail</label><input type="text" class="form-control"  value="${email}" readonly></div>
-                    <div class="col-md-12"><label class="labels-1 float-start">Home Number</label><input type="text" class="form-control"  value="${homeNo}" readonly></div>
-                    <div class="col-md-12"><label class="labels-1 float-start">Street Name</label><input type="text" class="form-control"  value="${streetName}" readonly></div>
-                    <div class="col-md-12"><label class="labels-1 float-start">City</label><input type="text" class="form-control"  value="${city}" readonly></div>
+                   
+
                 </div>
               
-               <div class="d-flex float-end"> 
+ 
            
-                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" data-bs-toggle="modal" data-bs-target="#update">Update Profile</button></div>
+               
+             
+           
+            </div>
+        </div>
+   <div class="col-md-4">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center experience">   <h4 class="text-right">Address Details</h4></div><br>
+                 <div class="col-md-12"><label class="labels-1 float-start">Home Number</label><input type="text" class="form-control"  value="${homeNo}" readonly></div>
+                    <div class="col-md-12"><label class="labels-1 float-start">Street Name</label><input type="text" class="form-control"  value="${streetName}" readonly></div>
+                    <div class="col-md-12"><label class="labels-1 float-start">City</label><input type="text" class="form-control"  value="${city}" readonly></div>
+                    <div class="col-md-12"><label class="labels-1 float-start">e-mail</label><input type="text" class="form-control"  value="${email}" readonly></div>
+                             <div class="d-flex justify-content-evenly">      
+                     <div class="mt-5 text-center"><button class="btn btn-secondary profile-button" type="button" data-bs-toggle="modal" data-bs-target="#update">Update Profile</button></div>
 
            
                 <div class="mt-5 text-center"><button class="btn btn-danger profile-button" type="submit" data-bs-toggle="modal" data-bs-target="#delete">Delete Profile</button></div>
-             
                </div>
             </div>
         </div>
-  
     </div>
     <br/>
 </div>
 </div>
 </div>
   
-      <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-  Launch static backdrop modal
-</button>
 
 <!-- Modal update -->
 <div class="modal fade" id="update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Reminders</h5>
@@ -96,7 +101,7 @@
 </div>
   <!-- Modal delete -->
 <div class="modal fade" id="delete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable">
+  <div class="modal-dialog ">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">Ado why bn? ?</h5>
@@ -104,7 +109,10 @@
       </div>
       <div class="modal-body">
         If  you delete  this account, there is no chance of  getting back this account.
-        <div class="tenor-gif-embed" data-postid="17939096" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%"><a href="https://tenor.com/view/pakistani-fan-disappointed-gif-17939096">Pakistani Fan GIF</a>from <a href="https://tenor.com/search/pakistani-gifs">Pakistani GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        <div class="tenor-gif-embed" data-postid="17939096" data-share-method="host" data-aspect-ratio="1.77778" data-width="100%">
+        </div>
+        
+         <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
@@ -124,4 +132,4 @@
 
 
 
-        <jsp:include page='footer.jsp' />
+    <jsp:include page="footer.jsp" />

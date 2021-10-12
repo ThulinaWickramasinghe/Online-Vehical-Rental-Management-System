@@ -1,7 +1,11 @@
 package com.ovrsm.util;
 
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CommonUtil {
@@ -9,7 +13,7 @@ public class CommonUtil {
 	private static Connection con =null;
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
-	
+	public static final Logger log = Logger.getLogger( CommonUtil.class.getName());
 	public  static  boolean storFeedback(String email,String fullName,String message) {
 		
 		
@@ -27,7 +31,17 @@ public class CommonUtil {
 				isSuccess=false;
 			}
 		}catch(Exception e) {
-			e.printStackTrace();
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				if (stmt != null) {
+					stmt.close();
+				}
+				
+			}catch(SQLException e) {
+				log.log(Level.SEVERE,e.getMessage());
+			}
+			
 		}
 		
 		
