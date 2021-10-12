@@ -1,12 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-
-
-
-
-
-
 <footer class="bg-primary bg-gradient text-white font-small">
 
   <div class="bg-secondary bg-gradient">

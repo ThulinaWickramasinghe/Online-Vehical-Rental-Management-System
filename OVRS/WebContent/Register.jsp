@@ -6,7 +6,7 @@
   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
   
   <!-- enter your password and port here thulina -->
-  <sql:setDataSource var="db" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/ovrs" user="root" password="12345678" />
+  <sql:setDataSource var="db" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/ovrs" user="root" password="thulina4499" />
  
  <sql:query var="rs" dataSource="${db}">
  select * from user
