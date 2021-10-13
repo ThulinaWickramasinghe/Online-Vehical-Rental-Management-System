@@ -13,7 +13,7 @@
         <!--naviagtion bar-->
 
         <!--end of naviagtion bar-->
- <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"
@@ -56,7 +56,6 @@
 				<jsp:include page="MainNavBar.jsp" />
 
 				<!--end admin menu-->
-			
 
 
 				<div class="row">
@@ -64,9 +63,10 @@
 						<div class="sidebar">
 							<a href="#">Home</a> 
 							<a href="EmpMgrAssignJobs.jsp">Assign a Job</a> 
-							<a href="AddDriver.jsp">Add New Driver</a> 
-							<a href="Reservations-Driver-VehicleView.jsp">View</a> 
-							<a href="AddDriver.jsp"></a> <a href="#">Logout</a>
+							<a href="AddDriver.jsp">Add New Driver</a>
+								<a href="Reservations-Driver-VehicleView.jsp">View</a>
+								<a href="AddDriver.jsp"></a> 
+								<a href="#">Logout</a>
 						</div>
 					</div>
 
@@ -105,13 +105,19 @@
 												<th scope="col" bgcolor="#E6E6FA" class="text-center">FullPaid</th>
 												<th scope="col" bgcolor="#E6E6FA" class="text-center">Journey
 													Status</th>
-
+												<!-- <th scope="col" bgcolor="#E6E6FA" class="text-center">Approve</th>
+							<th scope="col" bgcolor="#E6E6FA" class="text-center">Dispprove</th> -->
 											</tr>
 										</thead>
 										<tbody>
 											<c:forEach var="reservation" items="${rs.rows}">
 												<tr>
-
+													<!--  <td>{}</td>
+							<td>{}</td>
+							<td>{}</td>
+							<td>{}</td>
+							<td>{}</td>
+							<td>{}</td>-->
 													<td><c:out value="${reservation.reservationID}"></c:out>
 													</td>
 													<td><c:out value="${reservation.cusID}"></c:out></td>
@@ -178,22 +184,22 @@
 													<td><c:out value="${recjobs.dateTime}"></c:out></td>
 													<td><c:out value="${recjobs.driverAccept}"></c:out></td>
 													<td><c:out value="${recjobs.vehicleID}"></c:out></td>
-
-
-													<td><c:url value="updateRecommendJobs.jsp" var="url">
-															<c:param name="reservationID"
-																value="${recjobs.reservationID}" />
-															<c:param name="cusID" value="${recjobs.cusID}" />
-															<c:param name="driverID" value="${recjobs.driverID}" />
-															<c:param name="dateTime" value="${recjobs.dateTime}" />
-															<c:param name="driverAccept"
-																value="${recjobs.driverAccept}" />
-															<c:param name="vehicleID" value="${recjobs.vehicleID}" />
-
-														</c:url> <a href="${url}"> <input type="button"
-															class="btn btn-warning btn-sm" name="update"
-															value="Update">
-													</a></td>
+													
+													
+												    <td>
+						                            <c:url value="updateRecommendJobs.jsp" var="url">
+			            	                        <c:param name="reservationID" value="${recjobs.reservationID}" />
+			            	                        <c:param name="cusID" value="${recjobs.cusID}" />
+			            	                        <c:param name="driverID" value="${recjobs.driverID}" />
+			            	                        <c:param name="dateTime" value="${recjobs.dateTime}" />
+			            	                        <c:param name="driverAccept" value="${recjobs.driverAccept}" />
+			            	                         <c:param name="vehicleID" value="${recjobs.vehicleID}" />
+			            	
+			                                        </c:url>
+						                            <a href="${url}">
+							                       <input type="button" class="btn btn-warning btn-sm" name="update" value="Update">
+						                           </a>
+					                               </td>	
 
 
 													<td><a href="deleteJobs.jsp"> <input type="button"

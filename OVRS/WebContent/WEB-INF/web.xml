@@ -50,6 +50,15 @@
 	</servlet-mapping>
 	
 	<servlet>
+		<servlet-name>updatejobs</servlet-name>
+		<servlet-class>com.ovrsm.servelets.updateRecommendJobsServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updatejobs</servlet-name>
+		<url-pattern>/updatejobs</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>deletejobs</servlet-name>
 		<servlet-class>com.ovrsm.servelets.DeleteRecommendJobServlet</servlet-class>
 	</servlet>

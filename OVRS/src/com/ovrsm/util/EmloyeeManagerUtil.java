@@ -90,5 +90,29 @@ public class EmloyeeManagerUtil {
 		}
 		return isSuccess;
 	}
+	public static boolean updatejobs(String resID, String cusID, String driverID,String dateTime,String driverAccept, String vehicleID) {
+    	
+    	try {
+    		
+    		con = DBConnection.getDBConnection();
+    		stmt = con.createStatement();
+    		String sql = "update recommendjobs set driverID='"+driverID+"',dateTime='"+dateTime+"',driverAccept='"+driverAccept+"',vehicleID='"+vehicleID+"'"
+    				+ "where reservationID='"+resID+"'";
+    		int rs3 = stmt.executeUpdate(sql);
+    		
+    		if(rs3 > 0) {
+    			isSuccess = true;
+    		}
+    		else {
+    			isSuccess = false;
+    		}
+    		
+    	}
+    	catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	
+    	return isSuccess;
+    }
 
 }

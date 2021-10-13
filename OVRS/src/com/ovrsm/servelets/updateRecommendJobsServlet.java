@@ -33,7 +33,7 @@ public class updateRecommendJobsServlet extends HttpServlet {
 		String resID = request.getParameter("resID");
 		String cusID = request.getParameter("cusID");
 		String driverID = request.getParameter("driverID");
-		String managerID = request.getParameter("managerID");
+		//String managerID = request.getParameter("managerID");
 		String dateTime = request.getParameter("dateTime");
 		//String dateTime= (request.getParameter("date"))+" "+(request.getParameter("time"));
 		String driverAccept = request.getParameter("driverAccept");
@@ -45,13 +45,13 @@ public class updateRecommendJobsServlet extends HttpServlet {
 		response.setContentType("text/html");
 		
 		boolean isSuccess;
-		isSuccess=EmloyeeManagerUtil.updatejobs(resID,cusID,driverID,managerID,dateTime,driverAccept,vehicleID);
+		isSuccess=EmloyeeManagerUtil.updatejobs(resID,cusID,driverID,dateTime,driverAccept,vehicleID);
 		if(isSuccess) {
             System.out.println("Sucess");
 			
 			out.println("<script type='text/javascript'>");
 			out.println("alert('Updated successfully');");
-			out.println("location='#'");
+			out.println("location='emp_manager_Dashboard.jsp'");
 			out.println("</script>");
 			
 		}else {
@@ -60,7 +60,7 @@ public class updateRecommendJobsServlet extends HttpServlet {
 			
 			out.println("<script type='text/javascript'>");
 			out.println("alert('Updation was not successful');");
-			out.println("location='#'");
+			out.println("location='updateRecommendJobs.jsp'");
 			out.println("</script>");
 			
 		}

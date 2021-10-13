@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+       <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   <%
+      if(session.getAttribute("userNames")==null){
+    	   response.sendRedirect("login.jsp");
+     }
+   
+   %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,8 +39,9 @@
                 
             </div>
         </div>
+        
         <!--naviagtion bar-->
-
+<jsp:include page="MainNavBar.jsp" />
         <!--end of naviagtion bar-->
     <!--start admin menu-->
 
@@ -56,33 +64,33 @@
 				<h1>Add New Driver</h1>
 			</div>
 			
-			<form action="empinsert" method="post" class="pt-3">
+			<form action="assignjobs" method="post"s class="pt-3">
 				<div class="form-group">
-					<label for="UserName">Name</label>
-					<input type="text" class="form-control" name="empname" required>
+					<label for="resID">Reservation ID</label>
+					<input type="text" class="form-control" name="" required>
 				</div>
 				<div class="form-group">
-					<label for="nic">NIC</label>
-					<input type="text" class="form-control" name="nic" required>
+					<label for="cusID">CustomerID</label>
+					<input type="text" class="form-control" name="cusID" required>
 				</div>
 				<div class="form-group">
-					<label for="address">Physical Adderss</label>
-					<input type="text" class="form-control" name="empaddress" required>
+					<label for="driverID">DriverID</label>
+					<input type="text" class="form-control" name="driverID" required>
 				</div>
 				<div class="form-group">
-					<label for="address">Email</label>
-					<input type="email" class="form-control" name="empemail" required>
+					<label for="vehicleID">VehicleID</label>
+					<input type="text" class="form-control" name="vehicleID" required>
 				</div>
 				<div class="form-group">
-					<label for="phone">Phone Number</label>
-					<input type="text" class="form-control" name="empphone" required>
+					<label for="date">JourneyDate</label>
+					<input type="text" class="form-control" name="date" required>
 				</div>
 				<div class="form-group">
-					<label for="salary">Driver License</label>
-					<input type="text" class="form-control" name="empdep" required>
+					<label for="time">PickupTime</label>
+					<input type="text" class="form-control" name="time" required>
 				</div>
 				<br>		
-				<button type="submit" class="btn btn-primary btn-md btn-block btn-primary">Enter Driver</button>
+				<button type="submit" class="btn btn-primary btn-md btn-block btn-primary" name="Assign job">Create Job</button>
 			</form>
 			<br>
 			<br>
@@ -91,3 +99,5 @@
 
 </body>
 </html>
+
+<jsp:include page="footer.jsp" />
