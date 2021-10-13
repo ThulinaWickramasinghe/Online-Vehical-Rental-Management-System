@@ -5,7 +5,7 @@
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
   <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
   
-  <!-- enter your password and port here thulina -->
+
   <sql:setDataSource var="db" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/ovrs" user="root" password="thulina4499" />
  
  <sql:query var="rs" dataSource="${db}">
@@ -63,27 +63,29 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="password" name="password" placeholder="Password" pattern=".{8,}" title="Eight or more characters" required></input>
+                        <input type="password" name="password" placeholder="Password" title="Eight or more characters" id="pwd" required></input>
 
                     </td>
                     <td>
-                        <input type="password" name="repassword" placeholder="Re-enter Password"  pattern=".{8,}" title="Eight or more characters" required></input>
+                        <input type="password" name="repassword" placeholder="Re-enter Password"  title="Eight or more characters" id="repwd" required></input>
                         
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="text" name="nic" placeholder="NIC" pattern="[0-9]{9}+V" title="Nine numbers and V" required></input>
+                        <input type="text" name="nic" placeholder="NIC"  title="Nine numbers and V" required id="NIC"></input>
+                    </td>
+                </tr>
+                
+               
+                <tr>
+                    <td colspan="2">
+                        <input type="text" name="email" placeholder="E-Mail"  id="eAddress" required></input>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="text" name="email" placeholder="E-Mail"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required></input>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="text" name="phonenumber" placeholder="Phone Number"  pattern="[0-9]{10}" title="Ten numbers only" required></input>
+                        <input type="text" name="phonenumber" placeholder="Phone Number"   title="Ten numbers only" required id="pTpNo"></input>
                         
                     </td>
                 </tr>
@@ -225,7 +227,20 @@
            </tr>
         
     </table>
+    
          </form>
+          <div id="invalidNIC">
+          	<p class="text-danger" style="position:relative; left:400px; bottom:567px;">Oops! Invalid NIC </p>
+          </div>
+           <div id="invalidemail">
+          	<p class="text-danger" style="position:relative; left:400px; bottom:540px;">Oops! Invalid email </p>
+          </div>
+           <div id="invalidTpNo">
+          	<p class="text-danger" style="position:relative; left:400px; bottom:515px;">Oops! Invalid telephone number</p>
+          </div>
+          
+          <div id="invRepwd" class="text-danger" style="position:relative; left:400px; bottom:758px;">Passwords do not match.</div><br>
+         
     </div>   
 
 
@@ -278,5 +293,105 @@
 				}
                          
         }
+            var NIC = document.getElementById("NIC");
+
+
+            NIC.onfocus = () => {
+                if (!NIC.value.match(/(^[0-9]{9}[V,X]$)|(^[0-9]{12}$)/ig)) {
+                    document.getElementById("invalidNIC").style.display = "block";
+                }
+            }
+            NIC.onblur = () => {
+                document.getElementById("invalidNIC").style.display = "hidden";
+            }
+
+            NIC.onkeyup = () => {
+                if (NIC.value.match(/(^[0-9]{9}[V,X]$)|(^[0-9]{12}$)/ig)) {
+                    document.getElementById("invalidNIC").style.display = "hidden";
+                } else {
+                    document.getElementById("invalidNIC").style.display = "block";
+                }
+
+            }
+
+            //validate telephone number
+            var tpNo = document.getElementById("pTpNo");
+
+
+            tpNo.onfocus = () => {
+                if (!tpNo.value.match(/[0-9]{3}-[0-9]{7}/)) {
+                    document.getElementById("invalidTpNo").style.display = "block";
+                }
+            }
+            tpNo.onblur = () => {
+                document.getElementById("invalidTpNo").style.display = "hidden";
+            }
+
+
+            tpNo.onkeyup = () => {
+                if (tpNo.value.match(/[0-9]{3}-[0-9]{7}/)) {
+                    document.getElementById("invalidTpNo").style.display = "hidden";
+                } else {
+                    document.getElementById("invalidTpNo").style.display = "block";
+                }
+
+            }
+
+
+
+            //validate email
+
+            var emailAddress = document.getElementById("eAddress");
+
+
+            emailAddress.onfocus = () => {
+                if (!emailAddress.value.match(/(^[a-z0-9]+@[a-z]+.[a-z.]+)/i)) {
+                    document.getElementById("invalidemail").style.display = "block";
+                }
+            }
+
+
+            emailAddress.onblur = () => {
+                document.getElementById("invalidemail").style.display = "hidden";
+            }
+
+
+            emailAddress.onkeyup = () => {
+                if (emailAddress.value.match(/(^[a-z0-9]+@[a-z]+.[a-z.]+)/i)) {
+                    document.getElementById("invalidemail").style.display = "hidden";
+                } else {
+                    document.getElementById("invalidemail").style.display = "block";
+                }
+            }
+
+
+
+            //validate password
+            var myPwd = document.getElementById("pwd");
+            
+          
+            //validate retype password
+            var retypePwd = document.getElementById("repwd");
+
+            retypePwd.onfocus = () => {
+                if (retypePwd.value != myPwd.value) {
+                    document.getElementById("invRepwd").style.display = "block";
+                } else {
+                    document.getElementById("invRepwd").style.display = "hidden";
+                }
+            }
+
+            retypePwd.onblur = () => {
+                document.getElementById("invRepwd").style.display = "hidden";
+            }
+
+
+            retypePwd.onkeyup = () => {
+                if (retypePwd.value !== myPwd.value) {
+                    document.getElementById("invRepwd").style.display = "block";
+                } else {
+                    document.getElementById("invRepwd").style.display = "hidden";
+                }
+            }
             </script>
     <jsp:include page="footer.jsp" />
