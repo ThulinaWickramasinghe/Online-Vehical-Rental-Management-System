@@ -35,22 +35,28 @@ public class DriverDBUtil {
 		
 		int number=0;
 		propic="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg";
+		
+		//Generic type string ArrayList which contains user names
 		ArrayList<String> userNames= new ArrayList<String>();
 		try{
+			//Get the connection
 			 con = DBConnection.getDBConnection();
 		
-	        
+	        //Create statment 
 		    stmt = con.createStatement();
 		  
-		 //   System.out.println("sdfksdklfjlkdjlkfldk");
+
+            //Sql query to return user Name of a user
 		    String query="select userName from user";
-		//    System.out.println("sdfksdklfjlkdjlkfldksdffffffdff");
+		
+		    //Execute the query  and return a result set  
 		    rs=stmt.executeQuery(query);
-		  //  System.out.println("sdfksdklfjlkdjlkfldksdfffffffffffffffff");
+		  
 		    
+		    //iterate through the result set until there are no more rows in
 		    while(rs.next()) {
 		    	String uName=rs.getString(1);
-		    	//System.out.println("sdfksdklfjlkdjlkfldksaddddddddddddddddddddd");
+		    
 		    	userNames.add(uName);
 		    }
 		   
@@ -66,7 +72,7 @@ public class DriverDBUtil {
 		    
 		    
 		   int index= Collections.binarySearch(userNames, userName);
-		  // System.out.println("sdfksdklfjlkdjlkfldksdffffffffffffffffffffffffffffffffff");
+		
 		    
 		   if(index <0) {
 			   
@@ -84,17 +90,18 @@ public class DriverDBUtil {
 			   if(r>0 ) {
 				   if(r2>0) {
 					   
-					   System.out.println("User updation successed");
+					   log.log(Level.INFO,"Externerl user successfully updated");
+					  
 					   number=3;
 					   
 					   return number;
 				   }else {
-					   System.out.println("updation of external user table failed..");
+					   log.log(Level.SEVERE,"Externerl user updated failed");
 					   number=2;
 					   return number;
 				   }
 			   }else {
-				   System.out.println("Updation of user table is failed");
+				   log.log(Level.INFO,"User  updated successfully");
 				   number=1;
 				   return number;
 			   }
@@ -104,7 +111,7 @@ public class DriverDBUtil {
 			   
 		   }else {
 			   
-			   System.out.println("User name already exists..");
+			   log.log(Level.SEVERE,"User name already taken");
 			   number=-1;
 			   return number;
 		   } 
@@ -113,12 +120,15 @@ public class DriverDBUtil {
 		    		   		 		  		  			   		    		  		    
 		    
 		}catch(Exception e) {
+			//write the thrown exception to the logger as severe level error in order to trace the error in remote server
 			log.log(Level.SEVERE, e.getMessage());
 		}finally {
 			try {
+				//close statement
 				if (stmt != null) {
 					stmt.close();
 				}
+				//close the connection
 				if (con != null) {
 					con.close();
 				}
@@ -126,32 +136,38 @@ public class DriverDBUtil {
 				
 			
 			} catch (SQLException e) {
+				//write the thrown exception to the logger as severe level error
 				log.log(Level.SEVERE, e.getMessage());
 			}
 		}
 		
 		
-		
+		//return the number which coresponds different outputs
 		return number;
 	}
 	
 	public static List<RecommendJob> getJobs(int driverID){
-		
-		ArrayList<RecommendJob> jobs = new ArrayList<RecommendJob>();
+		//create and arraylist which has generic type of recommend job
+	   ArrayList<RecommendJob> jobs = new ArrayList<RecommendJob>();
 	
-
+       //create a reservation reference object
 	   Reservation reservation=null;
 		try {
+			//get database connection
             con = DBConnection.getDBConnection();
 		
-	        
+	        //create a sql statement
 		    stmt = con.createStatement();
+		    //sql statement to get drivers recommend job details
 		    String query="select  *from recommendjobs where driverID = '"+driverID+"'";
+		    //sql statement to get reseration details
 		    String query1="select vehicle_type,pickUpdate,pickUpTime,hours,days,minutes,driverexp,driverstatus,how_far,pickup_location,fullPaid,journey_status from reservation where reservationID= ? and cusID= ?";
-		  
+		  //create a prepared statement before the loop
 		   	mystmt = con.prepareStatement(query1);
-		 
+		 //execute recommend jobs retrieving statment
 		   	rs=stmt.executeQuery(query);
+		   	
+		   	//loop until all the drivers jobs are over
 		    while(rs.next()) {
 		    	int reservationID=rs.getInt(1);
 		    	int cusID=rs.getInt(2);
@@ -160,13 +176,13 @@ public class DriverDBUtil {
 		    	int driverAccept =rs.getInt(6);
 		    	int vehicleID=rs.getInt(7);
 		    	
-		 
+		   //set values to the prepared statement
 		    	mystmt.setInt(1, reservationID);
 		    	mystmt.setInt(2, cusID);
-		  
+		 //execute the prepared statement 
 		        rs2=mystmt.executeQuery();
 		    	while(rs2.next()) {
-		    		System.out.println("I was reserved");
+		    		//get reservation details and assign them to variable in order to create a reservation object
 		    		String vehicle_type=rs2.getString(1);
 		    		String pickUpDate=rs2.getString(2);
 		    		String pickUpTime=rs2.getString(3);
@@ -179,11 +195,13 @@ public class DriverDBUtil {
 		    	    String pickup_location=rs2.getString(10);
 		    	    int fullPaid=rs2.getInt(11);
 		    	    int journey_status=rs2.getInt(12);
-
+                   
+		    	    //initialize a reservation object
+		    	    
 		    	    reservation= new Reservation(reservationID,cusID,vehicle_type,pickUpDate,pickUpTime,
 		    	    hours,days,minutes,driverexp,driverStatus,how_far,pickup_location,fullPaid,journey_status);
 		    	}
-		    	
+		    	//initialize the variables 
 		    	int owneruserID=0;
 		    	String fuel_type=null;
 		    	String license_no =null;
@@ -200,10 +218,17 @@ public class DriverDBUtil {
 		    	String transmission=null;
 		    	String vehiclePic=null;
 		    	
+		    	//query to to get vehicle details
 		    	String query2="select *from vehicle where vehicleID='"+vehicleID+"'";
+		    	//create a statement 
 		    	stmt = con.createStatement();
+		    	//execute the query
 		    	rs3=stmt.executeQuery(query2);
+		    	
+		    	//loop the returned result set till no of rows in the tabl
 		    	while(rs3.next()) {
+		    		
+		    	//store retrieved vehicle  details in the variables	
 		    	owneruserID=rs3.getInt(1);
 		        fuel_type=rs3.getString(3);
 		    	license_no =rs3.getString(4);
@@ -222,7 +247,7 @@ public class DriverDBUtil {
 		    	}
 		    	
 		    	
-		    	
+		    	//initialize a vehicle object
 		    	Vehicle vehi=new Vehicle(owneruserID,vehicleID,
 		    			fuel_type,license_no
 		    			,vehi_type,color,body_type,
@@ -230,16 +255,15 @@ public class DriverDBUtil {
 		    			brand,registrationNo,transmission,vehiclePic);
 		    	
 		    	
-		        System.out.println(reservation.getCusID()+"\n"
-		        		+reservation.getDriverStatus()+"VehicleID"+vehicleID);
-		        
-		    	
+		    	//initiale and recommendjob object
 		    	RecommendJob rc=new RecommendJob(vehi,managerID,reservation,driverID,dateTime,driverAccept);
 		    	vehi=null;
+		    	//add it to the job arraylist
 		    	jobs.add(rc);
 		    }
 			
 		}catch(Exception e) {
+			//write that thrown exception to the logger
 			log.log(Level.SEVERE, e.getMessage());
 		}finally {
 			try {
@@ -256,61 +280,70 @@ public class DriverDBUtil {
 				
 				
 			} catch (SQLException e) {
+				//SEVERE is a message level indicating a serious failure.
+				//write that thrown exception to the logger
 				log.log(Level.SEVERE, e.getMessage());
 			}
 		}
-		
-		
-		
+						
 		
 		return jobs;
 	}
 	
 	public static List<Payment> getPayments(int driverID){
-		
-		ArrayList<Payment> ps= new ArrayList<Payment>();
+		//Create an arrayList which is the generic type of payment
+		ArrayList<Payment> payments= new ArrayList<Payment>();
+		//create payment reference object
 		Payment pay=null;
 		try {
+			//get the db connection
 			  con = DBConnection.getDBConnection();
 				
-		        
+		        //create a statement
 			    stmt = con.createStatement();
+			    //sql query to retrive driver's paymentID
 			    String query="select  *from driverpayment where driverID = '"+driverID+"'";
+			    //sql query to retrieve driver payment details
 			    String query1="select  amount,paymentType,paydateTime,paymethod from payment where paymentID = ? ";
-			  	mystmt = con.prepareStatement(query1);
+			  //create the prepared statement
+			    mystmt = con.prepareStatement(query1);
+			    //execute the query which returns paymentID
 			    rs=stmt.executeQuery(query);
 			    while(rs.next()) {
+			    	//store the payment id retrived
 			    	int paymentID=rs.getInt(1);
-			  
+			  //set the value to first argument of the prepared statement
 			    	mystmt.setInt(1, paymentID);
-			    
+			 //execute the prepared statement   
 			        rs2=mystmt.executeQuery();
 					    while(rs2.next()) {
+					    	//get payment details from the result set
 					    	double amount=rs2.getDouble(1);
 					    	String paymentType=rs2.getString(2);
 					    	String paydateTime=rs2.getString(3);
 					    	String paymenthod=rs2.getString(4);
 					    	
-					  System.out.println("Payment was retrived");
-					 System.out.println(amount+"\n"+paymentType+"\n"
-							 +paydateTime+"\n"+paymenthod);
-					    	
+				           //create a payment object
 					    	pay= new Payment(paymentID,amount,paymentType,paydateTime,paymenthod);
 					    }
-					    ps.add(pay);
-			    	System.out.println("i was here for ");
+					    //Add that payment to the payments arrayList
+					    payments.add(pay);
+			
 			    }
 		}catch(Exception e) {
+			//Write thrown errors to the logger
 			log.log(Level.SEVERE, e.getMessage());
 		}finally {
 			try {
+				//close the statement
 				if (stmt != null) {
 					stmt.close();
 				}
-				
+				//close the prepared statement
 				if(mystmt!=null) {
 					mystmt.close();
 				}
+				//close data base connection
 				if (con != null) {
 					con.close();
 				}
@@ -321,7 +354,7 @@ public class DriverDBUtil {
 			}
 		}
 		
-		return ps;
+		return  payments;
 		
 	}
 	public static boolean removeJob(int reservationID, int cusID, int driverID, int managerID) {
@@ -332,10 +365,11 @@ public class DriverDBUtil {
 				
 		        
 			 stmt = con.createStatement();
-			 //DELETE FROM table_name WHERE condition
+			 //remove  recommended jobs from the database
 			 String sql="delete from recommendjobs where reservationID='"+reservationID+"'and cusID= ' "+cusID+"' and driverID='"+driverID+"'and managerID= '"+managerID+"'";
-		   
+		   //execute and deleted the recommended job
 			 int rs=stmt.executeUpdate(sql);
+			//check if the number of rows affected are more than zero 
 			 if(rs>0) {
 				 isSuccess=true; 
 			 }else {
@@ -343,12 +377,15 @@ public class DriverDBUtil {
 			 }
 		
 		}catch(Exception e) {
+			//write the error to the logger 
 			log.log(Level.SEVERE, e.getMessage());
 		}finally {
 			try {
+				//close the statement
 				if (stmt != null) {
 					stmt.close();
 				}
+				//close db connection
 				if (con != null) {
 					con.close();
 				}

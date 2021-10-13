@@ -41,6 +41,8 @@ public class DriverAccountUpdateServlet extends HttpServlet {
 		String homeNo=request.getParameter("homeNo");
 		String streetName=request.getParameter("streetName");
 		String city=request.getParameter("city");
+		
+		
 		int number=DriverDBUtil.updateProfile(userID, firstName,lastName, userName,password, email, propic, NIC, phoneNo, homeNo, streetName, city);
 	
 	

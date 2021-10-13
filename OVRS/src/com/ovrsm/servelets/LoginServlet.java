@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if (userType!=null) {
 			
-			try{		System.out.println("Passowrd and user name was correct");
+			try{		
 						HttpSession session=request.getSession();
 			
 			
@@ -95,7 +95,7 @@ public class LoginServlet extends HttpServlet {
 							System.out.println(driver.getLastName());
 							System.out.println(driver.getFirstName());
 							System.out.println(driver.getHomeNo());
-						   response.sendRedirect("Driver-DashBoard.jsp");
+						    response.sendRedirect("Driver-DashBoard.jsp");
 						
 						
 							

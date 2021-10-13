@@ -54,10 +54,10 @@ public class VehicleOwnerUtil {
 			
 				//check if the number of rows returned are more than zero
 				if(rs>0) {
-				//if no of rows are more than zero insert operation is succeed
+				//if no. of rows are more than zero insert operation is succeed
 				isSuccess=true;
 				}else {
-				//if no of rows are less than zero insert operation is succeed
+				//if no. of rows are less than zero insert operation is succeed
 				isSuccess=false;
 				}
 		
@@ -89,7 +89,7 @@ public class VehicleOwnerUtil {
 	//String has to converted into integer in the servelet
 	public static boolean removeVehicle(int vehiID,int ownerID) {
 		
-		
+		 
 		String query="delete from vehicle where vehicleID ='"+vehiID+"'and veOID ='"+ownerID+"'";
 		
 		try {

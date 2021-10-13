@@ -12,7 +12,7 @@ public class DBConnection {
 	 */
          	 private static String url = "jdbc:mysql://localhost:3306/ovrs";
 	         private static String userName = "root";
-             private static String password = "thulina4499";
+             private static String password = "12345678";
              private static Connection conn= null;
              
              //using singleton pattern to initiate the connection
@@ -40,6 +40,9 @@ public class DBConnection {
             		 e.printStackTrace(); 
             	 }
             	 
+            	 
+            	 
             	 return conn;
              }
 }
+

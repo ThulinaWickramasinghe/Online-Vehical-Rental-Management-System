@@ -23,17 +23,16 @@ public class VehicleReservationServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+	
+		//Use a print writer object to write html  content as response
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		
 		
 		
 		
-	  
-	      int cusID=Integer.parseInt(request.getParameter("cusID"));
-	    
+		//Access httpservletrequest parameter and get the values of given parameter name
+	      int cusID=Integer.parseInt(request.getParameter("cusID"));	    
 	      String vehicleType=request.getParameter("vehicleType");	
 	      String pickUpDate = request.getParameter("pickupDate");
 	      String pickupTime = request.getParameter("pickupTime");
@@ -47,32 +46,37 @@ public class VehicleReservationServlet extends HttpServlet {
 	      String recieptNumber=request.getParameter("recieptNumber");
 	      double amount=Double.valueOf(request.getParameter("prePay"));
 	     //fullPaid and Journey_Status has to be changed Later;
-	      //
+	      
+	      //get current date and time which will be later used to set  payment made time 
 	      DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 	      
 	      LocalDateTime now = LocalDateTime.now();  
 	      String dateTime=dtf.format(now);
 	      
+	      //return the reservation ID which is generated 
 	      int reservationID=CustomerDBUtill.makeReservation(cusID, vehicleType, pickUpDate, pickupTime, hours, days, minutes,expLevel, driverStatus, how_far, pickUpLocation );
-	      System.out.println(reservationID);
+	//reservation id always more than zero and if it is more than  zero reservation is successfull
+	      
 	      if( reservationID>0) {
-	    	  System.out.println("I was sucessed");
-	    	 	      
-		     
-		      System.out.println("I 8888");
+	    	
+	    	 	      		     
+	//Payment always debit for the customer	
 		      String paymentType="debited";
-		      System.out.println("I 8888ere");
+	//And the payment type always receipt payment	    
 		      String paymethod="receipt";
-		      System.out.println("I 8888dfsdf");
+	//if the payment is successful it returns true	 
 		      boolean isSuccess=CustomerDBUtill.makePayment(amount,paymentType,dateTime,paymethod,reservationID,cusID,recieptNumber);
-		    
+		    //check if the payment is successful		    
 		      if(isSuccess) {
-		    	  
+		    	  //if the reservation is successful redirect user to the vehicle reservation page
 		             RequestDispatcher rd=request.getRequestDispatcher("VehicleReservation.jsp");
 		             rd.forward(request, response);
 		      }else {
-		    	  System.out.println("Unsucess Payment");
-					
+		    	 
+					/*Alert user that payment is not successful
+					 * if the payment was not successful redirect user to vehicle reservation page
+					 *
+					 */
 					out.println("<script type='text/javascript'>");
 					out.println("alert('Payment is not Completed');");
 					out.println("location='VehicleReservation.jsp'");
@@ -81,8 +85,11 @@ public class VehicleReservationServlet extends HttpServlet {
 		      }
 	      }else {
 	    	  
-	    	    System.out.println("Unsucess");
-				
+	    	 
+				/*
+				 * Alert user that reservation is not completed
+				 * Reservation is not completed.
+				 */
 				out.println("<script type='text/javascript'>");
 				out.println("alert('Reservation is not Completed');");
 				out.println("location='VehicleReservation.jsp'");

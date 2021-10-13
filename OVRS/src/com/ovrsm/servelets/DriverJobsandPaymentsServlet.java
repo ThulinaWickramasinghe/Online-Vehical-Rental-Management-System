@@ -30,10 +30,10 @@ public class DriverJobsandPaymentsServlet extends HttpServlet {
 	         List<Payment> payments=DriverDBUtil.getPayments(driverID);
 	         request.setAttribute("jobs", recommendedjobs);
 	    	 request.setAttribute("pays", payments);
-			}catch(Exception e) {
+	   }catch(Exception e) {
 				System.out.println("NUmber");
 				e.printStackTrace();
-			}
+	    }
 			RequestDispatcher dis =request.getRequestDispatcher("ViewJobs.jsp");
 			dis.forward(request, response);
 	    	 

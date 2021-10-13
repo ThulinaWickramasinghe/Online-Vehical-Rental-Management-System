@@ -28,10 +28,12 @@ public class VehicleAddServlet extends HttpServlet {
  
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		
+		//Use a print writer object to write html  content as response
 		PrintWriter out = response.getWriter();
 		response.setContentType("text/html");
 		
+		//Access httpservletrequest parameter and get the values of given parameter name
+	    //get the vehicle details
 		int veOID=Integer.parseInt(request.getParameter("veOID"));
 		String fuel_type=request.getParameter("fuelType");
 		String license_no=request.getParameter("licenseNo");
@@ -48,19 +50,21 @@ public class VehicleAddServlet extends HttpServlet {
 		String transmission=request.getParameter("transmission");
 		String vehiclePic=null;
 		
+		//returns true if the vehicle is added successfully else false 
 		boolean isSuccess=VehicleOwnerUtil.addVehicle(veOID, fuel_type, license_no, vehi_type,color, body_type, model, noOfPeeps, edition, 
 				pricePerKm, specialNote, brand, registration,transmission,vehiclePic);
-		
+		//check if the adding vehicle is successful
 		if(isSuccess==true) {
-			   System.out.println("Sucess");
-				
+			  
+				//Alert user that vehicle is added successfully
+			    //redirect user to the vehicle rental page
 				out.println("<script type='text/javascript'>");
 				out.println("alert('Vehicle was  added successfully');");
 				out.println("location='vehicleRental.jsp'");
 				out.println("</script>");
 			
 		}else {
-			 System.out.println("Unsucess");
+			   //if the vehicle addition is not sucessful alert user and redirect to vehicle rental page
 				
 				out.println("<script type='text/javascript'>");
 				out.println("alert('Vehicle was not added successfully');");

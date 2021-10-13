@@ -20,15 +20,18 @@ public class VehicleViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		//access the httpservletresuest and get the value of parameter named view
 		int veOID=Integer.parseInt(request.getParameter("view"));
 	    
 		try {
+			//get list of vehicle
 		List <Vehicle> vehi=VehicleOwnerUtil.getVehicleDetails(veOID);
+		//set request attribute named vehiDetails which can be used to fetch list of vehicle in vehicleview.jsp file 
 		request.setAttribute("vehiDetails", vehi);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		//redirect user to vehicle view page
 		RequestDispatcher dis =request.getRequestDispatcher("vehicleView.jsp");
 		dis.forward(request, response);
 	}

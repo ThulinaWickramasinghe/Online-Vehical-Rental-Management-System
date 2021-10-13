@@ -1,6 +1,8 @@
 package com.ovrsm.util;
 
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Connection;
@@ -18,7 +20,127 @@ public class CustomerDBUtill {
 	private static ResultSet rs = null;
 	//create the prepared statement 
     private static PreparedStatement ps=null;
+
+	
 	public static final Logger log = Logger.getLogger(CustomerDBUtill.class.getName());
+	
+	public  static int updateProfile(int userID,String firstName,String lastName,String userName,String password,String email,String propic
+			,String NIC,int phoneNo,String homeNo,String streetName,String city) {
+		
+		int number=0;
+		propic="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg";
+		
+		//Generic type string ArrayList which contains user names
+		ArrayList<String> userNames= new ArrayList<String>();
+		try{
+			//Get the connection
+			 con = DBConnection.getDBConnection();
+		
+	        //Create statment 
+		    stmt = con.createStatement();
+		  
+
+            //Sql query to return user Name of a user
+		    String query="select userName from user";
+		
+		    //Execute the query  and return a result set  
+		    rs=stmt.executeQuery(query);
+		  
+		    
+		    //iterate through the result set until there are no more rows in
+		    while(rs.next()) {
+		    	String uName=rs.getString(1);
+		    
+		    	userNames.add(uName);
+		    }
+		   
+		    String query2="select userName from user where userID='"+userID+"'";
+		    stmt = con.createStatement();
+		    rs=stmt.executeQuery(query2);
+		    String previousUserName=null;
+		    while(rs.next()) {
+		    	previousUserName=rs.getString(1);
+		    }
+		    
+		    userNames.remove(previousUserName);
+		    
+		    
+		   int index= Collections.binarySearch(userNames, userName);
+		
+		    
+		   if(index <0) {
+			   
+			    
+			    stmt = con.createStatement();
+			    String sql="update user set firstName = '"+firstName+"',lastName='"+lastName+"',userName='"+userName+"',password='"+password+"',email='"+email+"',propic='"+propic+"'where userID='"+userID+"'";
+			    
+			    int r= stmt.executeUpdate(sql);
+			    
+			    
+			    stmt = con.createStatement();
+			    String sql1="update externaluser set NIC ='"+NIC+"',phoneNo='"+phoneNo+"',homeNo='"+homeNo+"',streetName='"+streetName+"',city='"+city+"'where exuserID='"+userID+"'";
+			    
+			    int r2=stmt.executeUpdate(sql1);
+			   if(r>0 ) {
+				   if(r2>0) {
+					   
+					   log.log(Level.INFO,"Externerl user successfully updated");
+					  
+					   number=3;
+					   
+					   return number;
+				   }else {
+					   log.log(Level.SEVERE,"Externerl user updated failed");
+					   number=2;
+					   return number;
+				   }
+			   }else {
+				   log.log(Level.INFO,"User  updated successfully");
+				   number=1;
+				   return number;
+			   }
+			   
+			   
+			   
+			   
+		   }else {
+			   
+			   log.log(Level.SEVERE,"User name already taken");
+			   number=-1;
+			   return number;
+		   } 
+		    
+		
+		    		   		 		  		  			   		    		  		    
+		    
+		}catch(Exception e) {
+			//write the thrown exception to the logger as severe level error in order to trace the error in remote server
+			log.log(Level.SEVERE, e.getMessage());
+		}finally {
+			try {
+				//close statement
+				if (stmt != null) {
+					stmt.close();
+				}
+				//close the connection
+				if (con != null) {
+					con.close();
+				}
+				
+				
+			
+			} catch (SQLException e) {
+				//write the thrown exception to the logger as severe level error
+				log.log(Level.SEVERE, e.getMessage());
+			}
+		}
+		
+		
+		//return the number which coresponds different outputs
+		return number;
+	}
+	
+	
 	public static  int makeReservation(int cusID, String vehicle_type, String pickupDate, 
 			String pickupTime, int hours, int days, int minutes, String driverExp, int driverStatus,
 			double how_far, String pickup_location) {
@@ -32,8 +154,8 @@ public class CustomerDBUtill {
 		    String query="insert into reservation(cusID,vehicle_type,pickupdate,pickuptime,hours,days,minutes,driverexp,driverstatus,how_far,pickup_location,fullPaid,journey_status)"
 		    		+ "values(?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		    
-		   //create the prepared statement 
-		  ps=con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
+		//create the prepared statement 
+		    ps=con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
 		//set values for each column	
 		    ps.setInt(1, cusID);
 		    ps.setString(2, vehicle_type);
@@ -62,7 +184,7 @@ public class CustomerDBUtill {
 			}
 			
 
-			System.out.println(reservationID);
+			
 		}catch(Exception e) {
 			log.log(Level.SEVERE, e.getMessage());
 		}finally {
@@ -71,6 +193,7 @@ public class CustomerDBUtill {
 				if (ps != null) {
 					ps.close();
 				}
+				//close the connection
 				if (con != null) {
 					con.close();
 				}
@@ -86,7 +209,7 @@ public class CustomerDBUtill {
 	}
 	
 	public static boolean makePayment(double amount, String paymentType, String dateTime, String paymethod, int reservationID, int cusID,String  recieptNumber) {
-		// TODO Auto-generated method stub
+
 	
         int paymentID=0;
 		try{
@@ -121,10 +244,11 @@ public class CustomerDBUtill {
 		   
 		    //Creates a Statement object for sending SQL statements
 		    stmt = con.createStatement();
-			//execute the created statement and assign the returned values
+			//execute the create statement and assign number of  effected rows to rs variable
 		    int rs = stmt.executeUpdate(query2);
-			
-			if(rs>0) {
+			//check if the number of rows effected are more than zero
+			//if it is set isSuccess as true else false
+		    if(rs>0) {
 			
 				isSuccess=true;
 			}else {
@@ -132,6 +256,7 @@ public class CustomerDBUtill {
 				isSuccess=false;
 			}
 		}catch(Exception e) {
+			//write that error to logger
 			log.log(Level.SEVERE, e.getMessage());
 		}finally {
 			try {

@@ -20,7 +20,7 @@ public class Vehicle {
 	private String transmission;
     
     
-
+   //Initialize all the values using  overloaded constructor
     public Vehicle(int owneruserID, int vehicleID, String fuel_type, String license_no, String vehi_type, String color,
 			String body_type, String model, int noOfPeeps, String edition, double pricePerKm, String specialNote,
 			String brand, String registrationNo,String transmission,String vehiclePic) {
@@ -42,8 +42,7 @@ public class Vehicle {
 		this.vehiclePic = vehiclePic;
 		this.transmission = transmission;
 	}
-
-
+//return the owners userID
 	public int getOwneruserID() {
 		return owneruserID;
 	}
