@@ -57,11 +57,6 @@ public class LoginServlet extends HttpServlet {
 						session.setAttribute("city", cus.getCity());
 						session.setAttribute("homeNo", cus.getHomeNo());
 						session.setAttribute("user", userType);
-						System.out.println("I am  notsdffffffffffffffffffffffffffffff here");
-						System.out.println(cus.getUserName());
-						System.out.println(cus.getLastName());
-						System.out.println(cus.getFirstName());
-						System.out.println(cus.getHomeNo());
 						response.sendRedirect("CustomerDashBoard.jsp");
 						
 							
@@ -87,7 +82,7 @@ public class LoginServlet extends HttpServlet {
 						
 						
 							session.setAttribute("user", userType);
-				            session.setAttribute("bikeexpertLevel", driver.getBikeexpertLevel());
+				                        session.setAttribute("bikeexpertLevel", driver.getBikeexpertLevel());
 							session.setAttribute("vanexpertLevel", driver.getVanexpertLevel());
 							session.setAttribute("jeepexpertLevel", driver.getVanexpertLevel());
 							session.setAttribute("driverlicense", driver. getDriverlicense());
@@ -95,7 +90,7 @@ public class LoginServlet extends HttpServlet {
 							System.out.println(driver.getLastName());
 							System.out.println(driver.getFirstName());
 							System.out.println(driver.getHomeNo());
-						    response.sendRedirect("Driver-DashBoard.jsp");
+						        response.sendRedirect("Driver-DashBoard.jsp");
 						
 						
 							
